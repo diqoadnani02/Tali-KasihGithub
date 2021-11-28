@@ -1,15 +1,10 @@
-import Header from "./Components/Header/Header";
-import Routers from "./Routes/Routes";
-import Footer from './Components/Footer/Footer';
-import Hero from "./Components/Hero/Hero";
-
+import "./App.css";
+import Trending from "./Card/Trending";
 
 function App() {
   return (
     <>
-      <Header />
-      <Routers />
-      <Footer />
+      <Trending />
     </>
   );
 }
