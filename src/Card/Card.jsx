@@ -17,7 +17,7 @@ const Card = ({ image, category, title, author, data_funding, raised, goal }) =>
           <p className={styles.title2}>{author}</p>
         </div>
         <div>
-          <LinearProgress variant="determinate" value={data_funding} className={styles.progress} />
+          <LinearProgress variant="determinate" sx={{height: '8px'}} value={data_funding} className={styles.progress} />
         </div>
         <div className={styles.goals_card}>
           <div>

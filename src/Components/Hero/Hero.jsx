@@ -19,27 +19,20 @@ export default function Hero() {
         <ThemeProvider theme={theme}>
         <Paper
             sx={{
+                width: '100vw',
+                height: '100vh',
                 backgroundColor: 'grey.800',
                 color: '#fff',
                 mb: 4,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
+                position: 'relative',
+                backgroundImage: `url(${HeroImage})`
                 
             }}
         >
             
-            <Box
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    backgroundSize: 'cover',
-                    backgroundImage: `url(${HeroImage})`
-                }}
-            />
             <Grid container>
                 <Grid item md={8}>
                     <Box
