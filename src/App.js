@@ -1,10 +1,13 @@
-import "./App.css";
-import Trending from "./Card/Trending";
+import Header from "./Components/Header/Header";
+import Routers from "./Routes/Routes";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <>
-      <Trending />
+      <Header />
+      <Routers />
+      <Footer />
     </>
   );
 }
