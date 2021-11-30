@@ -1,48 +1,48 @@
 import React from 'react'
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import {Button, Modal, Box} from '@mui/material'
+// import {Button, Modal, Box} from '@mui/material'
 import SearchIcon from "@mui/icons-material/Search";
-// import { Link } from "react-router-dom";
-import Login from '../Login/Login'
-import Register from '../Register/Register'
+import { Link } from "react-router-dom";
+// import Login from '../Login/Login'
+// import Register from '../Register/Register'
 
-const styleRegister = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  backgroundColor: '#F1EDE4',
-  boxShadow: 24,
-  p: 4,
-  pt: '120px',
-  pb: '110px'
-};
+// const styleRegister = {
+//   position: 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   width: 400,
+//   backgroundColor: '#F1EDE4',
+//   boxShadow: 24,
+//   p: 4,
+//   pt: '120px',
+//   pb: '110px'
+// };
 
-const styleLogin = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  backgroundColor: '#F1EDE4',
-  boxShadow: 24,
-  p: 4,
-  pt: '60px',
-  pb: '100px'
-};
+// const styleLogin = {
+//   position: 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   width: 400,
+//   backgroundColor: '#F1EDE4',
+//   boxShadow: 24,
+//   p: 4,
+//   pt: '60px',
+//   pb: '100px'
+// };
 
 
 
 export default function Header() {
-  const [openLogin, setOpenLogin] = React.useState()
-  const handleOpen = () => setOpenLogin(true);
-  const handleClose = () => setOpenLogin(false);
+  // const [openLogin, setOpenLogin] = React.useState()
+  // const handleOpen = () => setOpenLogin(true);
+  // const handleClose = () => setOpenLogin(false);
 
-  const [openRegister, setOpenRegister] = React.useState()
-  const handleOpenRegister = () => setOpenRegister(true);
-  const handleCloseRegister = () => setOpenRegister(false);
+  // const [openRegister, setOpenRegister] = React.useState()
+  // const handleOpenRegister = () => setOpenRegister(true);
+  // const handleCloseRegister = () => setOpenRegister(false);
 
 
   return (
@@ -57,8 +57,8 @@ export default function Header() {
         </div>
         <div className={styles.listBar}>
           <span></span>
-          {/* <Link to="#">Login</Link> */}
-          <Button variant="text" onClick={handleOpen}>Login</Button>
+          <Link to="#">Login</Link>
+          {/* <Button variant="text" onClick={handleOpen}>Login</Button>
           <Modal
             open={openLogin}
             onClose={handleClose}
@@ -66,10 +66,10 @@ export default function Header() {
             <Box sx={styleLogin}>
               <Login />
             </Box>
-              </Modal>
+              </Modal> */}
           <span></span>
-          {/* <Link to="#">Register</Link> */}
-          <Button onClick={handleOpenRegister}>Register</Button>
+          <Link to="#">Register</Link>
+          {/* <Button onClick={handleOpenRegister}>Register</Button>
           <Modal
             open={openRegister}
             onClose={handleCloseRegister}
@@ -77,7 +77,7 @@ export default function Header() {
             <Box sx={styleRegister}>
               <Register />
             </Box>
-              </Modal>
+              </Modal> */}
         </div>
       </div>
     </div>
