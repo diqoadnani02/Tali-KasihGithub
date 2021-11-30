@@ -1,7 +1,8 @@
 import React from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, Paper, Typography, Grid, TextField, Box, Button } from '@mui/material'
-
+import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
+import Google from './google.png'
+// import Paper from '@mui/material/Paper'
 
 export default function Login() {
     const theme = createTheme({
@@ -17,7 +18,7 @@ export default function Login() {
     }
     return (
         <ThemeProvider theme={theme}>
-            <Paper 
+            {/* <Paper 
             elevation={0} 
             variant="outlined" 
             sx={{
@@ -26,9 +27,10 @@ export default function Login() {
                 width: '30vw',
                 margin: "20px auto",
                 backgroundColor: '#F1EDE4'
+                
             }}
-            >
-                <Grid item xs={8} sx={{margin: '-50px'}}>
+            > */}
+                <Grid item xs={8}>
                     <Typography sx={{
                         fontStyle: 'normal',
                         fontWeight: 'bold',
@@ -53,7 +55,7 @@ export default function Login() {
                         New user? <Link href="#">Create an account</Link>
                     </Typography>
                 </Grid>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{width: 500, maxWidth: "100%", marginTop: '100px'}}>
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{marginTop: 5}}>
                     <TextField
                     variant="filled"
                     fullWidth
@@ -74,17 +76,23 @@ export default function Login() {
                     id="password"
                     />
                     <Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color=""><Link href="#">Forget Password?</Link></Typography>
-                </Box>
-                <Button
+                    <Button
                 type="submit"
                 fullWidth
                 size="large"
                 variant="contained"
-                sx={{mt: 3, mb: 2, backgroundColor: '#A43F3C', color: "#fff"}}
+                sx={{mt: 3, mb: 2, height: '49px', backgroundColor: '#A43F3C', color: "#fff",'&:hover': {
+                    background: '#A43F3C'
+                },}}
                 >
                     Sign in
                 </Button>
-            </Paper>
+                </Box>
+                <Divider variant="middle" />
+                
+                <Button sx={{mt: 3, mb: 2}}fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
+
+            {/* </Paper> */}
         </ThemeProvider>
     )
 }
