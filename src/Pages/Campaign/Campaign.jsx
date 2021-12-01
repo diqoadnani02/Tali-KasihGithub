@@ -40,22 +40,48 @@ export default function Campaign() {
           <div className={styles.cardProfile}>
             <img src={Profile} alt="" />
             <div className={styles.cardTitleProfile}>
-              <b>Dian Endang</b> <br />
-              <small>Fundraiser</small>
+              <h4 style={{ margin: 0, padding: "0 10px" }}>Dian Endang</h4>
+              <p style={{ margin: 0, paddingLeft: "10px" }}>Fundraiser</p>
             </div>
           </div>
           <div className={styles.smallCard}>
             <div className={styles.listCard}>
-              <b>12</b> <br />
-              <small>Days left</small>
+              <h4
+                style={{
+                  margin: 0,
+                  color: "#1d94a8",
+                  fontSize: "30px",
+                  padding: "0px 10px",
+                }}
+              >
+                12
+              </h4>
+              <p style={{ margin: 0, paddingTop: "13.5px", color: "#9F9F9F" }}>
+                Days left
+              </p>
             </div>
             <div className={styles.listCard}>
-              <b>132</b> <br />
-              <small>Donation</small>
+              <h4 style={{ margin: 0, color: "#1d94a8", fontSize: "30px" }}>
+                132
+              </h4>
+              <p style={{ margin: 0, paddingTop: "13.5px", color: "#9F9F9F" }}>
+                Donation
+              </p>
             </div>
             <div className={styles.listCard}>
-              <b>232</b> <br />
-              <small style={{ paddingLeft: "20px" }}>Share</small>
+              <h4 style={{ margin: 0, color: "#1d94a8", fontSize: "30px" }}>
+                232
+              </h4>
+              <p
+                style={{
+                  margin: 0,
+                  paddingTop: "13.5px",
+                  color: "#9F9F9F",
+                  paddingLeft: "10px",
+                }}
+              >
+                Share
+              </p>
             </div>
           </div>
           <div className={styles.buttonCard}>
