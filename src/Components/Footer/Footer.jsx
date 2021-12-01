@@ -1,5 +1,6 @@
 import styles from "./Footer.module.scss";
 import Logo from "./assets/Logo.png";
+import { Link } from '@mui/material'
 
 export default function Footer() {
   return (
@@ -13,16 +14,16 @@ export default function Footer() {
             <h5>FUNDRAISE FOR</h5>
             <ul>
               <li>
-                <a href="">Education</a>
+                <Link href="#">Education</Link>
               </li>
               <li>
-                <a href="">Disabilities</a>
+                <Link href="#">Disabilities</Link>
               </li>
               <li>
-                <a href="">Hospital Bills</a>
+                <Link href="#">Hospital Bills</Link>
               </li>
               <li>
-                <a href="">Religious</a>
+                <Link href="#">Religious</Link>
               </li>
             </ul>
           </div>
@@ -30,13 +31,13 @@ export default function Footer() {
             <h5>LEARN MORE</h5>
             <ul>
               <li>
-                <a href="">How we can help</a>
+                <Link href="#">How we can help</Link>
               </li>
               <li>
-                <a href="">FAQ</a>
+                <Link href="#">FAQ</Link>
               </li>
               <li>
-                <a href="">Blog</a>
+                <Link href="">Blog</Link>
               </li>
             </ul>
           </div>
@@ -44,13 +45,13 @@ export default function Footer() {
             <h5>RESOURCES</h5>
             <ul>
               <li>
-                <a href="">Contact Us</a>
+                <Link href="#">Contact Us</Link>
               </li>
               <li>
-                <a href="">About</a>
+                <Link href="#">About</Link>
               </li>
               <li>
-                <a href="">Careers</a>
+                <Link href="#">Careers</Link>
               </li>
             </ul>
           </div>

@@ -1,0 +1,67 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  width: 363px;
+  height: 473px;
+}
+
+.image_category {
+  margin-top: 24px;
+}
+.category {
+  margin: 0 24px;
+}
+
+.button_category {
+  background-color: transparent;
+  color: #a43f3c;
+  border: 1px solid #a43f3c;
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  margin-top: 16px;
+}
+
+.title1 {
+  font-weight: bold;
+  font-family: Nunito;
+}
+.title2 {
+  font-size: 14px;
+  font-family: Nunito;
+}
+.progress {
+  width: 315px;
+  border-radius: 4px;
+}
+
+.goals_card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.raised {
+  margin: 0;
+  margin-top: 27px;
+  font-size: 14px;
+  font-family: Nunito;
+  color: #9f9f9f;
+}
+.goal {
+  margin: 0;
+  margin-top: 27px;
+  font-size: 14px;
+  font-family: Nunito;
+  color: #9f9f9f;
+}
+.money1 {
+  margin: 0;
+  color: #1d94a8;
+  font-weight: bold;
+  font-family: Nunito;
+}
+.money2 {
+  margin: 0;
+  font-weight: bold;
+  font-family: Nunito;
+}

@@ -3,7 +3,6 @@ import Routers from "./Routes/Routes";
 import Footer from './Components/Footer/Footer';
 import "./App.css";
 
-
 function App() {
   return (
     <>
@@ -15,4 +14,3 @@ function App() {
 }
 
 export default App;
-
