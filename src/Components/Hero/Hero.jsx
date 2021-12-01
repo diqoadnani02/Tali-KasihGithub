@@ -6,6 +6,9 @@ import Box from '@mui/material/Box'
 import HeroImage from './Assets/HeroImage.png'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Button from '@mui/material/Button'
+import HeroImage2 from './Assets/HeroImage2.png'
+import HeroImage3 from './Assets/HeroImage3.png'
+import Carousel from 'react-material-ui-carousel'
 
 export default function Hero() {
     const font = "'Nunito', sans-serif"
@@ -14,7 +17,34 @@ export default function Hero() {
             fontFamily: font,
         }
     })
+        var items = [
+            {
+                hashtag: "#EducationForEveryone",
+                description: "Proper education is not just a dream",
+                image: HeroImage
+            },
+            {
+                hashtag: "#HealthCareForEveryone",
+                description: "Help them to get speedy recovery",
+                image: HeroImage2
+            },
+            {
+                hashtag: "#CleanAirForEveryone",
+                description: "Together to solve enviromental problem",
+                image: HeroImage3
+            }
+        
+        ];
+        return(<>
+        <Carousel navButtonAlwaysInvisible={true} animation="fade" indicators={false}>
+            {
+                items.map( (item,i) => <Item key={i} item={item} />)
+            }
+        </Carousel>
+        </>);
 
+    function Item(props)
+    {
     return (
         <ThemeProvider theme={theme}>
         <Paper
@@ -28,7 +58,7 @@ export default function Hero() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 position: 'relative',
-                backgroundImage: `url(${HeroImage})`
+                backgroundImage: `url(${props.item.image})`
                 
             }}
         >
@@ -50,7 +80,7 @@ export default function Hero() {
                             color: '#1D94A8'
                         }}
                         >
-                        #EducationForEveryone
+                        {props.item.hashtag}
                         </Typography>
                         <Typography 
                         sx={{
@@ -61,7 +91,7 @@ export default function Hero() {
                             color: '#1D94A8'
                         }}
                         >
-                        Proper education is not just a dream 
+                        {props.item.description}
                         </Typography>
                         <br />
                         <Grid
@@ -113,6 +143,7 @@ export default function Hero() {
         </Paper>
         </ThemeProvider>
     );
+}
 }
 
 
