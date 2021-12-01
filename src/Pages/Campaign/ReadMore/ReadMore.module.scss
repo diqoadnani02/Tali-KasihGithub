@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
+
+.storyCampaign {
+    font-family: Nunito;
+    display: flex;
+    margin: 72px 122px;
+    background: radial-gradient(
+      46.5% 347.45% at 50% 50.11%,
+      rgba(215, 235, 238, 0) 0%,
+      rgba(215, 235, 238, 0.3) 100%
+    );
+  
+    .text{
+      padding: 61px 162px;
+  
+      .collapsible {
+        display: flex;
+        justify-content: center;
+        color: #a87b14;
+        a {
+          text-decoration: none;
+          color: #a87b14;
+        }
+      }
+    }
+  }
