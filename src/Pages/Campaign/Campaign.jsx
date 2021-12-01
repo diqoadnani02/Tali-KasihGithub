@@ -40,43 +40,23 @@ export default function Campaign() {
           <div className={styles.cardProfile}>
             <img src={Profile} alt="" />
             <div className={styles.cardTitleProfile}>
-              <h4 style={{ margin: 0, padding: "0 10px" }}>Dian Endang</h4>
-              <p style={{ margin: 0, paddingLeft: "10px" }}>Fundraiser</p>
+              <h4>Dian Endang</h4>
+              <p>Fundraiser</p>
             </div>
           </div>
           <div className={styles.smallCard}>
             <div className={styles.listCard}>
-              <h4
-                style={{
-                  margin: 0,
-                  color: "#1d94a8",
-                  fontSize: "30px",
-                  padding: "0px 10px",
-                }}
-              >
-                12
-              </h4>
-              <p style={{ margin: 0, paddingTop: "13.5px", color: "#9F9F9F" }}>
-                Days left
-              </p>
+              <h4>12</h4>
+              <p>Days left</p>
             </div>
             <div className={styles.listCard}>
-              <h4 style={{ margin: 0, color: "#1d94a8", fontSize: "30px" }}>
-                132
-              </h4>
-              <p style={{ margin: 0, paddingTop: "13.5px", color: "#9F9F9F" }}>
-                Donation
-              </p>
+              <h4>132</h4>
+              <p>Donation</p>
             </div>
             <div className={styles.listCard}>
-              <h4 style={{ margin: 0, color: "#1d94a8", fontSize: "30px" }}>
-                232
-              </h4>
+              <h4>232</h4>
               <p
                 style={{
-                  margin: 0,
-                  paddingTop: "13.5px",
-                  color: "#9F9F9F",
                   paddingLeft: "10px",
                 }}
               >
@@ -219,21 +199,10 @@ export default function Campaign() {
               </div>
               <div className={styles.cardsTitle}>
                 <div className={styles.cardNominal}>
-                  <h4
-                    style={{ margin: 0, padding: "20px 0", color: "#1d94a8" }}
-                  >
-                    Rp. 320.000
-                  </h4>
-                  <div
-                    style={{ margin: 0, fontSize: "14px" }}
-                    className={styles.cardText}
-                  >
-                    <p style={{ margin: 0, fontWeight: "bold" }}>
-                      Justin Junaedi
-                    </p>
-                    <p style={{ margin: 0, color: "#9F9F9F" }}>
-                      12 minutes ago
-                    </p>
+                  <h4>Rp. 320.000</h4>
+                  <div className={styles.cardText}>
+                    <p>Justin Junaedi</p>
+                    <p style={{ color: "#9F9F9F" }}>12 minutes ago</p>
                   </div>
                 </div>
               </div>
@@ -254,21 +223,10 @@ export default function Campaign() {
               </div>
               <div className={styles.cardsTitle}>
                 <div className={styles.cardNominal}>
-                  <h4
-                    style={{ margin: 0, padding: "20px 0", color: "#1d94a8" }}
-                  >
-                    Rp. 320.000
-                  </h4>
-                  <div
-                    style={{ margin: 0, fontSize: "14px" }}
-                    className={styles.cardText}
-                  >
-                    <p style={{ margin: 0, fontWeight: "bold" }}>
-                      Justin Junaedi
-                    </p>
-                    <p style={{ margin: 0, color: "#9F9F9F" }}>
-                      12 minutes ago
-                    </p>
+                  <h4>Rp. 320.000</h4>
+                  <div className={styles.cardText}>
+                    <p>Justin Junaedi</p>
+                    <p style={{ color: "#9F9F9F" }}>12 minutes ago</p>
                   </div>
                 </div>
               </div>
@@ -291,21 +249,10 @@ export default function Campaign() {
               </div>
               <div className={styles.cardsTitle}>
                 <div className={styles.cardNominal}>
-                  <h4
-                    style={{ margin: 0, padding: "20px 0", color: "#1d94a8" }}
-                  >
-                    Rp. 320.000
-                  </h4>
-                  <div
-                    style={{ margin: 0, fontSize: "14px" }}
-                    className={styles.cardText}
-                  >
-                    <p style={{ margin: 0, fontWeight: "bold" }}>
-                      Justin Junaedi
-                    </p>
-                    <p style={{ margin: 0, color: "#9F9F9F" }}>
-                      12 minutes ago
-                    </p>
+                  <h4>Rp. 320.000</h4>
+                  <div className={styles.cardText}>
+                    <p>Justin Junaedi</p>
+                    <p style={{ color: "#9F9F9F" }}>12 minutes ago</p>
                   </div>
                 </div>
               </div>
@@ -326,21 +273,10 @@ export default function Campaign() {
               </div>
               <div className={styles.cardsTitle}>
                 <div className={styles.cardNominal}>
-                  <h4
-                    style={{ margin: 0, padding: "20px 0", color: "#1d94a8" }}
-                  >
-                    Rp. 320.000
-                  </h4>
-                  <div
-                    style={{ margin: 0, fontSize: "14px" }}
-                    className={styles.cardText}
-                  >
-                    <p style={{ margin: 0, fontWeight: "bold" }}>
-                      Justin Junaedi
-                    </p>
-                    <p style={{ margin: 0, color: "#9F9F9F" }}>
-                      12 minutes ago
-                    </p>
+                  <h4>Rp. 320.000</h4>
+                  <div className={styles.cardText}>
+                    <p>Justin Junaedi</p>
+                    <p style={{ color: "#9F9F9F" }}>12 minutes ago</p>
                   </div>
                 </div>
               </div>

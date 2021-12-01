@@ -8,6 +8,10 @@
   .campaign {
     padding-right: 50px;
 
+    h1 {
+      padding: 20px 0;
+    }
+
     img {
       width: 800px;
       height: 439px;
@@ -26,6 +30,10 @@
 
     h3 {
       color: #a43f3c;
+      padding: 10px 0;
+    }
+    p {
+      padding-bottom: 10px;
     }
 
     .cardProfile {
@@ -39,7 +47,12 @@
       .cardTitleProfile {
         padding-left: 12px;
 
-        small {
+        h4 {
+          padding: 0 10px;
+        }
+
+        p {
+          padding-left: 10px;
           color: #9f9f9f;
         }
       }
@@ -57,11 +70,22 @@
         border: 1px solid #f4f4f4;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
+
+        h4 {
+          color: #1d94a8;
+          font-size: 30px;
+          padding: 0 10px;
+        }
+
+        p {
+          padding-top: 13.5px;
+          color: #9f9f9f;
+        }
       }
     }
 
     .buttonCard {
-      padding-top: 20px;
+      padding-top: 30px;
       padding-right: 30px;
       display: flex;
       flex-direction: column;
@@ -115,7 +139,7 @@
 
   .donor {
     h3 {
-      margin-left: 20px;
+      padding: 20px 12px;
     }
   }
 
@@ -259,7 +283,7 @@
 
   .donation {
     h3 {
-      margin-left: 20px;
+      padding: 20px 20px;
     }
   }
 
@@ -277,9 +301,16 @@
         display: flex;
         .cards {
           margin: 20px 20px;
-          .cardsTitle {
-            .cardNomimal {
-              margin-bottom: 10px;
+        }
+        .cardsTitle {
+          padding: 20px 0;
+          h4 {
+            color: #1d94a8;
+            padding-bottom: 8px;
+
+            p {
+              font-weight: bold;
+              font-size: 14px;
             }
           }
         }
@@ -323,7 +354,7 @@
 
   .coment {
     h3 {
-      margin-left: 48px;
+      padding: 20px 48px;
     }
   }
 
@@ -370,6 +401,10 @@
       border: 1px solid #ffffff;
       background: #ffffff;
 
+      p {
+        padding: 20px 0;
+      }
+
       .cardsBox {
         display: flex;
         img {
@@ -384,6 +419,10 @@
       height: 181px;
       border: 3px solid #ffffff;
       background: rgba(241, 237, 228, 0.2);
+
+      p {
+        padding: 20px 0;
+      }
 
       .cardsBox {
         display: flex;
