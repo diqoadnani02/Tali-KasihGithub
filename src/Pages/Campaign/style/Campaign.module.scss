@@ -1,0 +1,457 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
+
+.topCampaign {
+  font-family: Nunito;
+  display: flex;
+  margin: 72px 121px;
+
+  .campaign {
+    padding-right: 50px;
+
+    h1 {
+      padding: 20px 0;
+    }
+
+    img {
+      width: 800px;
+      height: 439px;
+      border-radius: 4px 4px 0px 0px;
+    }
+  }
+  .cardCampaign {
+    margin-top: 85px;
+    padding-left: 20px;
+    width: 417px;
+    height: 439px;
+    border: 1px solid #f1ede4;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+
+    h3 {
+      color: #a43f3c;
+      padding: 10px 0;
+    }
+    p {
+      padding-bottom: 10px;
+    }
+
+    .cardProfile {
+      display: flex;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .cardTitleProfile {
+        padding-left: 12px;
+
+        h4 {
+          padding: 0 10px;
+        }
+
+        p {
+          padding-left: 10px;
+          color: #9f9f9f;
+        }
+      }
+    }
+
+    .smallCard {
+      display: flex;
+      padding-top: 20px;
+
+      .listCard {
+        margin-right: 30px;
+        padding: 10px 15px;
+        width: 70px;
+        height: 80px;
+        border: 1px solid #f4f4f4;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+
+        h4 {
+          color: #1d94a8;
+          font-size: 30px;
+          padding: 0 10px;
+        }
+
+        p {
+          padding-top: 13.5px;
+          color: #9f9f9f;
+        }
+      }
+    }
+
+    .buttonCard {
+      padding-top: 30px;
+      padding-right: 30px;
+      display: flex;
+      flex-direction: column;
+
+      .buttonUp {
+        width: 369px;
+        height: 44px;
+        background: #ffffff;
+        border: 1px solid #1d94a8;
+        box-sizing: border-box;
+        border-radius: 3px;
+        color: #1d94a8;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .buttonUp:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background: #1d94a8;
+      }
+
+      .buttonDown {
+        width: 369px;
+        height: 44px;
+        background: #a43f3c;
+        border: 1px solid #a43f3c;
+        box-sizing: border-box;
+        border-radius: 3px;
+        color: #ffffff;
+        font-weight: bold;
+      }
+
+      .buttonDown:hover {
+        cursor: pointer;
+        background: #ffffff;
+        color: #cf2424;
+      }
+    }
+  }
+}
+
+// updateDonor
+
+.updateDonor {
+  font-family: Nunito;
+  margin: 72px 122px;
+  border: 1px solid #e1e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  .donor {
+    h3 {
+      padding: 20px 12px;
+    }
+  }
+
+  .step {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    background-color: cream;
+  }
+
+  .stepper {
+    position: relative;
+    // height: inherit;
+  }
+
+  /* regular step */
+  .step .circle {
+    background-color: white;
+    border: 3px solid gray;
+    border-radius: 100%;
+    width: 20px; /* +6 for border */
+    height: 20px;
+    display: inline-block;
+  }
+
+  .step .line {
+    top: 23px;
+    left: 12px;
+    height: 316px;
+    position: absolute;
+    border-left: 3px solid gray;
+  }
+
+  .step.completed .circle {
+    visibility: visible;
+    background-color: rgb(6, 150, 215);
+    border-color: rgb(6, 150, 215);
+  }
+
+  .step.completed .line {
+    border-left: 4px solid rgb(6, 150, 215);
+  }
+
+  .step.empty .circle {
+    visibility: hidden;
+  }
+
+  .step.empty .line {
+    top: 0;
+    height: 100%;
+  }
+
+  .step:last-child .line {
+    border: 1px solid #1d94a8;
+    z-index: -1; /* behind the circle to completely hide */
+  }
+
+  .contentProgress {
+    margin-left: 20px;
+
+    .titleBox {
+      margin-bottom: 20px;
+
+      h4 {
+        display: inline;
+      }
+
+      span {
+        color: #9f9f9f;
+      }
+
+      button {
+        margin-left: 20px;
+        background: #ffffff;
+        border: 1px solid #a87b14;
+        border-radius: 4px;
+        color: #a87b14;
+        width: 103px;
+        height: 24px;
+      }
+
+      button:hover {
+        background: #a87b14;
+        color: #ffffff;
+      }
+    }
+
+    .boxContent {
+      width: 1125px;
+      height: 135px;
+      padding: 10px 20px;
+      border: 1px solid #e1e0e0;
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+
+    .boxButton {
+      width: 1125px;
+      height: 100px;
+      padding: 5px 20px;
+      background: #f1ede4;
+      border: 1px solid #e1e0e0;
+      box-sizing: border-box;
+      border-radius: 4px;
+    }
+  }
+
+  .showButton {
+    padding: 50px 530px;
+    button {
+      width: 208px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #1d94a8;
+      box-sizing: border-box;
+      border-radius: 3px;
+      color: #1d94a8;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: #1d94a8;
+      color: #ffffff;
+    }
+  }
+}
+
+// Donation
+
+.donationCampaign {
+  font-family: Nunito;
+  margin: 72px 122px;
+  border: 1px solid #e1e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  .donation {
+    h3 {
+      padding: 20px 20px;
+    }
+  }
+
+  .containerAllCards {
+    display: flex;
+    .containerCards {
+      width: 600px;
+      height: 245px;
+      border: 2px solid #f4f4f4;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      margin: 20px 20px;
+      .cardDonation {
+        display: flex;
+        .cards {
+          margin: 20px 20px;
+        }
+        .cardsTitle {
+          padding: 20px 0;
+          h4 {
+            color: #1d94a8;
+            padding-bottom: 8px;
+
+            p {
+              font-weight: bold;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .paragraphDonation {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+  .showButton {
+    padding: 50px 530px;
+    button {
+      width: 208px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #1d94a8;
+      box-sizing: border-box;
+      border-radius: 3px;
+      color: #1d94a8;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: #1d94a8;
+      color: #ffffff;
+    }
+  }
+}
+
+// Comment
+.comentContainer {
+  font-family: Nunito;
+  margin: 72px 122px;
+  border: 1px solid #e1e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  .coment {
+    h3 {
+      padding: 20px 48px;
+    }
+  }
+
+  .comentSection {
+    padding: 18px 48px;
+
+    textarea {
+      background: rgba(241, 237, 228, 0.2);
+      padding: 18px 10px;
+      font-family: "Nunito";
+      font-size: 17px;
+      width: 1100px;
+      height: 139px;
+      border: none;
+    }
+
+    .comentButton {
+      padding: 32px;
+      direction: rtl;
+    }
+    button {
+      width: 126px;
+      height: 46px;
+      background: #a43f3c;
+      border: 1px solid #a43f3c;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+    button:hover {
+      background: #ffffff;
+      color: #a43f3c;
+    }
+  }
+  .comentCards {
+    padding: 10px 48px;
+
+    .cards {
+      padding: 10px 20px;
+      width: 1080px;
+      height: 181px;
+      border: 1px solid #ffffff;
+      background: #ffffff;
+
+      p {
+        padding: 20px 0;
+      }
+
+      .cardsBox {
+        display: flex;
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+    .cardsDown {
+      padding: 10px 20px;
+      width: 1080px;
+      height: 181px;
+      border: 3px solid #ffffff;
+      background: rgba(241, 237, 228, 0.2);
+
+      p {
+        padding: 20px 0;
+      }
+
+      .cardsBox {
+        display: flex;
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+  }
+  .showButton {
+    padding: 50px 530px;
+    button {
+      width: 208px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #1d94a8;
+      box-sizing: border-box;
+      border-radius: 3px;
+      color: #1d94a8;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: #1d94a8;
+      color: #ffffff;
+    }
+  }
+}
