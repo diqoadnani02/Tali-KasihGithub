@@ -1,6 +1,6 @@
 import styles from "./Footer.module.scss";
 import Logo from "./assets/Logo.png";
-import { Link } from '@mui/material'
+import {Link} from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -14,16 +14,16 @@ export default function Footer() {
             <h5>FUNDRAISE FOR</h5>
             <ul>
               <li>
-                <Link href="#">Education</Link>
+                <Link to="">Education</Link>
               </li>
               <li>
-                <Link href="#">Disabilities</Link>
+                <Link to="">Disabilities</Link>
               </li>
               <li>
-                <Link href="#">Hospital Bills</Link>
+                <Link to="">Hospital Bills</Link>
               </li>
               <li>
-                <Link href="#">Religious</Link>
+                <Link to="">Religious</Link>
               </li>
             </ul>
           </div>
@@ -31,13 +31,13 @@ export default function Footer() {
             <h5>LEARN MORE</h5>
             <ul>
               <li>
-                <Link href="#">How we can help</Link>
+                <Link to="">How we can help</Link>
               </li>
               <li>
-                <Link href="#">FAQ</Link>
+                <Link to="">FAQ</Link>
               </li>
               <li>
-                <Link href="">Blog</Link>
+                <Link to="">Blog</Link>
               </li>
             </ul>
           </div>
@@ -45,13 +45,13 @@ export default function Footer() {
             <h5>RESOURCES</h5>
             <ul>
               <li>
-                <Link href="#">Contact Us</Link>
+                <Link to="">Contact Us</Link>
               </li>
               <li>
-                <Link href="#">About</Link>
+                <Link to="">About</Link>
               </li>
               <li>
-                <Link href="#">Careers</Link>
+                <Link to="">Careers</Link>
               </li>
             </ul>
           </div>
