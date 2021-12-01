@@ -1,1 +1,58 @@
+.campaignCreation {
+  font-family: Nunito;
+  margin: 50px 240px;
 
+  h1 {
+    padding-bottom: 20px;
+  }
+
+  .boxImage {
+    width: 980px;
+    height: 490px;
+    border: 1px solid #9f9f9f;
+    border: none;
+    background: #e1e0e0;
+    color: #9f9f9f;
+
+    .boxAddImage {
+      padding: 150px 385px;
+
+      .iconAdd {
+        padding: 20px 80px;
+
+        button {
+          background: #e1e0e0;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .formCreation {
+    padding-top: 40px;
+    padding-right: 55px;
+
+    .textInputCreation {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .textareaCreation {
+    .containerTextarea {
+      textarea {
+        background: #FCFCFC;
+        padding: 18px 10px;
+        font-family: "Nunito";
+        font-size: 17px;
+        width: 977px;
+        height: 385px;
+        border: none;
+      }
+      .iconsTextarea {
+        display:flex;
+      }
+    }
+  }
+}
