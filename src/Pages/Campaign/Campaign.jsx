@@ -1,9 +1,13 @@
 import styles from "./style/Campaign.module.scss";
 import ReadMore from "./ReadMore/ReadMore";
+import Card from "../../Card/Card";
+import data from "../../Card/data";
 import Image from "./assets/img.png";
 import Profile from "./assets/profile.png";
 import CardProfile from "./assets/donation.png";
 import CommentProfile from "./assets/comment.png";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
@@ -24,6 +28,16 @@ export default function Campaign() {
       backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
     },
   }));
+
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const getData = () => {
+      setList(data.campaign);
+    };
+
+    getData();
+  }, []);
 
   return (
     <>
@@ -420,6 +434,23 @@ export default function Campaign() {
         </div>
         <div className={styles.showButton}>
           <button>LOAD MORE</button>
+        </div>
+      </div>
+
+      <div className={styles.linkCardBottom}>
+        <Link to="#">Related campaign</Link>
+        <div className={styles.cardBottom}>
+          {list.map((item) => (
+            <Card
+              image={item.image}
+              category={item.category}
+              title={item.title}
+              author={item.author}
+              data_funding={item.data_funding}
+              raised={item.raised}
+              goal={item.goal}
+            />
+          ))}
         </div>
       </div>
     </>

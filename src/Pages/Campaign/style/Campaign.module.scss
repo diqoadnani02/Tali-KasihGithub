@@ -455,3 +455,16 @@
     }
   }
 }
+
+.linkCardBottom {
+  margin: 72px 122px;
+  font-family: Nunito;
+  a {
+    font-size: 20px;
+    color: black;
+  }
+  .cardBottom {
+    display: flex;
+    justify-content: space-between;
+  }
+}
