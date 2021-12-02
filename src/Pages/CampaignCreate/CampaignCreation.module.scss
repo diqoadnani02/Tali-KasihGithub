@@ -40,9 +40,12 @@
   }
 
   .textareaCreation {
+    h3 {
+      padding-bottom: 20px;
+    }
     .containerTextarea {
       textarea {
-        background: #FCFCFC;
+        background: #fcfcfc;
         padding: 18px 10px;
         font-family: "Nunito";
         font-size: 17px;
@@ -51,8 +54,41 @@
         border: none;
       }
       .iconsTextarea {
-        display:flex;
+        display: flex;
+        padding-right: 50px;
+        padding-bottom: 20px;
+
+        .icons {
+          width: 37px;
+          height: 36px;
+          background: #ffffff;
+          border: 2px solid #d1d1d1;
+          box-sizing: border-box;
+          border-radius: 2px;
+          margin-right: 20px;
+        }
       }
     }
   }
+}
+.campaignButton {
+  font-family: Nunito;
+  margin: 50px 240px;
+  direction: rtl;
+  padding-right: 37px;
+}
+.button {
+  width: 208px;
+  height: 46px;
+  background: #a43f3c;
+  border: 1px solid #a43f3c;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+.button:hover {
+  background: #ffffff;
+  color: #a43f3c;
 }

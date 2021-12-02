@@ -1,5 +1,5 @@
 import React from "react";
-import SortIcon from "@material-ui/icons/Sort";
+import SortIcon from "@mui/icons-material/Sort";
 import { useState, useEffect } from "react";
 import data from "../../Card/data";
 import Card from "../../Card/Card";
