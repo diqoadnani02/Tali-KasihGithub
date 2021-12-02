@@ -8,6 +8,7 @@
 .image_category {
   margin-top: 24px;
 }
+
 .category {
   margin: 0 24px;
 }
@@ -22,14 +23,20 @@
   margin-top: 16px;
 }
 
+.button_category_skeleton {
+  margin-top: 16px;
+}
+
 .title1 {
   font-weight: bold;
   font-family: Nunito;
 }
+
 .title2 {
   font-size: 14px;
   font-family: Nunito;
 }
+
 .progress {
   width: 315px;
   border-radius: 4px;
@@ -47,19 +54,36 @@
   font-family: Nunito;
   color: #9f9f9f;
 }
+
 .goal {
+  display: flex;
+  justify-content: flex-end;
   margin: 0;
   margin-top: 27px;
   font-size: 14px;
   font-family: Nunito;
   color: #9f9f9f;
 }
+
+.goals_skeleton {
+  display: flex;
+  justify-content: space-between;
+  width: 316px;
+  margin-top: 24px;
+}
+.goals_skeleton2 {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
 .money1 {
   margin: 0;
   color: #1d94a8;
   font-weight: bold;
   font-family: Nunito;
 }
+
 .money2 {
   margin: 0;
   font-weight: bold;
