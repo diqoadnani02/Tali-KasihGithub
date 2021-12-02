@@ -2,7 +2,7 @@ import Header from "./Components/Header/Header";
 import Routers from "./Routes/Routes";
 import Footer from './Components/Footer/Footer';
 import "./App.css";
-import ProfileCard from './Components/ProfileCard/ProfileCard'
+// import ProfileCard from './Components/ProfileCard/ProfileCard'
 
 function App() {
   return (
