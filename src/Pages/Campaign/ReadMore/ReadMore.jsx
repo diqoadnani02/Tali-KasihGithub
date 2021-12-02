@@ -16,7 +16,7 @@ export default function ReadMore() {
       <div className={styles.readMore}>
         {isReadMore ? text.slice(0, 1000) : text}
         {!isReadMore ? <img src={storyImage} alt="" /> : null}
-        <Link onClick={toggleReadMore} className="read-or-hide">
+        <Link to="#" onClick={toggleReadMore} className="read-or-hide">
           {isReadMore ? (
             <div className={styles.collapsible}>
               Read More
