@@ -53,6 +53,8 @@ export default function CampaignCreation() {
         <div className={styles.containerCreation}>
           <h1>New Campaign</h1>
         </div>
+        <div className={styles.borderlineUp}>
+        </div>
         <div className={styles.boxImage}>
           <div className={styles.boxAddImage}>
             <div className={styles.iconAdd}>
