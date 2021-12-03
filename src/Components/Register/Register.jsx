@@ -1,10 +1,11 @@
 import React from 'react'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
-import Google from './google.png'
 // import Paper from '@mui/material/Paper'
+import Google from './google.png'
 
-export default function Login() {
+
+export default function Register() {
     const theme = createTheme({
         typography: {
             fontFamily: [
@@ -26,8 +27,8 @@ export default function Login() {
                 height: '70vh',
                 width: '30vw',
                 margin: "20px auto",
-                backgroundColor: '#F1EDE4'
-                
+                backgroundColor: '#F1EDE4',
+                flexGrow: 1
             }}
             > */}
                 <Grid item xs={8}>
@@ -40,7 +41,7 @@ export default function Login() {
                         color: '#1D94A8'
                     }}
                     >
-                        LOGIN
+                        REGISTER
                     </Typography>
                     <Typography
                         sx={{
@@ -52,10 +53,18 @@ export default function Login() {
                             textDecoration: 'underline'
                         }}
                     >
-                        New user? <Link href="#">Create an account</Link>
+                        Already have an account <Link href="#">Sign in</Link>
                     </Typography>
                 </Grid>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{marginTop: 5}}>
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{}}>
+                    <TextField
+                    variant="filled"
+                    fullWidth
+                    margin="normal"
+                    id="name"
+                    name="name"
+                    label="Name"
+                    />
                     <TextField
                     variant="filled"
                     fullWidth
@@ -63,7 +72,6 @@ export default function Login() {
                     id="email"
                     name="email"
                     label="Email"
-                    
                     />
                     <TextField
                     variant="filled"
@@ -75,25 +83,32 @@ export default function Login() {
                     type="password"
                     id="password"
                     />
-                    <Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color=""><Link href="#">Forget Password?</Link></Typography>
-                    <Button
+                    <TextField
+                    variant="filled"
+                    fullWidth
+                    margin="normal"
+                    required
+                    name="passwordConfirm"
+                    label="Confirm Password"
+                    type="password"
+                    id="passwordConfirm"
+                    />
+                    
+                </Box>
+                <Button
                 type="submit"
                 fullWidth
                 size="large"
                 variant="contained"
-                sx={{mt: 3, mb: 2, height: '49px', backgroundColor: '#A43F3C', color: "#fff",'&:hover': {
+                sx={{mt: 3, mb: 2, height: '49px',  backgroundColor: '#A43F3C', color: "#fff",'&:hover': {
                     background: '#A43F3C'
                 },}}
                 >
-                    Sign in
+                    Register
                 </Button>
-                </Box>
                 <Divider variant="middle" />
-                
                 <Button sx={{mt: 3, mb: 2}}fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
-
             {/* </Paper> */}
         </ThemeProvider>
     )
 }
-
