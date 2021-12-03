@@ -8,7 +8,7 @@
 
   .borderlineUp {
     border: 1px solid #9f9f9f;
-    
+    margin-right: 55px;
   }
   .boxImage {
     margin-top: 20px;
@@ -49,6 +49,7 @@
       padding-bottom: 20px;
     }
     .containerTextarea {
+      margin-bottom: 20px;
       textarea {
         background: #fcfcfc;
         padding: 18px 10px;
@@ -74,6 +75,11 @@
         }
       }
     }
+  }
+
+  .borderlineBottom {
+    border: 1px solid #9f9f9f;
+    margin-right: 37px;
   }
 }
 .campaignButton {
