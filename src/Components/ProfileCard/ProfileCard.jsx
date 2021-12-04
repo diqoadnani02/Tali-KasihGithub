@@ -5,7 +5,7 @@ import aiko from './aiko.png'
 
 export default function ProfileCard() {
 	return (
-		<Card container sx={{ borderRadius: 4, m: 2, p: 4 }}>
+		<Card container sx={{ borderRadius: 4, mt: '72px',ml:'267px',mr: '203px' , p: 2 }}>
 			<Grid
 				sx={{
 					display: 'flex',
@@ -28,6 +28,7 @@ export default function ProfileCard() {
 						margin: 1,
 						fontFamily: 'nunito',
 						fontStyle: 'normal',
+						fontWeight: 'bold',
 						fontSize: '14px',
 						lineHeight: '19px',
 						color: '#A43F3C',
@@ -36,13 +37,14 @@ export default function ProfileCard() {
 					href="#">Logout</Link>
 			</Grid>
 			<CardContent>
-				<Grid container sx={{ display: 'flex', justifyContent: 'center', }}>
+				<Grid container sx={{ display: 'flex', justifyContent: 'center'}}>
 					<Avatar variant="square" src={aiko} sx={{ width: 200, height: 200 }}></Avatar>
 				</Grid>
 				<Grid container sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
 					<Link href="#" sx={{
 						fontFamily: 'nunito',
 						fontStyle: 'normal',
+						fontWeight: 'bold',
 						fontSize: '14px',
 						lineHeight: '19px',
 						color: '#1D94A8',
@@ -52,7 +54,7 @@ export default function ProfileCard() {
 						Edit Profile
 					</Link>
 				</Grid>
-				<Box component="form" sx={{ mt: 2 }}>
+				<Box component="form" sx={{ mt: 3 }}>
 					<Grid container sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
 						<TextField
 							disabled
@@ -69,7 +71,7 @@ export default function ProfileCard() {
 							variant="standard"
 						/>
 					</Grid>
-					<Grid sx={{ ml: "237px", mt: 2 }}>
+					<Grid sx={{ ml: "191px", mt: 2 }}>
 						<TextField
 							disabled
 							id="bankInfo"
