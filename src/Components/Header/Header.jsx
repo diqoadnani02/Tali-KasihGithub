@@ -1,8 +1,11 @@
+import React from 'react'
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
 import { useState, useRef } from "react";
-
 import SearchIcon from "@mui/icons-material/Search";
+import {Modal, Box} from '@mui/material'
+import Login from '../Login/Login'
+import Register from '../Register/Register'
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -14,6 +17,16 @@ export default function Header() {
   const location = useLocation();
   console.log(location);
   const Home = window.location.pathname === "/";
+
+  const [openLogin, setOpenLogin] = React.useState()
+  const handleOpen = () => setOpenLogin(true);
+  const handleClose = () => setOpenLogin(false);
+
+  const [openRegister, setOpenRegister] = React.useState()
+  const handleOpenRegister = () => setOpenRegister(true);
+  const handleCloseRegister = () => setOpenRegister(false);
+ 
+
   return (
     <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
@@ -29,10 +42,26 @@ export default function Header() {
             />
           </div>
           <div className={styles.listBar}>
-            <span></span>
-            <Link to="#">Login</Link>
-            <span></span>
-            <Link to="#">Register</Link>
+          <span></span>
+          <Link to="#" onClick={handleOpen}>Login</Link>
+          <Modal
+            open={openLogin}
+            onClose={handleClose}
+            >
+            <Box sx={styleLogin}>
+              <Login />
+            </Box>
+              </Modal>
+          <span></span>
+          <Link to="#" onClick={handleOpenRegister}>Register</Link>
+          <Modal
+            open={openRegister}
+            onClose={handleCloseRegister}
+            >
+            <Box sx={styleRegister}>
+              <Register />
+            </Box>
+              </Modal>
           </div>
         </div>
       ) : (

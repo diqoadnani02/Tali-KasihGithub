@@ -1,0 +1,94 @@
+.campaignCreation {
+  font-family: Nunito;
+  margin: 50px 240px;
+
+  h1 {
+    padding-bottom: 20px;
+  }
+
+  .boxImage {
+    width: 980px;
+    height: 490px;
+    border: 1px solid #9f9f9f;
+    border: none;
+    background: #e1e0e0;
+    color: #9f9f9f;
+
+    .boxAddImage {
+      padding: 150px 385px;
+
+      .iconAdd {
+        padding: 20px 80px;
+
+        button {
+          background: #e1e0e0;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .formCreation {
+    padding-top: 40px;
+    padding-right: 55px;
+
+    .textInputCreation {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .textareaCreation {
+    h3 {
+      padding-bottom: 20px;
+    }
+    .containerTextarea {
+      textarea {
+        background: #fcfcfc;
+        padding: 18px 10px;
+        font-family: "Nunito";
+        font-size: 17px;
+        width: 977px;
+        height: 385px;
+        border: none;
+      }
+      .iconsTextarea {
+        display: flex;
+        padding-right: 50px;
+        padding-bottom: 20px;
+
+        .icons {
+          width: 37px;
+          height: 36px;
+          background: #ffffff;
+          border: 2px solid #d1d1d1;
+          box-sizing: border-box;
+          border-radius: 2px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+.campaignButton {
+  font-family: Nunito;
+  margin: 50px 240px;
+  direction: rtl;
+  padding-right: 37px;
+}
+.button {
+  width: 208px;
+  height: 46px;
+  background: #a43f3c;
+  border: 1px solid #a43f3c;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+.button:hover {
+  background: #ffffff;
+  color: #a43f3c;
+}
