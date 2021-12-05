@@ -6,32 +6,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import Login from '../Login/Login'
 import Register from '../Register/Register'
+import './stylingModal.css'
 
-const styleRegister = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  backgroundColor: '#F1EDE4',
-  boxShadow: 24,
-  p: 4,
-  pt: '120px',
-  pb: '110px'
-};
-
-const styleLogin = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  backgroundColor: '#F1EDE4',
-  boxShadow: 24,
-  p: 4,
-  pt: '60px',
-  pb: '100px'
-};
 
 
 
@@ -62,7 +38,7 @@ export default function Header() {
             open={openLogin}
             onClose={handleClose}
             >
-            <Box sx={styleLogin}>
+            <Box className="stylingLogin">
               <Login />
             </Box>
               </Modal>
@@ -72,7 +48,7 @@ export default function Header() {
             open={openRegister}
             onClose={handleCloseRegister}
             >
-            <Box sx={styleRegister}>
+            <Box className="stylingRegister">
               <Register />
             </Box>
               </Modal>
