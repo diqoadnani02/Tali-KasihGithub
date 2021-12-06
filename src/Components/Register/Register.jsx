@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
 import { registerStart } from '../../Store/Actions/auth/authAction'
 import {useDispatch} from 'react-redux'
-import Paper from '@mui/material/Paper'
+// import Paper from '@mui/material/Paper'
 import Google from './google.png'
 
 const schema = yup.object({
@@ -68,7 +68,7 @@ const dispatch = useDispatch();
                 errors,
             }) => (
         <ThemeProvider theme={theme}>
-            <Paper 
+            {/* <Paper 
             elevation={0} 
             variant="outlined" 
             sx={{
@@ -79,7 +79,7 @@ const dispatch = useDispatch();
                 backgroundColor: '#F1EDE4',
                 flexGrow: 1
             }}
-            >
+            > */}
                 <Grid item xs={8}>
                     <Typography sx={{
                         fontStyle: 'normal',
@@ -173,7 +173,7 @@ const dispatch = useDispatch();
                 </Button>
                 <Divider variant="middle" />
                 <Button sx={{mt: 3, mb: 2}}fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
-            </Paper>
+            {/* </Paper> */}
         </ThemeProvider>)}
         </Formik>
     )
