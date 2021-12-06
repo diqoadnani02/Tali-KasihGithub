@@ -71,7 +71,7 @@ export default function ProfileCard() {
 							variant="standard"
 						/>
 					</Grid>
-					<Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', padding: '10px 192px' }}>
+					<Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', padding: '10px 100px' }}>
 						<TextField
 							disabled
 							id="bankInfo"
