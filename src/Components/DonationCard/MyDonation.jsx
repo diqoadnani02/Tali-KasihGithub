@@ -42,7 +42,7 @@ export default function MyDonation() {
       >
         My Donation(23)
       </Typography>
-      <Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap', p: '2px 35px'}}>
+      <Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap', p: '2px 35px', width: '926.927px'}}>
         {sliced.map((item) => (
           <DonationCard
             time={item.time}
