@@ -3,11 +3,25 @@ import {
   Paper,
   Typography,
   Grid,
-  Button
+  Button,
+  Box
 } from '@mui/material'
 import DonationCard from './DonationCard'
+import data from './data'
 
 export default function MyDonation() {
+  const [list, setList] = React.useState([]);
+  const [end, setEnd] = React.useState(4);
+
+  React.useEffect(() => {
+    const getData = () => {
+        setList(data.donation)
+    };
+    getData();
+  }, []);
+  const sliced = list.slice(0, end)
+
+
   return (
     <Paper container sx={{
       mt: '72px',
@@ -28,27 +42,24 @@ export default function MyDonation() {
       >
         My Donation(23)
       </Typography>
-      <Grid container spacing={4} sx={{ p: 6, pt: 2 }}>
-        <Grid item xs={6} >
-          <DonationCard />
-        </Grid>
-        <Grid item xs={6} >
-          <DonationCard />
-        </Grid>
-        <Grid item xs={6}>
-          <DonationCard />
-        </Grid>
-        <Grid item xs={6}>
-          <DonationCard />
-        </Grid>
-      </Grid>
+      <Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap', p: '2px 35px'}}>
+        {sliced.map((item) => (
+          <DonationCard
+            time={item.time}
+            title={item.title}
+            fund={item.fund}
+            description={item.description}
+            />
+        ))} 
+      </Box>
       <Grid container
         spacing={0}
         direction="column"
         alignItems="center"
         justifyContent="center"
         >
-        <Grid item xs={5}><Button variant="outlined" sx={{mt: -2, mb: 2
+        <Grid item xs={5}>
+          <Button onClick={() => setEnd(end + 3)} variant="outlined" sx={{mt: 3, mb: 2
           , borderRadius: '3px', border: '1px solid #1D94A8' }}>
           <Typography
           sx={{
