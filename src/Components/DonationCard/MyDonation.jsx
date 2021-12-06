@@ -28,7 +28,8 @@ export default function MyDonation() {
       ml: '263px',
       mr: '207px',
       p: 2,
-      borderRadius: '4px'
+      borderRadius: '4px',
+      width: 'fit-content'
     }}
     >
       <Typography
