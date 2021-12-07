@@ -17,6 +17,7 @@ const Payment = () => {
   const [values, setValues] = React.useState({
     textmask: "(100) 000-0000",
     numberformat: "",
+    name: "",
     cardnumber: "",
     expirydate: "",
     cvv: "",
@@ -40,6 +41,24 @@ const Payment = () => {
       return `${setOne}/${setTwo}`;
     }
   };
+  const formatCardNumber = (value) => {
+    const setOne = value.slice(0, 4);
+    const setTwo = value.slice(4, 8);
+    const setThree = value.slice(8, 12);
+    const setFour = value.slice(12, 16);
+    if (value.length === 4) {
+      return setOne;
+    }
+    if (value.length >= 4 && value.length <= 8) {
+      return `${setOne}-${setTwo}`;
+    }
+    if (value.length >= 8 && value.length <= 12) {
+      return `${setOne}-${setTwo}-${setThree}`;
+    }
+    if (value.length >= 12 && value.length <= 16) {
+      return `${setOne}-${setTwo}-${setThree}-${setFour}`;
+    }
+  };
 
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
@@ -59,6 +78,8 @@ const Payment = () => {
   const id = open ? "simple-popover" : undefined;
   const [detailCard, setDetailCard] = useState(false);
   const [transferBank, setTransferBank] = useState(false);
+
+  const validation = values.numberformat !== "" && values.name !== "" && values.cardnumber !== "" && values.expirydate !== "" && values.cvv !== "";
 
   return (
     <div className={style.payment}>
@@ -98,7 +119,7 @@ const Payment = () => {
               </p>
             </div>
             <div>
-              <Input inputProps={ariaLabel} className={style.input_field2} />
+              <Input inputProps={ariaLabel} className={style.input_field2} value={values.name} />
             </div>
             <div>
               <label className={style.checkbox}>
@@ -163,10 +184,10 @@ const Payment = () => {
               label="Card Number"
               placeholder="e.g. 1234 5678 9012 3456"
               variant="filled"
-              value={values.cardnumber}
+              value={formatCardNumber(values.cardnumber)}
               name="cardnumber"
               inputProps={{
-                maxLength: 16,
+                maxLength: 19,
               }}
               onChange={handleChange}
               sx={{ width: "502px", height: "42px", marginRight: "10px" }}
@@ -272,7 +293,9 @@ const Payment = () => {
           </>
         )}
         <div className={style.button_approve}>
-          <button className={style.approve}>DONATE</button>
+          <button className={style.approve} disabled={validation}>
+            DONATE
+          </button>
         </div>
       </div>
     </div>
