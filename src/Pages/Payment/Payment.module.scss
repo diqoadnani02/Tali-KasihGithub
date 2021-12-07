@@ -1,0 +1,172 @@
+.payment {
+  margin: 40px 240px 150px 240px;
+}
+
+.title {
+  font-family: Nunito;
+  font-size: 32px;
+}
+
+.Form {
+  display: flex;
+  flex-direction: row;
+  width: 961px;
+  justify-content: space-between;
+}
+.text_field {
+  font-family: Nunito;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input_field {
+  width: 512px;
+  height: 42px;
+}
+
+.input_field2 {
+  font-size: 14px !important;
+  width: 512px;
+  height: 42px;
+}
+
+.span {
+  color: #a43f3c;
+}
+
+.span_text {
+  color: #9f9f9f;
+  font-style: italic;
+}
+
+.borderline {
+  border: 1px solid #9f9f9f;
+  width: 961px;
+  margin: 24px 0;
+}
+
+.message {
+  margin-top: 24px;
+}
+
+.checkbox {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  margin-top: 12px;
+  font-family: Nunito;
+}
+
+.text_box {
+  font-family: Nunito;
+  width: 512px !important;
+  height: 233px !important;
+  resize: none;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  margin-bottom: 29px;
+  font-size: 14px;
+  border-bottom: 1px solid #1d94a8;
+}
+
+.text_button {
+  font-family: Nunito;
+}
+
+.button_payment {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+  margin-top: 15px;
+}
+
+.credit_card {
+  background-color: #ffffff;
+  width: 153px;
+  height: 87px;
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+}
+
+.bank_transfer {
+  background-color: #ffffff;
+  width: 153px;
+  height: 87px;
+  border: 1px solid #9f9f9f;
+  border-radius: 4px;
+}
+
+.button_approve {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 70px;
+}
+
+.approve {
+  background-color: #9f9f9f;
+  color: #ffffff;
+  width: 208px;
+  height: 48px;
+  border-radius: 3px;
+  border: 1px solid #9f9f9f;
+}
+
+.form_card {
+  display: flex;
+  flex-direction: row;
+  margin-top: 42px;
+}
+
+.date_card {
+  border: none;
+}
+
+.form_transfer {
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0;
+  padding: 24px;
+  width: 507px;
+  height: 270px;
+}
+
+.title_transfer {
+  color: #1d94a8;
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 24px;
+}
+.transfer_data {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 38px 20px 0;
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+}
+
+.account_title {
+  font-family: Nunito;
+  color: #9f9f9f;
+}
+
+.account_data {
+  font-family: Nunito;
+  font-weight: bold;
+}
+
+.button_copied {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button_styling {
+  border: none;
+  font-family: Nunito;
+  font-weight: bold;
+  font-size: 16px;
+}
