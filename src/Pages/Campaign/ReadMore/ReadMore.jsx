@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 import styles from "../ReadMore/ReadMore.module.scss";
 import storyImage from "../assets/story.png";
-import { Link } from 'react-router-dom'
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 

@@ -53,6 +53,7 @@ export default function CampaignCreation() {
         <div className={styles.containerCreation}>
           <h1>New Campaign</h1>
         </div>
+        <div className={styles.borderlineUp}></div>
         <div className={styles.boxImage}>
           <div className={styles.boxAddImage}>
             <div className={styles.iconAdd}>
@@ -165,6 +166,7 @@ export default function CampaignCreation() {
             ></textarea>
           </div>
         </div>
+        <div className={styles.borderlineBottom}></div>
       </div>
       <div className={styles.campaignButton}>
         <button className={styles.button}>CREATE CAMPAIGN</button>
