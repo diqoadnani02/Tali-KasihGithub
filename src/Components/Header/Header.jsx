@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react";
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import {Modal, Box} from '@mui/material'
+import { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import Login from '../Login/Login'
 import Register from '../Register/Register'
@@ -33,27 +36,77 @@ const styleRegister = {
   pb: '110px'
 }
 
+=======
+import { Modal, Box } from "@mui/material";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
+import "./stylingModal.css";
+import {ProfileAction} from '../../Store/Actions/profile';
+>>>>>>> dde15c479003f59c5387d26fed97c4992f9c226f
 
 export default function Header() {
-  const [openLogin, setOpenLogin] = React.useState()
+  const Token = localStorage.getItem("token");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (Token) {
+      dispatch(ProfileAction())
+    }
+  }, [])
+
+  const [search, setSearch] = useState(false);
+  const inputref = useRef();
+  console.log(inputref.current);
+
+  
+  const location = useLocation();
+  console.log(location);
+  const Home = window.location.pathname === "/";
+
+  const [openLogin, setOpenLogin] = React.useState();
   const handleOpen = () => setOpenLogin(true);
   const handleClose = () => setOpenLogin(false);
-
-  const [openRegister, setOpenRegister] = React.useState()
+  const [openRegister, setOpenRegister] = React.useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
 
-
   return (
-    <div className={styles.header}>
+    <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
         <img src={Logo} alt="TaliKasih" />
       </div>
-      <div className={styles.Bar}>
-        <div className={styles.search}>
-          <SearchIcon className={styles.icon} />
-          <input className={styles.input} placeholder="Search" />
+      {!Token ? (
+        <div className={styles.barBeforeAuth}>
+          <div className={styles.search}>
+            <SearchIcon className={styles.icon} />
+            <input
+              onFocus={() => setSearch(true)}
+              onBlur={() => setSearch(false)}
+              className={styles.input}
+              placeholder="Search"
+            />
+          </div>
+          <div className={styles.listBar}>
+            <span></span>
+            <Link to="#" onClick={handleOpen}>
+              Login
+            </Link>
+            <Modal open={openLogin} onClose={handleClose}>
+              <Box className="stylingLogin">
+                <Login />
+              </Box>
+            </Modal>
+            <span></span>
+            <Link to="#" onClick={handleOpenRegister}>
+              Register
+            </Link>
+            <Modal open={openRegister} onClose={handleCloseRegister}>
+              <Box className="stylingRegister">
+                <Register />
+              </Box>
+            </Modal>
+          </div>
         </div>
+<<<<<<< HEAD
         <div className={styles.listBar}>
           <span></span>
           <Link to="#" onClick={handleOpen}>Login</Link>
@@ -75,8 +128,32 @@ export default function Header() {
               <Register />
             </Box>
               </Modal>
+=======
+      ) : (
+        <div className={styles.BarAfterAuth}>
+          {!search ? (
+            <div className={styles.buttonNavbar}>
+              <button className={styles.campaign}>CREATE CAMPAIGN</button>
+              <button className={styles.donate}>DONATE</button>
+            </div>
+          ) : null}
+          <div className={styles.search}>
+            <SearchIcon className={styles.icon} />
+            <input
+              onFocus={() => setSearch(true)}
+              onBlur={() => setSearch(false)}
+              className={styles.input}
+              placeholder="Search"
+              ref={inputref}
+            />
+          </div>
+          <div className={styles.barProfile}>
+            <span></span>
+            <Link to="/profile">My Profile</Link>
+          </div>
+>>>>>>> dde15c479003f59c5387d26fed97c4992f9c226f
         </div>
-      </div>
+      )}
     </div>
   );
 }
