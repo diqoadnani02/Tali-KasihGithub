@@ -1,4 +1,6 @@
 import React from "react";
+import { UpdateProfileAction } from "../../Store/Actions/updateProfile";
+import { useDispatch } from "react-redux";
 import {
   Card,
   CardContent,
@@ -12,6 +14,8 @@ import {
 import aiko from "./aiko.png";
 
 export default function ProfileCard() {
+  const Token = localStorage.getItem("token");
+
   const logOut = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
