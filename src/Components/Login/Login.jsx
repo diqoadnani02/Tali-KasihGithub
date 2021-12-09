@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
 import Google from './google.png'
 // import Paper from '@mui/material/Paper'
-import { logInStart } from '../../Store/Actions/auth/authAction'
+import { logInStart } from '../../Store/Actions/authAction/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 
 const schema = yup.object({
@@ -28,8 +28,9 @@ export default function Login() {
 		},
 	})
 	const dispatch = useDispatch()
-	const { token } = useSelector(state => state.auth)
-	console.log(token)
+	const { token, status, error } = useSelector(state => state.auth)
+	console.log(token, status)
+	console.log(error, "error")
 
 	return (
 		<Formik
@@ -113,6 +114,8 @@ export default function Login() {
 							helperText={touched.password && errors.password}
 						/>
 						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color=""><Link href="#">Forget Password?</Link></Typography>
+						<p>{ status && status === 200 && "Login Sucessful"}</p>
+						{error !== null && <p>Email or password is invalid</p>}
 						<Button
 							type="submit"
 							fullWidth

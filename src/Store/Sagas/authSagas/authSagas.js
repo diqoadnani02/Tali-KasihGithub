@@ -5,7 +5,7 @@ import {
     put,
     takeLatest
 } from 'redux-saga/effects';
-import types from '../../Actions/auth/authActionTypes'
+import types from '../../Actions/authAction/authActionTypes'
 
 const logIn = async (data) => {
     const response= await axios.post('https://api-talikasih.herokuapp.com/login', {
@@ -35,6 +35,7 @@ export function* postLogIn(action) {
             payload: user
         });
     } catch (error) {
+        console.log(error.message)
         yield put({
             type: 'LOGIN_FAILURE',
             payload: error
