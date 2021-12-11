@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
 
-.header {
+// BEFORE AUTH
+.headerBeforeAuth {
   background-color: #ffffff;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
   font-family: "Nunito";
@@ -13,28 +14,105 @@
     padding: 12px 0px;
   }
 
-  .Bar {
+  .buttonNavbar {
+    padding: 0 10px;
+    .campaign {
+      margin: 0 24px;
+      width: 200px;
+      height: 33px;
+      background: #ffffff;
+      border: 2px solid #a43f3c;
+      box-sizing: border-box;
+      border-radius: 20px;
+      font-weight: bold;
+      line-height: 25px;
+      color: #a43f3c;
+    }
+    .donate {
+      width: 143px;
+      height: 33px;
+      background: #a43f3c;
+      border-radius: 20px;
+      font-weight: bold;
+      line-height: 25px;
+      color: #ffffff;
+    }
+  }
+
+  .barBeforeAuth {
     display: flex;
     align-items: center;
 
     .search {
       display: flex;
       .icon {
-        width: 16px;
+        width: 20px;
         color: #1d94a8;
         position: relative;
-        left: 23px;
-        top: 8px;
+        left: 26px;
+        top: 6px;
       }
 
       input {
-        padding-left: 24px;
+        padding-left: 30px;
         color: #1d94a8;
-        background-color: #f4f4f4;
-        border: none;
-        border-radius: 25px;
+        background-color: transparent;
+        border: 0px solid;
+        border-radius: 20px;
         outline: none;
         height: 36px;
+        width: 80px;
+        font-size: 18px;
+        -moz-transition-duration: 1s;
+        -webkit-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+
+        &:focus {
+          width: 400px;
+        }
+      }
+      ::placeholder {
+        color: #1d94a8;
+      }
+    }
+  }
+
+  .BarAfterAuth {
+    display: flex;
+    align-items: center;
+
+    .search {
+      display: flex;
+      .icon {
+        width: 20px;
+        color: #1d94a8;
+        position: relative;
+        left: 26px;
+        top: 6px;
+      }
+
+      input {
+        padding-left: 30px;
+        color: #1d94a8;
+        background-color:#F4F4F4;
+        border: 0px solid;
+        border-radius: 20px;
+        outline: none;
+        height: 36px;
+        width: 80px;
+        font-size: 18px;
+        -moz-transition-duration: 1s;
+        -webkit-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+
+        &:focus {
+          width: 400px;
+        }
+      }
+      ::placeholder {
+        color: #1d94a8;
       }
     }
   }
@@ -43,17 +121,187 @@
     display: flex;
 
     span {
-      margin: 0px 10px;
-      border: 0.5px solid #a6dee8;
+      margin: 0px 20px;
+      border: 1px solid #a6dee8;
     }
 
     a {
       font-size: 18px;
+      font-weight: bold;
       line-height: 25px;
       text-decoration: none;
       padding-right: 10px;
       color: #1d94a8;
+    }
+  }
+
+  .barProfile {
+
+    span {
+      margin: 0px 20px;
+      border: 1px solid #a6dee8;
+    }
+
+    a {
+      font-size: 18px;
       font-weight: bold;
+      line-height: 25px;
+      text-decoration: none;
+      padding-right: 10px;
+      color: #1d94a8;
+    }
+  }
+}
+
+// AFTER AUTH
+.headerAfterAuth {
+  background-color: #ffffff;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+  font-family: "Nunito";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 120px;
+
+  .logo {
+    padding: 12px 0px;
+  }
+
+  .buttonNavbar {
+    padding: 0 10px;
+    .campaign {
+      margin: 0 24px;
+      width: 200px;
+      height: 33px;
+      background: #ffffff;
+      border: 2px solid #a43f3c;
+      box-sizing: border-box;
+      border-radius: 20px;
+      font-weight: bold;
+      line-height: 25px;
+      color: #a43f3c;
+    }
+    .donate {
+      width: 143px;
+      height: 33px;
+      background: #a43f3c;
+      border-radius: 20px;
+      font-weight: bold;
+      line-height: 25px;
+      color: #ffffff;
+    }
+  }
+
+  .barBeforeAuth {
+    display: flex;
+    align-items: center;
+
+    .search {
+      display: flex;
+      .icon {
+        width: 20px;
+        color: #1d94a8;
+        position: relative;
+        left: 26px;
+        top: 6px;
+      }
+
+      input {
+        padding-left: 30px;
+        color: #1d94a8;
+        background-color: transparent;
+        border: 0px solid;
+        border-radius: 20px;
+        outline: none;
+        height: 36px;
+        width: 80px;
+        font-size: 18px;
+        -moz-transition-duration: 1s;
+        -webkit-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+
+        &:focus {
+          width: 400px;
+        }
+      }
+      ::placeholder {
+        color: #1d94a8;
+      }
+    }
+  }
+
+  .BarAfterAuth {
+    display: flex;
+    align-items: center;
+
+    .search {
+      display: flex;
+      .icon {
+        width: 20px;
+        color: #1d94a8;
+        position: relative;
+        left: 26px;
+        top: 6px;
+      }
+
+      input {
+        padding-left: 30px;
+        color: #1d94a8;
+        background-color:#F4F4F4;
+        border: 0px solid;
+        border-radius: 20px;
+        outline: none;
+        height: 36px;
+        width: 80px;
+        font-size: 18px;
+        -moz-transition-duration: 1s;
+        -webkit-transition-duration: 1s;
+        -o-transition-duration: 1s;
+        transition-duration: 1s;
+
+        &:focus {
+          width: 400px;
+        }
+      }
+      ::placeholder {
+        color: #1d94a8;
+      }
+    }
+  }
+
+  .listBar {
+    display: flex;
+
+    span {
+      margin: 0px 20px;
+      border: 1px solid #a6dee8;
+    }
+
+    a {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 25px;
+      text-decoration: none;
+      padding-right: 10px;
+      color: #1d94a8;
+    }
+  }
+
+  .barProfile {
+
+    span {
+      margin: 0px 20px;
+      border: 1px solid #a6dee8;
+    }
+
+    a {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 25px;
+      text-decoration: none;
+      padding-right: 10px;
+      color: #1d94a8;
     }
   }
 }

@@ -1,0 +1,3 @@
+export const PROFILE_BEGIN = "PROFILE_BEGIN";
+export const PROFILE_SUCCESS = "PROFILE_SUCCESS";
+export const PROFILE_FAIL = "PROFILE_FAIL";

@@ -29,11 +29,12 @@ const register = async (data) => {
 export function* postLogIn(action) {
     try {
         const user = yield call(logIn, action.payload);
-        console.log(user, "user", logIn)
+        console.log(user, "user")
         yield put({
             type: 'LOGIN_SUCCESS',
             payload: user
         });
+        localStorage.setItem('token', user.token);
     } catch (error) {
         console.log(error.message)
         yield put({

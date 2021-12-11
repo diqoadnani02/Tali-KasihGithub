@@ -1,11 +1,25 @@
-import React from 'react'
-import { Card, CardContent, Typography, Grid, Link, Avatar, TextField, Box } from '@mui/material'
-import aiko from './aiko.png'
-
+import React from "react";
+import {
+	Card,
+	CardContent,
+	Typography,
+	Grid,
+	Link,
+	Avatar,
+	TextField,
+	Box,
+} from "@mui/material";
+import aiko from "./aiko.png";
 
 export default function ProfileCard() {
+
+	const logOut = () => {
+		localStorage.removeItem("token");
+		window.location.href = "/";
+	};
+
 	return (
-		<Card container sx={{ borderRadius: 4, mt: '72px',ml:'267px',mr: '203px' , p: 2 }}>
+		<Card container sx={{ borderRadius: 4, mt: '72px', ml: '267px', mr: '203px', p: 2 }}>
 			<Grid
 				sx={{
 					display: 'flex',
@@ -34,10 +48,10 @@ export default function ProfileCard() {
 						color: '#A43F3C',
 						textDecoration: 'underline'
 					}}
-					href="#">Logout</Link>
+					href="#" onClick={logOut}>Logout</Link>
 			</Grid>
 			<CardContent>
-				<Grid container sx={{ display: 'flex', justifyContent: 'center'}}>
+				<Grid container sx={{ display: 'flex', justifyContent: 'center' }}>
 					<Avatar variant="square" src={aiko} sx={{ width: 200, height: 200 }}></Avatar>
 				</Grid>
 				<Grid container sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
@@ -71,7 +85,7 @@ export default function ProfileCard() {
 							variant="standard"
 						/>
 					</Grid>
-					<Grid sx={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', padding: '10px 140px' }}>
+					<Grid sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', padding: '10px 140px' }}>
 						<TextField
 							disabled
 							id="bankInfo"
@@ -84,4 +98,7 @@ export default function ProfileCard() {
 			</CardContent>
 		</Card>
 	)
+
+
+
 }
