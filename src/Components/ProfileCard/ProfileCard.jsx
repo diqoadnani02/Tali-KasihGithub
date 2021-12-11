@@ -12,12 +12,10 @@ import {
 import aiko from "./aiko.png";
 
 export default function ProfileCard() {
-
 	const logOut = () => {
 		localStorage.removeItem("token");
 		window.location.href = "/";
 	};
-
 	return (
 		<Card container sx={{ borderRadius: 4, mt: '72px', ml: '267px', mr: '203px', p: 2 }}>
 			<Grid
@@ -98,7 +96,6 @@ export default function ProfileCard() {
 			</CardContent>
 		</Card>
 	)
-
 
 
 }

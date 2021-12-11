@@ -82,7 +82,7 @@ export default function Header() {
               Login
             </Link>
             <Modal open={openLogin} onClose={handleClose}>
-              <Box sx={styleLogin}>
+              <Box className="stylingLogin">
                 <Login />
               </Box>
             </Modal>
@@ -91,7 +91,7 @@ export default function Header() {
               Register
             </Link>
             <Modal open={openRegister} onClose={handleCloseRegister}>
-              <Box sx={styleRegister}>
+              <Box className="stylingRegister">
                 <Register />
               </Box>
             </Modal>
