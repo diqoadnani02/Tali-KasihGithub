@@ -8,7 +8,7 @@ import { Modal, Box } from "@mui/material";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { ProfileAction } from "../../Store/Actions/profile";
-// import profileReducer from "../../Store/Reducers/profile";
+import profileReducer from "../../Store/Reducers/profile";
 
 export default function Header() {
   const Token = localStorage.getItem("token");
