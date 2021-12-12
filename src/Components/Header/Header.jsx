@@ -1,14 +1,14 @@
-import React from "react";
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useRef, useEffect, } from "react";
+import { useDispatch} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Modal, Box } from "@mui/material";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { ProfileAction } from "../../Store/Actions/profile";
+// import profileReducer from "../../Store/Reducers/profile";
 
 export default function Header() {
   const Token = localStorage.getItem("token");
@@ -18,6 +18,20 @@ export default function Header() {
       dispatch(ProfileAction());
     }
   }, []);
+
+  // const {profile} = useSelector((state) => state.profile.profile);
+  // console.log(profile, 'myProfile');
+  // const [Profile, setProfile] = useState({
+  //   name: "",
+  //   email: "",
+  //   image: null,
+  //   bankName: "",
+  //   bankAccount: "",
+  // });
+
+  // useEffect(() => {
+  //   dispatch(profileReducer())
+  // }, []);
 
   const [search, setSearch] = useState(false);
   const inputref = useRef();
@@ -53,10 +67,10 @@ export default function Header() {
   console.log(location);
   const Home = window.location.pathname === "/";
 
-  const [openLogin, setOpenLogin] = React.useState();
+  const [openLogin, setOpenLogin] = useState();
   const handleOpen = () => setOpenLogin(true);
   const handleClose = () => setOpenLogin(false);
-  const [openRegister, setOpenRegister] = React.useState();
+  const [openRegister, setOpenRegister] = useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
 
@@ -82,7 +96,7 @@ export default function Header() {
               Login
             </Link>
             <Modal open={openLogin} onClose={handleClose}>
-              <Box className="stylingLogin">
+              <Box sx={styleLogin}>
                 <Login />
               </Box>
             </Modal>
@@ -91,7 +105,7 @@ export default function Header() {
               Register
             </Link>
             <Modal open={openRegister} onClose={handleCloseRegister}>
-              <Box className="stylingRegister">
+              <Box sx={styleRegister}>
                 <Register />
               </Box>
             </Modal>
@@ -117,27 +131,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile">My Profile</Link>
-          </div>
-          <div className={styles.listBar}>
-            <span></span>
-            <Link to="#" onClick={handleOpen}>
-              Login
-            </Link>
-            <Modal open={openLogin} onClose={handleClose}>
-              <Box sx={styleLogin}>
-                <Login />
-              </Box>
-            </Modal>
-            <span></span>
-            <Link to="#" onClick={handleOpenRegister}>
-              Register
-            </Link>
-            <Modal open={openRegister} onClose={handleCloseRegister}>
-              <Box sx={styleRegister}>
-                <Register />
-              </Box>
-            </Modal>
+            <Link to="/profile" >Hi, </Link>
           </div>
         </div>
       )}

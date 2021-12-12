@@ -5,16 +5,17 @@ import {
   PROFILE_FAIL,
 } from "../../Constants/types";
 import axios from "axios";
-import { BASE_URL_PROFILE } from "../../Constants/Constants";
+import { BASE_URL} from "../../Constants/Constants";
 
 function* Profile() {
   try {
-    const res = yield axios.get(`${BASE_URL_PROFILE}/user/profile`, {
+    const res = yield axios.get(`${BASE_URL}profile`, {
       headers: { access_token: localStorage.getItem("token") },
     });
     console.log(res);
     yield put({
       type: PROFILE_SUCCESS,
+      payload:res.data.data
     });
   } catch (err) {
     console.log(err);

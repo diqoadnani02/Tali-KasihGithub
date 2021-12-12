@@ -35,6 +35,7 @@ export function* postLogIn(action) {
             payload: user
         });
         localStorage.setItem('token', user.token);
+        window.location.reload();
     } catch (error) {
         console.log(error.message)
         yield put({
