@@ -5,16 +5,18 @@ import {
   PROFILE_UPDATE_FAIL,
 } from "../../Constants/types";
 import axios from "axios";
-import { BASE_URL_UPDATE_PROFILE } from "../../Constants/Constants";
+import { BASE_URL } from "../../Constants/Constants";
 
-function* updateProfile() {
+function* updateProfile(action) {
+  const {data} = action;
   try {
-    const res = yield axios.put(`${BASE_URL_UPDATE_PROFILE}/user/update-profile`, {
+    const res = yield axios.patch(`${BASE_URL}profile/update`, data, {
         headers: { access_token: localStorage.getItem("token") },
     });
     console.log(res);
     yield put({
       type: PROFILE_UPDATE_SUCCESS,
+      payload:res.data.data
     });
   } catch (err) {
     console.log(err);

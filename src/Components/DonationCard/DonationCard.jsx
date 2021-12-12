@@ -5,19 +5,21 @@ import {
     CardContent
 } from '@mui/material'
 
-export default function My() {
+const DonationCard = ({time, title, fund, description}) => {
     return (
-        <Card sx={{ minWidth: 200 }}>
+        <Card  sx={{ maxWidth: 415, p: 2, m: 1}}>
             <CardContent>
                 <Typography sx={{ fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '16px', fontSize: '12px', display: 'flex', justifyContent: 'flex-end' }} color="text.secondary" gutterBottom>
-                    12 minute ago
+                    {time}
                 </Typography>
                 <Typography sx={{ fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'bold', fontSize: '14px', lineHeight: '16px', textDecoration: 'underline' }}>
-                    Aid for necessary items to help our country
+                    {title}
                 </Typography>
-                <Typography sx={{ mt: 1, fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'bold', fontSize: '18px', lineHeight: '25px', color: '#1D94A8' }}>Rp. 320.000</Typography>
-                <Typography variant="body1" sx={{ mt: 1, fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '16px' }}>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit malesuada augue “</Typography>
+                <Typography sx={{fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'bold', fontSize: '18px', lineHeight: '25px', color: '#1D94A8' }}>{fund}</Typography>
+                <Typography variant="body1" sx={{ mt: 1, fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '16px' }}>{description}</Typography>
             </CardContent>
         </Card>
     )
 }
+
+export default DonationCard;

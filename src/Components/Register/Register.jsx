@@ -3,36 +3,41 @@ import { Formik } from 'formik'
 import * as yup from 'yup'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
-import { registerStart } from '../../Store/Actions/auth/authAction'
-import {useDispatch} from 'react-redux'
-import Paper from '@mui/material/Paper'
+import { registerStart } from '../../Store/Actions/authAction/authAction'
+import { useDispatch, useSelector } from 'react-redux'
+// import Paper from '@mui/material/Paper'
 import Google from './google.png'
+// import AlertMessage from '../AlertMessage/AlertMessage'
+
 
 const schema = yup.object({
     name: yup
-    .string()
-    .required('The field is required'),
+        .string()
+        .required('The field is required'),
     email: yup
-    .string()
-    .email('Enter a valid Email')
-    .required('Email is Required'),
+        .string()
+        .email('Enter a valid Email')
+        .required('Email is Required'),
     password: yup
-    .string('Please Enter your Password')
-    .required('Password must be required')
-    .matches(
-        // eslint-disable-next-line
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Password Must be at least 8 Characters"
-    ),
+        .string('Please Enter your Password')
+        .required('Password must be required')
+        .matches(
+            // eslint-disable-next-line
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            "Password Must be at least 8 Characters"
+        ),
     confirmPassword: yup
-    .string()
-    .required('Re-enter your password')
-    .oneOf([yup.ref("password"), null], "Password must match")
+        .string()
+        .required('Re-enter your password')
+        .oneOf([yup.ref("password"), null], "Password must match")
 })
 
 
 
 export default function Register() {
+    const { user, error } = useSelector(state => state.auth)
+    console.log(user, error)
+    // const [status, setStatusBase] = React.useState("");
     const theme = createTheme({
         typography: {
             fontFamily: [
@@ -41,24 +46,28 @@ export default function Register() {
             ].join(','),
         },
     })
-    
-// const [credentials, setCredentials] = React.useState({name: '', email: '', password: '', confirmPassword: ''})
-const dispatch = useDispatch();
 
-// const handleChange = (event) => 
-//     setCredentials({...credentials, [event.target.name]: event.target.value})
-//     console.log(credentials)
+    // const submitRegister = async () => {
+    //     setStatusBase({msg: "register successful", key: Math.random() })
+    // }
+
+    // const [credentials, setCredentials] = React.useState({name: '', email: '', password: '', confirmPassword: ''})
+    const dispatch = useDispatch();
+
+    // const handleChange = (event) => 
+    //     setCredentials({...credentials, [event.target.name]: event.target.value})
+    //     console.log(credentials)
 
     return (
         <Formik
-        validationSchema={schema}
-        onSubmit={(values) => {console.log(values, "values"); dispatch(registerStart(values))}}
-        initialValues={{
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-        }}
+            validationSchema={schema}
+            onSubmit={(values) => { console.log(values, "values"); dispatch(registerStart(values)) }}
+            initialValues={{
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: '',
+            }}
         >
             {({
                 handleSubmit,
@@ -67,8 +76,8 @@ const dispatch = useDispatch();
                 touched,
                 errors,
             }) => (
-        <ThemeProvider theme={theme}>
-            <Paper 
+                <ThemeProvider theme={theme}>
+                    {/* <Paper 
             elevation={0} 
             variant="outlined" 
             sx={{
@@ -79,102 +88,105 @@ const dispatch = useDispatch();
                 backgroundColor: '#F1EDE4',
                 flexGrow: 1
             }}
-            >
-                <Grid item xs={8}>
-                    <Typography sx={{
-                        fontStyle: 'normal',
-                        fontWeight: 'bold',
-                        fontSize: '48px',
-                        lineHeight: '65px',
-                        letterSpacing: '-0.05rem',
-                        color: '#1D94A8'
-                    }}
-                    >
-                        REGISTER
-                    </Typography>
-                    <Typography
-                        sx={{
+            > */}
+                    <Grid item xs={8}>
+                        <Typography sx={{
                             fontStyle: 'normal',
-                            fontWeight: 'normal',
-                            fontSize: '14px',
-                            lineHeight: '19px',
-                            letterSpacing: '1px',
-                            textDecoration: 'underline'
+                            fontWeight: 'bold',
+                            fontSize: '48px',
+                            lineHeight: '65px',
+                            letterSpacing: '-0.05rem',
+                            color: '#1D94A8'
+                        }}
+                        >
+                            REGISTER
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontStyle: 'normal',
+                                fontWeight: 'normal',
+                                fontSize: '14px',
+                                lineHeight: '19px',
+                                letterSpacing: '1px',
+                                textDecoration: 'underline'
+                            }}
+                        >
+                            Already have an account <Link href="#">Sign in</Link>
+                        </Typography>
+                    </Grid>
+                    <Box component="form" onSubmit={handleSubmit}>
+                        <TextField
+                            variant="filled"
+                            fullWidth
+                            margin="normal"
+                            id="name"
+                            name="name"
+                            label="Name"
+                            value={values.name}
+                            onChange={handleChange}
+                            error={touched.name && Boolean(errors.name)}
+                            helperText={touched.name && errors.name}
+                        />
+                        <TextField
+                            variant="filled"
+                            fullWidth
+                            margin="normal"
+                            id="email"
+                            name="email"
+                            label="Email"
+                            onChange={handleChange}
+                            error={touched.email && Boolean(errors.email)}
+                            helperText={touched.email && errors.email}
+                        />
+                        <TextField
+                            variant="filled"
+                            fullWidth
+                            margin="normal"
+                            required
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            value={values.password}
+                            onChange={handleChange}
+                            error={touched.password && Boolean(errors.password)}
+                            helperText={touched.password && errors.password}
+                        />
+                        <TextField
+                            variant="filled"
+                            fullWidth
+                            margin="normal"
+                            required
+                            name="confirmPassword"
+                            label="Confirm Password"
+                            type="password"
+                            id="confirmPassword"
+                            onChange={handleChange}
+                            value={values.confirmPassword}
+                            error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                            helperText={touched.confirmPassword && errors.confirmPassword}
+                        />
+
+                    </Box>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        size="large"
+                        variant="contained"
+                        onClick={handleSubmit}
+                        sx={{
+                            mt: 3, mb: 2, height: '49px', backgroundColor: '#A43F3C', color: "#fff", '&:hover': {
+                                background: '#A43F3C'
+                            },
                         }}
                     >
-                        Already have an account <Link href="#">Sign in</Link>
-                    </Typography>
-                </Grid>
-                <Box component="form" onSubmit={handleSubmit}>
-                    <TextField
-                    variant="filled"
-                    fullWidth
-                    margin="normal"
-                    id="name"
-                    name="name"
-                    label="Name"
-                    value={values.name}
-                    onChange={handleChange}
-                    error={touched.name && Boolean(errors.name)}
-                    helperText={touched.name && errors.name}
-                    />
-                    <TextField
-                    variant="filled"
-                    fullWidth
-                    margin="normal"
-                    id="email"
-                    name="email"
-                    label="Email"
-                    onChange={handleChange}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
-                    />
-                    <TextField
-                    variant="filled"
-                    fullWidth
-                    margin="normal"
-                    required
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    value={values.password}
-                    onChange={handleChange}
-                    error={touched.password && Boolean(errors.password)}
-                    helperText={touched.password && errors.password}
-                    />
-                    <TextField
-                    variant="filled"
-                    fullWidth
-                    margin="normal"
-                    required
-                    name="confirmPassword"
-                    label="Confirm Password"
-                    type="password"
-                    id="confirmPassword"
-                    onChange={handleChange}
-                    value={values.confirmPassword}
-                    error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-                    helperText={touched.confirmPassword && errors.confirmPassword}
-                    />
-                    
-                </Box>
-                <Button
-                type="submit"
-                fullWidth
-                size="large"
-                variant="contained"
-                onClick={handleSubmit}
-                sx={{mt: 3, mb: 2, height: '49px',  backgroundColor: '#A43F3C', color: "#fff",'&:hover': {
-                    background: '#A43F3C'
-                },}}
-                >
-                    Register
-                </Button>
-                <Divider variant="middle" />
-                <Button sx={{mt: 3, mb: 2}}fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
-            </Paper>
-        </ThemeProvider>)}
+                        Register
+                    </Button>
+                    {/* {status ? <AlertMessage key={status.key} message={status.msg} /> : null} */}
+                    <Divider variant="middle" />
+                    <Button sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
+                    {/* </Paper> */}
+                </ThemeProvider>)}
         </Formik>
     )
 }

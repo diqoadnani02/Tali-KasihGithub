@@ -1,6 +1,5 @@
 import React from "react";
-import { UpdateProfileAction } from "../../Store/Actions/updateProfile";
-import { useDispatch } from "react-redux";
+
 import {
   Card,
   CardContent,
@@ -14,7 +13,6 @@ import {
 import aiko from "./aiko.png";
 
 export default function ProfileCard() {
-  const Token = localStorage.getItem("token");
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -53,7 +51,7 @@ export default function ProfileCard() {
             color: "#A43F3C",
             textDecoration: "underline",
           }}
-          to="#"
+          href="#"
           onClick={logOut}
         >
           Logout
@@ -72,7 +70,7 @@ export default function ProfileCard() {
           sx={{ mt: 2, display: "flex", justifyContent: "center" }}
         >
           <Link
-            href="#"
+            to='/edit-profile'
             sx={{
               fontFamily: "nunito",
               fontStyle: "normal",
@@ -111,7 +109,15 @@ export default function ProfileCard() {
               variant="standard"
             />
           </Grid>
-          <Grid sx={{ ml: "191px", mt: 2 }}>
+          <Grid
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              padding: "10px 140px",
+            }}
+          >
             <TextField
               disabled
               id="bankInfo"

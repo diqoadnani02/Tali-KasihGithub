@@ -1,38 +1,76 @@
-import React from "react";
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useRef, useEffect, } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Modal, Box } from "@mui/material";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import "./stylingModal.css";
-import {ProfileAction} from '../../Store/Actions/profile';
+import { ProfileAction } from "../../Store/Actions/profile";
+import profileReducer from "../../Store/Reducers/profile";
 
 export default function Header() {
   const Token = localStorage.getItem("token");
   const dispatch = useDispatch();
   useEffect(() => {
     if (Token) {
-      dispatch(ProfileAction())
+      dispatch(ProfileAction());
     }
-  }, [])
+  }, []);
+
+  // const {profile} = useSelector((state) => state.profile.profile);
+  // console.log(profile, 'myProfile');
+  // const [Profile, setProfile] = useState({
+  //   name: "",
+  //   email: "",
+  //   image: null,
+  //   bankName: "",
+  //   bankAccount: "",
+  // });
+
+  // useEffect(() => {
+  //   dispatch(profileReducer())
+  // }, []);
 
   const [search, setSearch] = useState(false);
   const inputref = useRef();
   console.log(inputref.current);
 
-  
+  const styleLogin = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    backgroundColor: "#F1EDE4",
+    boxShadow: 24,
+    p: 4,
+    pt: "60px",
+    pb: "100px",
+  };
+
+  const styleRegister = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "#F1EDE4",
+    width: 400,
+    boxShadow: 24,
+    p: 4,
+    pt: "120px",
+    pb: "110px",
+  };
+
   const location = useLocation();
   console.log(location);
   const Home = window.location.pathname === "/";
 
-  const [openLogin, setOpenLogin] = React.useState();
+  const [openLogin, setOpenLogin] = useState();
   const handleOpen = () => setOpenLogin(true);
   const handleClose = () => setOpenLogin(false);
-  const [openRegister, setOpenRegister] = React.useState();
+  const [openRegister, setOpenRegister] = useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
 
@@ -58,7 +96,7 @@ export default function Header() {
               Login
             </Link>
             <Modal open={openLogin} onClose={handleClose}>
-              <Box className="stylingLogin">
+              <Box sx={styleLogin}>
                 <Login />
               </Box>
             </Modal>
@@ -67,7 +105,7 @@ export default function Header() {
               Register
             </Link>
             <Modal open={openRegister} onClose={handleCloseRegister}>
-              <Box className="stylingRegister">
+              <Box sx={styleRegister}>
                 <Register />
               </Box>
             </Modal>
@@ -93,7 +131,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile">My Profile</Link>
+            <Link to="/profile" >Hi, </Link>
           </div>
         </div>
       )}

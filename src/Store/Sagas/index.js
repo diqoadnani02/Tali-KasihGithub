@@ -1,5 +1,5 @@
 import { all, call } from "redux-saga/effects";
-import { authSagas } from './auth/authSagas'
+import { authSagas } from './authSagas/authSagas';
 import { watchProfile } from './profile';
 import {watchUpdateProfile} from './updateProfile';
 
