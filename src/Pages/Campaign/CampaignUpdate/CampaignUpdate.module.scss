@@ -1,0 +1,141 @@
+.updateDonor {
+    font-family: Nunito;
+    margin: 72px 122px;
+    border: 1px solid #e1e0e0;
+    box-sizing: border-box;
+    border-radius: 4px;
+  
+    .donor {
+      h3 {
+        padding: 20px 12px;
+      }
+    }
+  
+    .step {
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+  
+      background-color: cream;
+    }
+  
+    .stepper {
+      position: relative;
+      // height: inherit;
+    }
+  
+    /* regular step */
+    .step .circle {
+      background-color: white;
+      border: 3px solid gray;
+      border-radius: 100%;
+      width: 20px; /* +6 for border */
+      height: 20px;
+      display: inline-block;
+    }
+  
+    .step .line {
+      top: 23px;
+      left: 12px;
+      height: 316px;
+      position: absolute;
+      border-left: 3px solid gray;
+    }
+  
+    .step.completed .circle {
+      visibility: visible;
+      background-color: rgb(6, 150, 215);
+      border-color: rgb(6, 150, 215);
+    }
+  
+    .step.completed .line {
+      border-left: 4px solid rgb(6, 150, 215);
+    }
+  
+    .step.empty .circle {
+      visibility: hidden;
+    }
+  
+    .step.empty .line {
+      top: 0;
+      height: 100%;
+    }
+  
+    .step:last-child .line {
+      border: 1px solid #1d94a8;
+      z-index: -1; /* behind the circle to completely hide */
+    }
+  
+    .contentProgress {
+      margin-left: 20px;
+  
+      .titleBox {
+        margin-bottom: 20px;
+  
+        h4 {
+          display: inline;
+        }
+  
+        span {
+          color: #9f9f9f;
+        }
+  
+        button {
+          margin-left: 20px;
+          background: #ffffff;
+          border: 1px solid #a87b14;
+          border-radius: 4px;
+          color: #a87b14;
+          width: 103px;
+          height: 24px;
+        }
+  
+        button:hover {
+          background: #a87b14;
+          color: #ffffff;
+        }
+      }
+  
+      .boxContent {
+        width: 1125px;
+        height: 135px;
+        padding: 10px 20px;
+        border: 1px solid #e1e0e0;
+        box-sizing: border-box;
+        border-radius: 4px;
+      }
+  
+      .boxButton {
+        width: 1125px;
+        height: 100px;
+        padding: 5px 20px;
+        background: #f1ede4;
+        border: 1px solid #e1e0e0;
+        box-sizing: border-box;
+        border-radius: 4px;
+      }
+    }
+  
+    .showButton {
+      padding: 50px 530px;
+      button {
+        width: 208px;
+        height: 44px;
+        background: #ffffff;
+        border: 1px solid #1d94a8;
+        box-sizing: border-box;
+        border-radius: 3px;
+        color: #1d94a8;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 1px;
+      }
+  
+      button:hover {
+        background: #1d94a8;
+        color: #ffffff;
+      }
+    }
+  }

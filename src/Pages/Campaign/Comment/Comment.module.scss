@@ -1,0 +1,110 @@
+.comentContainer {
+    font-family: Nunito;
+    margin: 72px 122px;
+    border: 1px solid #e1e0e0;
+    box-sizing: border-box;
+    border-radius: 4px;
+  
+    .coment {
+      h3 {
+        padding: 20px 48px;
+      }
+    }
+  
+    .comentSection {
+      padding: 18px 48px;
+  
+      textarea {
+        background: rgba(241, 237, 228, 0.2);
+        padding: 18px 10px;
+        font-family: "Nunito";
+        font-size: 17px;
+        width: 1100px;
+        height: 139px;
+        border: none;
+      }
+  
+      .comentButton {
+        padding: 50px;
+        direction: rtl;
+      }
+      button {
+        width: 126px;
+        height: 46px;
+        background: #a43f3c;
+        border: 1px solid #a43f3c;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 1px;
+      }
+      button:hover {
+        background: #ffffff;
+        color: #a43f3c;
+      }
+    }
+    .comentCards {
+      padding: 10px 48px;
+  
+      .cards {
+        padding: 10px 20px;
+        width: 1080px;
+        height: 181px;
+        border: 1px solid #ffffff;
+        background: #ffffff;
+  
+        p {
+          padding: 20px 0;
+        }
+  
+        .cardsBox {
+          display: flex;
+          img {
+            width: 72px;
+            height: 72px;
+          }
+        }
+      }
+      .cardsDown {
+        padding: 10px 20px;
+        width: 1080px;
+        height: 181px;
+        border: 3px solid #ffffff;
+        background: rgba(241, 237, 228, 0.2);
+  
+        p {
+          padding: 20px 0;
+        }
+  
+        .cardsBox {
+          display: flex;
+          img {
+            width: 72px;
+            height: 72px;
+          }
+        }
+      }
+    }
+    .showButton {
+      padding: 50px 530px;
+      button {
+        width: 208px;
+        height: 44px;
+        background: #ffffff;
+        border: 1px solid #1d94a8;
+        box-sizing: border-box;
+        border-radius: 3px;
+        color: #1d94a8;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 1px;
+      }
+  
+      button:hover {
+        background: #1d94a8;
+        color: #ffffff;
+      }
+    }
+  }

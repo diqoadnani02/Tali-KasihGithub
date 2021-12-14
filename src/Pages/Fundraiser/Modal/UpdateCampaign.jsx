@@ -9,9 +9,20 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import FilledInput from '@mui/material/FilledInput';
 
 export default function ModalUpdateCampaign(props) {
   const [Selector, setSelector] = useState(false);
+
+  const [values, setValues] = useState({
+    amount: '',
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
   if (!props.show) {
     return null;
@@ -29,7 +40,10 @@ export default function ModalUpdateCampaign(props) {
         <div className={styles.modalBody}>
           <div className={styles.modalSelector}>
             <form className={styles.modalForm}>
-              <div onClick={() => setSelector(false)} className={styles.Selector}>
+              <div
+                onClick={() => setSelector(false)}
+                className={styles.Selector}
+              >
                 <input type="radio" name="input-radio" id="recipient" />
                 <label htmlFor="recipient">Recipient update</label>
               </div>
@@ -40,15 +54,28 @@ export default function ModalUpdateCampaign(props) {
                 <input type="radio" name="input-radio" id="fund" />
                 <label htmlFor="fund">Fund withdrawal</label>
               </div>
-              {Selector && (
-                <>
-                  <div className="fundInput">Input</div>
-                </>
-              )}
             </form>
+            {Selector && (
+              <>
+                <div className={styles.fundInput}>
+                  <FormControl sx={{mt: 2, width:'370px' }} variant="filled">
+                    <InputLabel htmlFor="filled-adornment-amount">
+                      Amount*
+                    </InputLabel>
+                    <FilledInput
+                      id="filled-adornment-amount"
+                      value={values.amount}
+                      onChange={handleChange("amount")}
+                    />
+                  </FormControl>
+                  <h4>Withdrawal purpose<span>*</span></h4>
+                </div>
+              </>
+            )}
           </div>
           <div className={styles.modalInput}>
             <div className={styles.containerInput}>
+              <h4>Update<span>*</span></h4>
               <div className={styles.iconsInput}>
                 <div className={styles.icons}>
                   <button>
