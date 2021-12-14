@@ -8,7 +8,6 @@ import { Modal, Box } from "@mui/material";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { ProfileAction } from "../../Store/Actions/profile";
-import profileReducer from "../../Store/Reducers/profile";
 
 export default function Header() {
   const Token = localStorage.getItem("token");
@@ -19,19 +18,8 @@ export default function Header() {
     }
   }, []);
 
-  // const {profile} = useSelector((state) => state.profile.profile);
-  // console.log(profile, 'myProfile');
-  // const [Profile, setProfile] = useState({
-  //   name: "",
-  //   email: "",
-  //   image: null,
-  //   bankName: "",
-  //   bankAccount: "",
-  // });
-
-  // useEffect(() => {
-  //   dispatch(profileReducer())
-  // }, []);
+  const profile = useSelector((state) => state.profileReducer.profile);
+  console.log(profile, 'myProfile');
 
   const [search, setSearch] = useState(false);
   const inputref = useRef();
@@ -131,7 +119,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile" >Hi, </Link>
+            <Link to="/profile" >Hi, {profile.name} </Link>
           </div>
         </div>
       )}
