@@ -47,11 +47,11 @@ const MyCampaign = () => {
 				{myCampaign.map((item) => (
 					<Card
 						image={item.image}
-						category={item.category}
+						category={item.category.category}
 						title={item.title}
-						author={item.author}
-						data_funding={item.data_funding}
-						raised={item.raised}
+						author={item.user.name}
+						data_funding={item.collected}
+						raised={item.deviation}
 						goal={item.goal}
 					/>
 				))}

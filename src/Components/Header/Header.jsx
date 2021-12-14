@@ -1,7 +1,7 @@
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
 import { useState, useRef, useEffect, } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Modal, Box } from "@mui/material";
