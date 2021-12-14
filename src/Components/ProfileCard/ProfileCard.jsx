@@ -9,10 +9,8 @@ import {
 	TextField,
 	Box,
 } from "@mui/material";
-// import {getMyprofileStart} from '../../Store/Actions/myprofileAction/myprofileAction'
 import {useDispatch, useSelector} from 'react-redux'
 import {ProfileAction} from '../../Store/Actions/profile'
-import {useNavigate} from 'react-router-dom'
 
 export default function ProfileCard() {
 
@@ -21,7 +19,6 @@ export default function ProfileCard() {
     window.location.href = "/";
   };
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   React.useEffect(() => {
     dispatch(ProfileAction())
@@ -84,9 +81,7 @@ export default function ProfileCard() {
           sx={{ mt: 2, display: "flex", justifyContent: "center" }}
         >
           <Link
-            onClick={() =>{
-              navigate("/edit-profile")
-            }}
+            to='/edit-profile'
             sx={{
               fontFamily: "nunito",
               fontStyle: "normal",
@@ -95,7 +90,6 @@ export default function ProfileCard() {
               lineHeight: "19px",
               color: "#1D94A8",
               textDecoration: "underline",
-              cursor: 'pointer'
             }}
           >
             Edit Profile
