@@ -1,8 +1,8 @@
 import React from "react";
 import SortIcon from "@mui/icons-material/Sort";
 import { useState, useEffect } from "react";
-import Card from "../../Components/Card/Card";
 import data from "../../Components/Card/data";
+import Card from "../../Components/Card/Card";
 import styles from "./DiscoverCategory.module.scss";
 import Main from "./assets/Main.png";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";

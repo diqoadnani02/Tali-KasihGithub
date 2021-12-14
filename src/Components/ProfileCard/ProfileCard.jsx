@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
 	Card,
 	CardContent,
@@ -10,7 +9,8 @@ import {
 	TextField,
 	Box,
 } from "@mui/material";
-import aiko from "./aiko.png";
+import {useDispatch, useSelector} from 'react-redux'
+import {ProfileAction} from '../../Store/Actions/profile'
 
 export default function ProfileCard() {
 
@@ -18,6 +18,17 @@ export default function ProfileCard() {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(ProfileAction())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const {profile} = useSelector(state => state.profileReducer)
+  console.log(profile)
+  console.log(profile && profile.name)
+
   return (
     <Card
       container
@@ -61,7 +72,7 @@ export default function ProfileCard() {
         <Grid container sx={{ display: "flex", justifyContent: "center" }}>
           <Avatar
             variant="square"
-            src={aiko}
+            src={profile && profile.image}
             sx={{ width: 200, height: 200 }}
           ></Avatar>
         </Grid>
@@ -98,14 +109,14 @@ export default function ProfileCard() {
               disabled
               id="name"
               label="Name"
-              defaultValue="Hasegawa Aiko"
+              defaultValue={profile && profile.name}
               variant="standard"
             />
             <TextField
               disabled
               id="email"
               label="Email"
-              defaultValue="aiko@mail.com"
+              defaultValue={profile && profile.email}
               variant="standard"
             />
           </Grid>
@@ -122,7 +133,7 @@ export default function ProfileCard() {
               disabled
               id="bankInfo"
               label="Bank Info"
-              defaultValue="BCA - *******457"
+              defaultValue={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
               variant="standard"
             />
           </Grid>

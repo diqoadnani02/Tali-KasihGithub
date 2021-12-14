@@ -1,14 +1,13 @@
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import { useState, useRef, useEffect, } from "react";
-import { useDispatch} from "react-redux";
+import { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Modal, Box } from "@mui/material";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { ProfileAction } from "../../Store/Actions/profile";
-import profileReducer from "../../Store/Reducers/profile";
 
 export default function Header() {
   const Token = localStorage.getItem("token");
@@ -19,19 +18,8 @@ export default function Header() {
     }
   }, []);
 
-  // const {profile} = useSelector((state) => state.profile.profile);
-  // console.log(profile, 'myProfile');
-  // const [Profile, setProfile] = useState({
-  //   name: "",
-  //   email: "",
-  //   image: null,
-  //   bankName: "",
-  //   bankAccount: "",
-  // });
-
-  // useEffect(() => {
-  //   dispatch(profileReducer())
-  // }, []);
+  const profile = useSelector((state) => state.profileReducer.profile);
+  console.log(profile, 'myProfile');
 
   const [search, setSearch] = useState(false);
   const inputref = useRef();
@@ -115,8 +103,12 @@ export default function Header() {
         <div className={styles.BarAfterAuth}>
           {!search ? (
             <div className={styles.buttonNavbar}>
-              <button className={styles.campaign}>CREATE CAMPAIGN</button>
-              <button className={styles.donate}>DONATE</button>
+              <Link to="/create">
+                <button className={styles.campaign}>CREATE CAMPAIGN</button>
+              </Link>
+              <Link to="/campaign/donate">
+                <button className={styles.donate}>DONATE</button>
+              </Link>
             </div>
           ) : null}
           <div className={styles.search}>
@@ -131,7 +123,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile" >Hi, </Link>
+            <Link to="/profile" >Hi, {profile.name} </Link>
           </div>
         </div>
       )}
