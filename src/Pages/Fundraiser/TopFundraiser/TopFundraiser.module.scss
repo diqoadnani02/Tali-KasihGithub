@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap");
-
-.topCampaign {
+.topFundraiser {
   font-family: Nunito;
   display: flex;
   margin: 72px 121px;
 
-  .campaign {
+  .fundraiser {
     padding-right: 50px;
 
     h1 {
@@ -18,7 +16,16 @@
       border-radius: 4px 4px 0px 0px;
     }
   }
-  .cardCampaign {
+  .settingFundraiser {
+    display: flex;
+
+    .dropdown {
+      position: relative;
+      left: 577px;
+      top: 42px;
+    }
+  }
+  .cardFundraiser {
     margin-top: 85px;
     padding-left: 20px;
     width: 417px;
@@ -100,6 +107,7 @@
         color: #1d94a8;
         margin-bottom: 10px;
         font-weight: bold;
+        font-size: 17px;
       }
 
       .buttonUp:hover {
@@ -117,6 +125,7 @@
         border-radius: 3px;
         color: #ffffff;
         font-weight: bold;
+        font-size: 17px;
       }
 
       .buttonDown:hover {
@@ -125,18 +134,5 @@
         color: #cf2424;
       }
     }
-  }
-}
-
-.linkCardBottom {
-  margin: 72px 122px;
-  font-family: Nunito;
-  a {
-    font-size: 20px;
-    color: black;
-  }
-  .cardBottom {
-    display: flex;
-    justify-content: space-between;
   }
 }
