@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
+import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from '@mui/material'
 import { registerStart } from '../../Store/Actions/authAction/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 // import Paper from '@mui/material/Paper'
@@ -182,7 +182,7 @@ export default function Register() {
                     >
                         Register
                     </Button>
-                    {/* {status ? <AlertMessage key={status.key} message={status.msg} /> : null} */}
+                    {error !== null && <Alert severity="error"><AlertTitle>Error</AlertTitle><strong>EMAIL ALREADY REGISTERED</strong></Alert>}
                     <Divider variant="middle" />
                     <Button sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
                     {/* </Paper> */}

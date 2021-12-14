@@ -18,6 +18,9 @@ export default function Header() {
     }
   }, []);
 
+  const profile = useSelector((state) => state.profileReducer.profile);
+  console.log(profile, 'myProfile');
+
   const [search, setSearch] = useState(false);
   const inputref = useRef();
   console.log(inputref.current);
@@ -120,7 +123,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile">Hi, </Link>
+            <Link to="/profile" >Hi, {profile.name} </Link>
           </div>
         </div>
       )}

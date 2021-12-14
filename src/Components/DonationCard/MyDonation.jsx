@@ -7,19 +7,23 @@ import {
   Box
 } from '@mui/material'
 import DonationCard from './DonationCard'
-import data from './data'
+// import data from './data'
+import {getMydonationStart} from '../../Store/Actions/mydonationAction/mydonationAction'
+import {useDispatch, useSelector} from 'react-redux'
 
 export default function MyDonation() {
-  const [list, setList] = React.useState([]);
+  // const [list, setList] = React.useState([]);
   const [end, setEnd] = React.useState(4);
+  const dispatch = useDispatch()
 
   React.useEffect(() => {
-    const getData = () => {
-        setList(data.donation)
-    };
-    getData();
+    console.log('useEffect')
+    dispatch(getMydonationStart())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const sliced = list.slice(0, end)
+  const {myDonate} = useSelector(state => state.mydonationReducer)
+  console.log(myDonate)
+  // const sliced = list.slice(0, end)
 
 
   return (
@@ -41,15 +45,15 @@ export default function MyDonation() {
           lineHeight: '33px'
         }}
       >
-        My Donation(23)
+        My Donation
       </Typography>
       <Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap', p: '2px 35px', width: '926.927px'}}>
-        {sliced.map((item) => (
+        {myDonate.map((item) => (
           <DonationCard
-            time={item.time}
-            title={item.title}
-            fund={item.fund}
-            description={item.description}
+            time={item.donateTime}
+            title={item.campaign.title}
+            fund={item.amount}
+            description={item.message}
             />
         ))} 
       </Box>
