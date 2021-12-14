@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
-import { useState, useRef, useEffect, } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -115,8 +115,12 @@ export default function Header() {
         <div className={styles.BarAfterAuth}>
           {!search ? (
             <div className={styles.buttonNavbar}>
-              <button className={styles.campaign}>CREATE CAMPAIGN</button>
-              <button className={styles.donate}>DONATE</button>
+              <Link to="/create">
+                <button className={styles.campaign}>CREATE CAMPAIGN</button>
+              </Link>
+              <Link to="/campaign/donate">
+                <button className={styles.donate}>DONATE</button>
+              </Link>
             </div>
           ) : null}
           <div className={styles.search}>
@@ -131,7 +135,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile" >Hi, </Link>
+            <Link to="/profile">Hi, </Link>
           </div>
         </div>
       )}

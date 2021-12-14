@@ -436,7 +436,7 @@ export default function Campaign() {
           <button>LOAD MORE</button>
         </div>
       </div>
-
+      
       <div className={styles.linkCardBottom}>
         <Link to="#">Related campaign</Link>
         <div className={styles.cardBottom}>

@@ -1,0 +1,98 @@
+.modalContainer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+
+  .modalContent {
+    border: 1px solid #9f9f9f;
+    box-sizing: border-box;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 800px;
+    height: 600px;
+    background: #ffffff;
+
+    .modalHeader {
+      padding: 20px 40px;
+      display: flex;
+      border-bottom: 1px solid #9f9f9f;
+
+      .modalIcon {
+        position: relative;
+        left: 470px;
+        top: 5px;
+      }
+    }
+    .modalBody {
+      padding: 20px 40px;
+
+      .modalSelector {
+        .modalForm {
+          display: flex;
+          .Selector {
+            padding-right: 200px;
+
+            label {
+              padding: 0 10px;
+            }
+          }
+        }
+      }
+
+      .modalInput {
+        border-bottom: 1px solid #9f9f9f;
+        .containerInput {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          .iconsInput {
+            display: flex;
+            padding-bottom: 10px;
+            .icons {
+              padding-right: 10px;
+              button {
+                background-color: #ffffff;
+                border: 1px solid #9f9f9f;
+              }
+              button:hover {
+                background-color: #f4f4f4;
+              }
+            }
+          }
+          textarea {
+            width: 668px;
+            height: 200px;
+            background-color: #fcfcfc;
+            border: 0 solid #9f9f9f;
+            border-radius: 4px;
+            padding: 20px 20px;
+          }
+        }
+      }
+      .modalButton {
+        padding-top: 20px;
+        display: flex;
+        justify-content:end;
+        button {
+          width: 108px;
+          height: 35px;
+          background: #a43f3c;
+          border-radius: 3px;
+          border: 1px solid #a43f3c;
+          color: #ffffff;
+          font-weight: bold;
+        }
+        button:hover {
+            background-color: #ffffff;
+            color: #a43f3c;
+        }
+      }
+    }
+  }
+}
