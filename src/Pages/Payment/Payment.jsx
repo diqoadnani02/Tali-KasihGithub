@@ -5,7 +5,7 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
-import Card from "../../Card/Card";
+import Card from "../../Components/Card/Card";
 import itemDonate from "./assets/itemDonate.png";
 import { useState, useRef } from "react";
 import useClipboard from "react-hook-clipboard";

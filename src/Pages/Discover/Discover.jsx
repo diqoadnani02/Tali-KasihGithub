@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../../Components/Card/Card";
-import data from "../../Card/data";
+import data from "../../Components/Card/data";
 import data1 from "./data1";
 import data2 from "./data2";
 import styles from "./Discover.module.scss";

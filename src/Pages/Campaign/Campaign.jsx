@@ -1,7 +1,7 @@
 import styles from "./style/Campaign.module.scss";
 import ReadMore from "./ReadMore/ReadMore";
-import Card from "../../Card/Card";
-import data from "../../Card/data";
+import Card from "../../Components/Card/Card";
+import data from "../../Components/Card/data";
 import Image from "./assets/img.png";
 import Profile from "./assets/profile.png";
 import CardProfile from "./assets/donation.png";
@@ -9,9 +9,7 @@ import CommentProfile from "./assets/comment.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
+import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 
 export default function Campaign() {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -20,8 +18,7 @@ export default function Campaign() {
     marginBottom: 20,
     marginRight: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      backgroundColor: theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
@@ -107,16 +104,9 @@ export default function Campaign() {
               </div>
               <div className={styles.boxContent}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  nunc pellentesque enim ultrices nunc. Pretium massa, vel
-                  viverra id mi sed sit. In faucibus leo etiam cras elit
-                  malesuada augue. Sagittis quisque non, nullam facilisis.
-                  Tempus cras nibh vitae vitae. Risus gravida arcu non a rhoncus
-                  suscipit a eu ultrices. Vestibulum, ut cursus pellentesque
-                  turpis ipsum arcu congue. Sit arcu, non gravida praesent
-                  turpis varius. Phasellus morbi donec pulvinar nisi ac augue at
-                  duis dolor. Sed ut hendrerit neque nunc accumsan ac massa.
-                  Nullam scelerisque aliquet diam laoreet lorem.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. Sagittis quisque non, nullam
+                  facilisis. Tempus cras nibh vitae vitae. Risus gravida arcu non a rhoncus suscipit a eu ultrices. Vestibulum, ut cursus pellentesque turpis ipsum arcu congue. Sit arcu, non gravida praesent turpis varius. Phasellus morbi
+                  donec pulvinar nisi ac augue at duis dolor. Sed ut hendrerit neque nunc accumsan ac massa. Nullam scelerisque aliquet diam laoreet lorem.
                 </p>
               </div>
             </div>
@@ -180,16 +170,9 @@ export default function Campaign() {
               </div>
               <div className={styles.boxContent}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                  nunc pellentesque enim ultrices nunc. Pretium massa, vel
-                  viverra id mi sed sit. In faucibus leo etiam cras elit
-                  malesuada augue. Sagittis quisque non, nullam facilisis.
-                  Tempus cras nibh vitae vitae. Risus gravida arcu non a rhoncus
-                  suscipit a eu ultrices. Vestibulum, ut cursus pellentesque
-                  turpis ipsum arcu congue. Sit arcu, non gravida praesent
-                  turpis varius. Phasellus morbi donec pulvinar nisi ac augue at
-                  duis dolor. Sed ut hendrerit neque nunc accumsan ac massa.
-                  Nullam scelerisque aliquet diam laoreet lorem.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. Sagittis quisque non, nullam
+                  facilisis. Tempus cras nibh vitae vitae. Risus gravida arcu non a rhoncus suscipit a eu ultrices. Vestibulum, ut cursus pellentesque turpis ipsum arcu congue. Sit arcu, non gravida praesent turpis varius. Phasellus morbi
+                  donec pulvinar nisi ac augue at duis dolor. Sed ut hendrerit neque nunc accumsan ac massa. Nullam scelerisque aliquet diam laoreet lorem.
                 </p>
               </div>
             </div>
@@ -223,10 +206,8 @@ export default function Campaign() {
             </div>
             <div className={styles.paragraphDonation}>
               <p>
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-                id mi sed sit. In faucibus leo etiam cras elit malesuada augue.
-                In faucibus leo etiam cras elit malesuada augue “
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+                malesuada augue “
               </p>
             </div>
           </div>
@@ -247,10 +228,8 @@ export default function Campaign() {
             </div>
             <div className={styles.paragraphDonation}>
               <p>
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-                id mi sed sit. In faucibus leo etiam cras elit malesuada augue.
-                In faucibus leo etiam cras elit malesuada augue “
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+                malesuada augue “
               </p>
             </div>
           </div>
@@ -273,10 +252,8 @@ export default function Campaign() {
             </div>
             <div className={styles.paragraphDonation}>
               <p>
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-                id mi sed sit. In faucibus leo etiam cras elit malesuada augue.
-                In faucibus leo etiam cras elit malesuada augue “
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+                malesuada augue “
               </p>
             </div>
           </div>
@@ -297,10 +274,8 @@ export default function Campaign() {
             </div>
             <div className={styles.paragraphDonation}>
               <p>
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-                id mi sed sit. In faucibus leo etiam cras elit malesuada augue.
-                In faucibus leo etiam cras elit malesuada augue “
+                “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+                malesuada augue “
               </p>
             </div>
           </div>
@@ -316,13 +291,7 @@ export default function Campaign() {
           <h3>Comments (11)</h3>
         </div>
         <div className={styles.comentSection}>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Give Them Support..."
-          ></textarea>
+          <textarea name="" id="" cols="30" rows="10" placeholder="Give Them Support..."></textarea>
           <div className={styles.comentButton}>
             <button>POST</button>
           </div>
@@ -333,18 +302,12 @@ export default function Campaign() {
               <img src={CommentProfile} alt="" />
               <div className={styles.cardsTitle}>
                 <h4 style={{ margin: 0, padding: "0 20px" }}>Reine Dea</h4>
-                <p
-                  style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}
-                >
-                  12 minutes ago
-                </p>
+                <p style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}>12 minutes ago</p>
               </div>
             </div>
             <p>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-              id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In
-              faucibus leo etiam cras elit malesuada augue “
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+              malesuada augue “
             </p>
           </div>
         </div>
@@ -354,18 +317,12 @@ export default function Campaign() {
               <img src={CommentProfile} alt="" />
               <div className={styles.cardsTitle}>
                 <h4 style={{ margin: 0, padding: "0 20px" }}>Reine Dea</h4>
-                <p
-                  style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}
-                >
-                  12 minutes ago
-                </p>
+                <p style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}>12 minutes ago</p>
               </div>
             </div>
             <p>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-              id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In
-              faucibus leo etiam cras elit malesuada augue “
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+              malesuada augue “
             </p>
           </div>
         </div>
@@ -375,18 +332,12 @@ export default function Campaign() {
               <img src={CommentProfile} alt="" />
               <div className={styles.cardsTitle}>
                 <h4 style={{ margin: 0, padding: "0 20px" }}>Reine Dea</h4>
-                <p
-                  style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}
-                >
-                  12 minutes ago
-                </p>
+                <p style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}>12 minutes ago</p>
               </div>
             </div>
             <p>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-              id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In
-              faucibus leo etiam cras elit malesuada augue “
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+              malesuada augue “
             </p>
           </div>
         </div>
@@ -396,18 +347,12 @@ export default function Campaign() {
               <img src={CommentProfile} alt="" />
               <div className={styles.cardsTitle}>
                 <h4 style={{ margin: 0, padding: "0 20px" }}>Reine Dea</h4>
-                <p
-                  style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}
-                >
-                  12 minutes ago
-                </p>
+                <p style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}>12 minutes ago</p>
               </div>
             </div>
             <p>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-              id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In
-              faucibus leo etiam cras elit malesuada augue “
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+              malesuada augue “
             </p>
           </div>
         </div>
@@ -417,18 +362,12 @@ export default function Campaign() {
               <img src={CommentProfile} alt="" />
               <div className={styles.cardsTitle}>
                 <h4 style={{ margin: 0, padding: "0 20px" }}>Reine Dea</h4>
-                <p
-                  style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}
-                >
-                  12 minutes ago
-                </p>
+                <p style={{ margin: 0, padding: "10px 20px", color: "#9F9F9F" }}>12 minutes ago</p>
               </div>
             </div>
             <p>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-              nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra
-              id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In
-              faucibus leo etiam cras elit malesuada augue “
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. In faucibus leo etiam cras elit
+              malesuada augue “
             </p>
           </div>
         </div>
@@ -441,15 +380,7 @@ export default function Campaign() {
         <Link to="#">Related campaign</Link>
         <div className={styles.cardBottom}>
           {list.map((item) => (
-            <Card
-              image={item.image}
-              category={item.category}
-              title={item.title}
-              author={item.author}
-              data_funding={item.data_funding}
-              raised={item.raised}
-              goal={item.goal}
-            />
+            <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
           ))}
         </div>
       </div>
