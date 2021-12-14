@@ -6,8 +6,8 @@ import {
 	Button,
 	Box
 } from '@mui/material'
-import Card from '../../Card/Card'
-import data from '../../Card/data'
+import Card from '../Card/Card'
+import data from '../Card/data'
 
 const MyCampaign = () => {
 	const [list, setList] = React.useState([]);
