@@ -45,7 +45,7 @@ export default function MyDonation() {
           lineHeight: '33px'
         }}
       >
-        My Donation(23)
+        My Donation
       </Typography>
       <Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', flexWrap: 'wrap', p: '2px 35px', width: '926.927px'}}>
         {myDonate.map((item) => (
