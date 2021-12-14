@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../Card/Card";
+import Card from "../../Components/Card/Card";
 import data from "../../Card/data";
 import data1 from "./data1";
 import data2 from "./data2";
