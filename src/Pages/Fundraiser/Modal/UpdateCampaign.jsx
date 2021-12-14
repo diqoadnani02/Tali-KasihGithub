@@ -9,15 +9,15 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import FilledInput from '@mui/material/FilledInput';
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import FilledInput from "@mui/material/FilledInput";
 
 export default function ModalUpdateCampaign(props) {
   const [Selector, setSelector] = useState(false);
 
   const [values, setValues] = useState({
-    amount: '',
+    amount: "",
   });
 
   const handleChange = (prop) => (event) => {
@@ -55,10 +55,10 @@ export default function ModalUpdateCampaign(props) {
                 <label htmlFor="fund">Fund withdrawal</label>
               </div>
             </form>
-            {Selector && (
+            {Selector === true ? (
               <>
                 <div className={styles.fundInput}>
-                  <FormControl sx={{mt: 2, width:'370px' }} variant="filled">
+                  <FormControl sx={{ mt: 2, width: "370px" }} variant="filled">
                     <InputLabel htmlFor="filled-adornment-amount">
                       Amount*
                     </InputLabel>
@@ -68,14 +68,19 @@ export default function ModalUpdateCampaign(props) {
                       onChange={handleChange("amount")}
                     />
                   </FormControl>
-                  <h4>Withdrawal purpose<span>*</span></h4>
+                  <h4>
+                    Withdrawal purpose<span>*</span>
+                  </h4>
                 </div>
               </>
+            ) : (
+              <h4>
+                Update<span>*</span>
+              </h4>
             )}
           </div>
           <div className={styles.modalInput}>
             <div className={styles.containerInput}>
-              <h4>Update<span>*</span></h4>
               <div className={styles.iconsInput}>
                 <div className={styles.icons}>
                   <button>
