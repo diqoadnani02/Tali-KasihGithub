@@ -115,6 +115,7 @@ export default function ProfileCard() {
               id="name"
               label="Name"
               value={`${profile && profile.name}`}
+              sx={{width: "384px"}}
               variant="standard"
             />
             <TextField
@@ -122,6 +123,7 @@ export default function ProfileCard() {
               id="email"
               label="Email"
               value={`${profile && profile.email}`}
+              sx={{width: "384px"}}
               variant="standard"
             />
           </Grid>
@@ -129,15 +131,18 @@ export default function ProfileCard() {
             sx={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              padding: "10px 140px",
+              justifyContent: "flex-start",
+              pl: 7,
+              pt: 1,
+              m: 1,
+  
             }}
           >
             <TextField
               disabled
               id="bankInfo"
               label="Bank Info"
+              sx={{width: "384px"}}
               value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
               variant="standard"
             />
