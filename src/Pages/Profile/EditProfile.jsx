@@ -13,6 +13,7 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import {useNavigate} from 'react-router-dom'
 
 export default function EditProfile() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function EditProfile() {
     bankName: "",
     bankAccount: "",
   });
+  const navigate = useNavigate()
 
   useEffect(() => {
     setUpdateProfile({
@@ -59,6 +61,7 @@ export default function EditProfile() {
     form.append('bankName', updateProfile.bankName)
     form.append('bankAccount', updateProfile.bankAccount)
     dispatch(UpdateProfileAction(form))
+    navigate('/profile')
   }
 
   const Update = (e) => {
