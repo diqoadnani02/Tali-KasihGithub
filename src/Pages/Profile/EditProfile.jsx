@@ -17,6 +17,7 @@ import {useNavigate} from 'react-router-dom'
 
 export default function EditProfile() {
   const dispatch = useDispatch();
+  // eslint-disable-next-line no-unused-vars
   const { profile, loading } = useSelector((state) => state.profileReducer);
   console.log(profile, "profile");
   const [updateProfile, setUpdateProfile] = useState({
@@ -39,6 +40,7 @@ export default function EditProfile() {
   }, [profile]);
 
   const [uploadImage, setUploadImage] = useState();
+  // eslint-disable-next-line no-unused-vars
   const [isUpload, setIsUpload] = useState(false);
   function handleImageChange(e) {
     if (e.target.files && e.target.files[0]) {
@@ -71,6 +73,7 @@ export default function EditProfile() {
     });
   };
 
+  // eslint-disable-next-line no-unused-vars
   const submitUpdateProfile = () => {
     dispatch(UpdateProfileAction(updateProfile));
   };
