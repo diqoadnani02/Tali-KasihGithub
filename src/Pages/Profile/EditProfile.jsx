@@ -16,7 +16,7 @@ import {
 
 export default function EditProfile() {
   const dispatch = useDispatch();
-  const { profile, loading } = useSelector((state) => state.profileReducer);
+  const { profile } = useSelector((state) => state.profileReducer);
   console.log(profile, "profile");
   const [updateProfile, setUpdateProfile] = useState({
     name: "",

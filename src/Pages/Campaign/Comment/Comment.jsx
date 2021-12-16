@@ -1,7 +1,28 @@
 import styles from "./Comment.module.scss";
 import CommentProfile from "../assets/comment.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  getComment,
+  postComment,
+} from "../../../Store/Actions/Campaign/comment";
 
 export default function Comment() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  // const [Comment, setComment] = useState({
+
+  // })
+  const { comment } = useSelector((state) => state.commentReducer.comment);
+  console.log(comment, "comment");
+  useEffect(() => {
+    dispatch(getComment(id));
+  }, [dispatch, id]);
+  useEffect(() => {
+    dispatch(postComment());
+  }, [dispatch]);
+
   return (
     <div>
       <div className={styles.comentContainer}>

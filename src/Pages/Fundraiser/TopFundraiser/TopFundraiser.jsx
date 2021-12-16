@@ -2,7 +2,6 @@ import styles from "./TopFundraiser.module.scss";
 import image from "../assets/img.png";
 import fundraiser from "../assets/fundraiser.png";
 import ModalUpdateCampaign from "../Modal/UpdateCampaign";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
