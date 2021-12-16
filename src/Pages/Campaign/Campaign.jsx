@@ -50,8 +50,10 @@ export default function Campaign() {
         </div>
         <div className={styles.cardCampaign}>
           <h3>IDR 30.000.000</h3>
-          <p>from IDR 50.000.000 goal</p>
+          <p>IDR 10.000.000 remaining</p>
+          <p>IDR 10.000.000 available</p>
           <BorderLinearProgress variant="determinate" value={80} />
+          <p className={styles.goal}>from IDR 50.000.000 goal</p>
           <div className={styles.cardProfile}>
             <img src={Profile} alt="" />
             <div className={styles.cardTitleProfile}>
