@@ -1,0 +1,7 @@
+const mydonationActionType = {
+GET_DONATION_START: 'GET_DONATION_START',
+GET_DONATION_SUCCESS: 'GET_DONATION_SUCCESS',
+GET_DONATION_FAILED: 'GET_DONATION_FAILED'
+}
+
+export default mydonationActionType

@@ -1,5 +1,5 @@
 import Hero from "../Components/Hero/Hero"
-import Trending from "../Card/Trending"
+import Trending from "../Components/Card/Trending"
 
 function Home() {
     return (

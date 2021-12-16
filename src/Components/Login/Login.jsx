@@ -2,7 +2,7 @@ import React from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, Typography, Grid, TextField, Box, Button, Divider } from '@mui/material'
+import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from '@mui/material'
 import Google from './google.png'
 // import Paper from '@mui/material/Paper'
 import { logInStart } from '../../Store/Actions/authAction/authAction'
@@ -114,8 +114,7 @@ export default function Login() {
 							helperText={touched.password && errors.password}
 						/>
 						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color=""><Link href="#">Forget Password?</Link></Typography>
-						<p>{ status && status === 200 && "Login Sucessful"}</p>
-						{error !== null && <p>Email or password is invalid</p>}
+						{error !== null && <Alert severity="error"><AlertTitle>Error</AlertTitle><strong>EMAIL AND/OR PASSWORD INVALID</strong></Alert>}
 						<Button
 							type="submit"
 							fullWidth

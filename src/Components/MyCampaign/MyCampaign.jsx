@@ -6,20 +6,22 @@ import {
 	Button,
 	Box
 } from '@mui/material'
-import Card from '../../Card/Card'
-import data from '../../Card/data'
+import Card from '../Card/Card'
+// import data from '../Card/data'
+import {getMycampaignStart} from '../../Store/Actions/mycampaignAction/mycampaignAction'
+import {useDispatch, useSelector} from 'react-redux' 
 
 const MyCampaign = () => {
-	const [list, setList] = React.useState([]);
+	// const [list, setList] = React.useState([]);
 	const [end, setEnd] = React.useState(2);
+	const dispatch = useDispatch()
 
 	React.useEffect(() => {
-		const getData = () => {
-			setList(data.campaign)
-		};
-		getData();
+		dispatch(getMycampaignStart())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-	const sliced = list.slice(0, end)
+	const {myCampaign} = useSelector(state => state.campaign)
+	// const sliced = list.slice(0, end)
 
 	return (
 		<Paper container sx={{
@@ -39,10 +41,10 @@ const MyCampaign = () => {
 					lineHeight: '33px'
 				}}
 			>
-				My Campaign(2)
+				My Campaign
 			</Typography>
 			<Box container sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', flexWrap: 'wrap', padding: '0 100px' }}>
-				{sliced.map((item) => (
+				{myCampaign.map((item) => (
 					<Card
 						image={item.image}
 						category={item.category}
