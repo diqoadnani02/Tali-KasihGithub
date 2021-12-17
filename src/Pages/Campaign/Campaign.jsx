@@ -3,6 +3,7 @@ import ReadMore from "./ReadMore/ReadMore";
 import CampaignUpdate from "./CampaignUpdate/CampaignUpdate";
 import Donation from "./Donation/Donation";
 import Comment from "./Comment/Comment";
+import Share from "../Fundraiser/Modal/Share";
 import Card from "../../Components/Card/Card";
 import data from "../../Components/Card/data";
 import Image from "./assets/img.png";
@@ -40,6 +41,8 @@ export default function Campaign() {
     getData();
   }, []);
 
+  const [share, setShare] = useState(false);
+
   return (
     <>
       {/* Top Campaign Components*/}
@@ -50,8 +53,10 @@ export default function Campaign() {
         </div>
         <div className={styles.cardCampaign}>
           <h3>IDR 30.000.000</h3>
-          <p>from IDR 50.000.000 goal</p>
+          <p>IDR 10.000.000 remaining</p>
+          <p>IDR 10.000.000 available</p>
           <BorderLinearProgress variant="determinate" value={80} />
+          <p className={styles.goal}>from IDR 50.000.000 goal</p>
           <div className={styles.cardProfile}>
             <img src={Profile} alt="" />
             <div className={styles.cardTitleProfile}>
@@ -80,7 +85,8 @@ export default function Campaign() {
             </div>
           </div>
           <div className={styles.buttonCard}>
-            <button className={styles.buttonUp}>SHARE</button>
+            <button onClick={() => setShare(true)} className={styles.buttonUp}>SHARE</button>
+            <Share onClose={() => setShare(false)} share={share}/>
             <button className={styles.buttonDown}>DONATE</button>
           </div>
         </div>

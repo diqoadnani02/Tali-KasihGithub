@@ -67,7 +67,7 @@ const Trending = () => {
           <div>
             <div className={style.list_container}>
               {list.map((item) => (
-                <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
+                <Card id={item.id} image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
               ))}
             </div>
           </div>

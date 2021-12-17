@@ -11,9 +11,9 @@ import axios from "axios";
 import { BASE_URL} from "../../../Constants/Constants";
 
 function* getComment(actions) {
-  const { id } = actions;
+  const {id} = actions
   try {
-    const res = yield axios.get(`${BASE_URL}comment/${id}`);
+    const res = yield axios.get(`${BASE_URL}comment?id=${id}`);
     console.log(res);
     yield put({
       type: GET_COMMENT_SUCCESS,
@@ -28,12 +28,20 @@ function* getComment(actions) {
 }
 
 function* postComment(actions) {
-  const { body } = actions;
+  const { body, id } = actions;
   try {
-    const res = yield axios.post(`${BASE_URL}comment`, body);
+    const res = yield axios.post(`${BASE_URL}comment/${id}`, body ,{
+      headers: { access_token: localStorage.getItem("token") },
+    })
     console.log(res);
     yield put({
       type: POST_COMMENT_SUCCESS,
+    });
+    const resComment = yield axios.get(`${BASE_URL}comment?id=${id}`);
+    console.log(res);
+    yield put({
+      type: GET_COMMENT_SUCCESS,
+      payload: resComment.data.data,
     });
   } catch (err) {
     yield put({

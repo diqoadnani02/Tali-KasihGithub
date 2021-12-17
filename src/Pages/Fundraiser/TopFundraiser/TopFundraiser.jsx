@@ -2,6 +2,7 @@ import styles from "./TopFundraiser.module.scss";
 import image from "../assets/img.png";
 import fundraiser from "../assets/fundraiser.png";
 import ModalUpdateCampaign from "../Modal/UpdateCampaign";
+import Share from "../Modal/Share";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
@@ -39,6 +40,7 @@ export default function TopFundraiser() {
   };
 
   const [show, setShow] = useState(false);
+  const [share, setShare] = useState(false);
 
   return (
     <div>
@@ -66,9 +68,9 @@ export default function TopFundraiser() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                  <MenuItem onClick={handleClose}>Edit</MenuItem>
-                  <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
-                  <MenuItem onClick={handleClose}>Delete</MenuItem>
+                <MenuItem onClick={handleClose}>Edit</MenuItem>
+                <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
+                <MenuItem onClick={handleClose}>Delete</MenuItem>
               </Menu>
             </div>
           </div>
@@ -106,7 +108,8 @@ export default function TopFundraiser() {
             </div>
           </div>
           <div className={styles.buttonCard}>
-            <button className={styles.buttonUp}>SHARE</button>
+            <button onClick={() => setShare(true)} className={styles.buttonUp}>SHARE</button>
+            <Share onClose={() => setShare(false)} share={share} />
             <button onClick={() => setShow(true)} className={styles.buttonDown}>
               CAMPAIGN UPDATE
             </button>

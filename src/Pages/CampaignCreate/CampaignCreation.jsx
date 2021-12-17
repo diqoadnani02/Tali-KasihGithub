@@ -26,23 +26,23 @@ export default function CampaignCreation() {
 
   const currencies = [
     {
-      value: "USD",
+      value: "Disability",
       label: "Disability",
     },
     {
-      value: "EUR",
+      value: "Medical",
       label: "Medical",
     },
     {
-      value: "BTC",
+      value: "Education",
       label: "Education",
     },
     {
-      value: "JPY",
+      value: "Religious",
       label: "Religious",
     },
     {
-      value: "JPY",
+      value: "Humanity",
       label: "Humanity",
     },
   ];

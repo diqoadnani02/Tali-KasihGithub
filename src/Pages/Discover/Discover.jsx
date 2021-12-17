@@ -59,7 +59,7 @@ const Discover = () => {
       </div>
       <div className={styles.component_card}>
         {newest.map((item) => (
-          <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
+          <Card id={item.id} image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
         ))}
       </div>
       {/* Card Most Urgent */}
@@ -68,7 +68,7 @@ const Discover = () => {
       </div>
       <div className={styles.component_card}>
         {mostUrgent.map((item) => (
-          <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
+          <Card id={item.id} image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
         ))}
       </div>
       {/* Card Gain Momentum */}
@@ -77,7 +77,7 @@ const Discover = () => {
       </div>
       <div className={styles.component_card2}>
         {gainMomentum.map((item) => (
-          <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
+          <Card id={item.id} image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
         ))}
       </div>
     </div>

@@ -14,7 +14,7 @@
 
     img {
       width: 800px;
-      height: 439px;
+      height: 500px;
       border-radius: 4px 4px 0px 0px;
     }
   }
@@ -22,7 +22,7 @@
     margin-top: 85px;
     padding-left: 20px;
     width: 417px;
-    height: 439px;
+    height: 500px;
     border: 1px solid #f1ede4;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
@@ -34,6 +34,11 @@
     }
     p {
       padding-bottom: 10px;
+      color: #9f9f9f;
+    }
+
+    .goal {
+      color: black;
     }
 
     .cardProfile {

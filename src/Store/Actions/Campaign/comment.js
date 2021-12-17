@@ -10,9 +10,10 @@ import {
       };
     };
 
-  export const postComment = (body) => {
+  export const postComment = (body, id) => {
     return {
       type: POST_COMMENT_BEGIN,
       body,
+      id,
     };
   };
