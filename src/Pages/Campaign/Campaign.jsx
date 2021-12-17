@@ -85,9 +85,13 @@ export default function Campaign() {
             </div>
           </div>
           <div className={styles.buttonCard}>
-            <button onClick={() => setShare(true)} className={styles.buttonUp}>SHARE</button>
-            <Share onClose={() => setShare(false)} share={share}/>
-            <button className={styles.buttonDown}>DONATE</button>
+            <button onClick={() => setShare(true)} className={styles.buttonUp}>
+              SHARE
+            </button>
+            <Share onClose={() => setShare(false)} share={share} />
+            <Link to='/campaign/donate'>
+              <button className={styles.buttonDown}>DONATE</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -102,7 +106,7 @@ export default function Campaign() {
       <Donation />
 
       {/* Comments Component */}
-      <Comment/>
+      <Comment />
 
       {/* Card Components */}
       <div className={styles.linkCardBottom}>

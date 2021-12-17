@@ -45,6 +45,18 @@ export default function CampaignCreation() {
       value: "Humanity",
       label: "Humanity",
     },
+    {
+      value: "Environment",
+      label: "Environment",
+    },
+    {
+      value: "Disaster",
+      label: "Disaster",
+    },
+    {
+      value: "Sociopreneur",
+      label: "Sociopreneur",
+    },
   ];
 
   return (

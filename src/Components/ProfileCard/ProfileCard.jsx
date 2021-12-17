@@ -62,7 +62,7 @@ export default function ProfileCard() {
             color: "#A43F3C",
             textDecoration: "underline",
           }}
-          href="#"
+          to="#"
           onClick={logOut}
         >
           Logout
