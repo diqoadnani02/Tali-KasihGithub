@@ -5,8 +5,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from '@mui/material'
 import Google from './google.png'
 // import Paper from '@mui/material/Paper'
-import { logInStart } from '../../Store/Actions/authAction/authAction'
+import { logInStart, googleLoginStart } from '../../Store/Actions/authAction/authAction'
 import { useDispatch, useSelector } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+
 
 const schema = yup.object({
 	email: yup
@@ -27,10 +29,14 @@ export default function Login() {
 			].join(','),
 		},
 	})
+
+
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const { token, status, error } = useSelector(state => state.auth)
 	console.log(token, status)
 	console.log(error, "error")
+
 
 	return (
 		<Formik
@@ -113,7 +119,7 @@ export default function Login() {
 							error={touched.password && Boolean(errors.password)}
 							helperText={touched.password && errors.password}
 						/>
-						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color=""><Link href="#">Forget Password?</Link></Typography>
+						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color="" onClick={() => navigate('/forget-password')} sx={{cursor: 'pointer'}}><Link href="#">Forget Password?</Link></Typography>
 						{error !== null && <Alert severity="error"><AlertTitle>Error</AlertTitle><strong>EMAIL AND/OR PASSWORD INVALID</strong></Alert>}
 						<Button
 							type="submit"
@@ -130,12 +136,12 @@ export default function Login() {
 						</Button>
 					</Box>
 					<Divider variant="middle" />
-
-					<Button sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
+					<Button onClick={() => dispatch(googleLoginStart(values))} sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
 
 					{/* </Paper> */}
 				</ThemeProvider>)}
 		</Formik>
 	)
 }
+
 

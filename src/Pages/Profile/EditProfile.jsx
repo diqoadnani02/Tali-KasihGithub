@@ -152,6 +152,7 @@ export default function EditProfile() {
                   lineHeight: "19px",
                   color: "#1D94A8",
                   textDecoration: "underline",
+                  cursor: 'pointer'
                 }}
               >
                 Change Image Profile

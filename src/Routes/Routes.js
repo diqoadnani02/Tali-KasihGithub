@@ -8,7 +8,10 @@ import Profile from "../Pages/Profile/Profile";
 import EditProfile from "../Pages/Profile/EditProfile";
 import Payment from "../Pages/Payment/Payment";
 import Fundraiser from "../Pages/Fundraiser/Fundraiser";
+import ForgotPassword from "../Pages/Password/ForgotPassword";
+import ResetPassword from "../Pages/Password/ResetPassword";
 export default function Routers() {
+
   return (
     <>
       <Routes>
@@ -21,6 +24,8 @@ export default function Routers() {
         <Route path="/discover/category" element={<DiscoverCategory />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/forget-password" element={<ForgotPassword />} />
+        <Route path="/resetPassword/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );
