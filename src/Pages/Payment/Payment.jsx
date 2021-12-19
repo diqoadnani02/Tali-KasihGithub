@@ -119,7 +119,7 @@ const Payment = () => {
               </p>
             </div>
             <div>
-              <Input inputProps={ariaLabel} className={style.input_field2} value={values.name} />
+              <Input inputProps={ariaLabel} className={style.input_field2} />
             </div>
             <div>
               <label className={style.checkbox}>

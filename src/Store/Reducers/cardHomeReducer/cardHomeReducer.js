@@ -1,33 +1,34 @@
-import types from "../../Actions/discoverhomepage/cardHomeActionTypes";
+import types from "../../Actions/cardHomeAction/cardHomeActionTypes";
 
 const initialState = {
-  currentUser: null,
-  error: null,
-  token: null,
-  status: null,
+  cardHome: null,
+  cardHomeError: null,
+  loading: false,
 };
 
-const authReducer = (state = initialState, action) => {
+const cardHomeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.CARD_HOME_SUCCESS:
+    case types.GET_CARD_HOME_START:
       return {
         ...state,
-        currentUser: action.payload,
-        error: null,
-        token: action.payload.token,
-        status: action.payload.status,
+        loading: true,
+        cardHomeError: null,
       };
-    case types.CARD_HOME_FAILURE:
+    case types.GET_CARD_HOME_SUCCESS:
       return {
         ...state,
-        error: action.payload,
-        status: action.payload.status,
+        loading: false,
+        cardHome: action.payload,
+        cardHomeError: null,
       };
-    case types.LOGOUT:
-      return initialState;
+    case types.GET_CARD_HOME_FAILURE:
+      return {
+        ...state,
+        cardHomeError: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default authReducer;
+export default cardHomeReducer;

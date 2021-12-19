@@ -7,6 +7,11 @@
   justify-content: space-between;
 }
 
+.main_image {
+  width: 654px;
+  height: 510px;
+}
+
 .title1 {
   font-family: Nunito;
   margin: 0;
@@ -36,12 +41,19 @@
 .paragraph {
   font-family: Nunito;
   font-size: 20px;
+  width: 501px;
+  margin: 10px;
 }
 
 .author {
   display: flex;
   align-items: center;
-  margin-top: 86px;
+  margin-top: 39px;
+}
+
+.author_image {
+  width: 72px;
+  height: 72px;
 }
 
 .text_author {
