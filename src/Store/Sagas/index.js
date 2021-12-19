@@ -5,6 +5,13 @@ import { watchUpdateProfile } from "./updateProfile";
 import { mydonationSagas } from "./mydonationSagas/mydonationSagas";
 import { mycampaignSagas } from "./mycampaignSagas/mycampaignSagas";
 import { watchGetComment, watchPostComment } from "./Campaign/comment";
+import {
+  watchGetDetailCampaign,
+  watchPostCreateCampaign,
+  watchPostUpdateCampaign,
+  watchAddShareCampaign,
+  watchEditCampaign,
+} from "./Campaign/campaign";
 
 function* rootSaga() {
   yield all([
@@ -15,6 +22,11 @@ function* rootSaga() {
     mycampaignSagas(),
     watchGetComment(),
     watchPostComment(),
+    watchGetDetailCampaign(),
+    watchPostCreateCampaign(),
+    watchPostUpdateCampaign(),
+    watchAddShareCampaign(),
+    watchEditCampaign(),
   ]);
 }
 

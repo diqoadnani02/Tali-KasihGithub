@@ -1,9 +1,10 @@
 import styles from "./CampaignUpdate.module.scss";
 
 export default function CampaignUpdate() {
+
   return (
     <div>
-       <div className={styles.updateDonor}>
+      <div className={styles.updateDonor}>
         <div className={styles.donor}>
           <h3>Updates (16)</h3>
         </div>
@@ -113,7 +114,6 @@ export default function CampaignUpdate() {
           <button>SHOW OLDER</button>
         </div>
       </div>
-
     </div>
-  )
+  );
 }

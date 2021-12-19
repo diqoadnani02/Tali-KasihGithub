@@ -11,14 +11,56 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
-
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
+
 export default function CampaignCreation() {
-  const [currency, setCurrency] = React.useState();
-  const [value, setValue] = React.useState(null);
+  const dispatch = useDispatch();
+  const [inputCampaign, setInputCampaign] = useState({
+    image: null,
+    title: "",
+    story: "",
+    goal: "",
+    deviation: "",
+    collected: "",
+    dueDate: "",
+    categoryId: "",
+    share: "",
+  });
+  console.log("inputCampaign", inputCampaign);
+  const changeInput = (e) => {
+    setInputCampaign({
+      ...inputCampaign,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const [imageCampaign, setImageCampaign] = useState();
+  const [isCampaign, setIsCampaign] = useState(false);
+  function ChangeImageCampaign(e) {
+    if (e.target.files && e.target.files[0]) {
+      setInputCampaign({ ...inputCampaign, image: e.target.files[0] });
+      let reader = new FileReader();
+
+      reader.onload = function (e) {
+        setImageCampaign(e.target.result);
+        setIsCampaign(true);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  }
+
+  const submitCampaign = () => {
+    dispatch(createCampaignAction(changeInput));
+  };
+
+  const [currency, setCurrency] = useState();
+  const [value, setValue] = useState(null);
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -65,17 +107,45 @@ export default function CampaignCreation() {
         <div className={styles.containerCreation}>
           <h1>New Campaign</h1>
         </div>
-        <div className={styles.borderlineUp}></div>
-        <div className={styles.boxImage}>
-          <div className={styles.boxAddImage}>
-            <div className={styles.iconAdd}>
-              <button>
-                <AddCircleOutlineIcon sx={{ fontSize: 50, color: "#9f9f9f" }} />
-              </button>
-            </div>
-            <h2>Add Header Photo</h2>
+        <form>
+          <div className={styles.boxImage}>
+            {!isCampaign ? (
+              <>
+                <div className={styles.boxAddImage}>
+                  <div className={styles.iconAdd}>
+                    <label htmlFor="upload-campaign">
+                        <AddCircleOutlineIcon
+                          sx={{ fontSize: 50, color: "#9f9f9f" }}
+                        />
+                    </label>
+                  </div>
+                    <input
+                      style={{ visibility: "hidden" }}
+                      id="upload-campaign"
+                      accept="image/*"
+                      type="file"
+                      onChange={ChangeImageCampaign}
+                    />
+                  <h2>Add Header Photo</h2>
+                </div>
+              </>
+            ) : (
+              <div className={styles.imagePreview}>
+                <img
+                  id={styles.uploadedImage}
+                  src={imageCampaign}
+                  alt="uploaded-img"
+                  onClick={() => {
+                    setIsCampaign(false);
+                    setImageCampaign(null);
+                  }}
+                  value={inputCampaign.image}
+                />
+              </div>
+            )}
           </div>
-        </div>
+        </form>
+
         <div className={styles.formCreation}>
           <div className={styles.textInputCreation}>
             <TextField
@@ -85,6 +155,8 @@ export default function CampaignCreation() {
               placeholder="e.g. Help we get clean water"
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              name="title"
+              onChange={(e) => changeInput(e)}
             />
             <TextField
               required
@@ -95,6 +167,7 @@ export default function CampaignCreation() {
               onChange={handleChange}
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              name="categoryId"
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -145,28 +218,44 @@ export default function CampaignCreation() {
           <div className={styles.containerTextarea}>
             <div className={styles.iconsTextarea}>
               <div className={styles.icons}>
-                <FormatBoldIcon sx={{ padding: "5px 2px" }} />
+                <button>
+                  <FormatBoldIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <FormatItalicIcon sx={{ padding: "5px 2px" }} />
+                <button>
+                  <FormatItalicIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <FormatUnderlinedIcon sx={{ padding: "5px 2px" }} />
+                <button>
+                  <FormatUnderlinedIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <FormatListBulletedIcon sx={{ padding: "5px 3px" }} />
+                <button>
+                  <FormatListBulletedIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <FormatIndentDecreaseIcon sx={{ padding: "5px 3px" }} />
+                <button>
+                  <FormatIndentDecreaseIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <FormatIndentIncreaseIcon sx={{ padding: "5px 3px" }} />
+                <button>
+                  <FormatIndentIncreaseIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <InsertPhotoIcon sx={{ padding: "5px 3px" }} />
+                <button>
+                  <InsertPhotoIcon sx={{ padding: "6px 6px" }} />
+                </button>
               </div>
               <div className={styles.icons}>
-                <BiLinkAlt style={{ fontSize: "20px", padding: "6px 6px" }} />
+                <button>
+                  <BiLinkAlt style={{ fontSize: "20px", padding: "8px 8px" }} />
+                </button>
               </div>
             </div>
             <textarea
@@ -178,7 +267,6 @@ export default function CampaignCreation() {
             ></textarea>
           </div>
         </div>
-        <div className={styles.borderlineBottom}></div>
       </div>
       <div className={styles.campaignButton}>
         <button className={styles.button}>CREATE CAMPAIGN</button>

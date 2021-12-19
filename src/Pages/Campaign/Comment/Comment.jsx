@@ -36,7 +36,6 @@ export default function Comment() {
     });
   };
 
-
   return (
     <div>
       <div className={styles.comentContainer}>

@@ -8,14 +8,28 @@ import Card from "../../Components/Card/Card";
 import data from "../../Components/Card/data";
 import Image from "./assets/img.png";
 import Profile from "./assets/profile.png";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 
 export default function Campaign() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [detailAllCampaign, setdetailAllCampaign] = useState();
+  console.log("detailCampaign", detailAllCampaign);
+
+  const detailCampaign = useSelector((state) => state.campaignReducer.detailCampaign);
+  console.log("detailCampaign", detailCampaign);
+  useEffect(() => {
+    dispatch(getDetailCampaignAction(id));
+  }, [dispatch, id]);
+
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -89,7 +103,7 @@ export default function Campaign() {
               SHARE
             </button>
             <Share onClose={() => setShare(false)} share={share} />
-            <Link to='/campaign/donate'>
+            <Link to="/campaign/donate">
               <button className={styles.buttonDown}>DONATE</button>
             </Link>
           </div>
