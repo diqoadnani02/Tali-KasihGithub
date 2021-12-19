@@ -10,7 +10,7 @@ import Payment from "../Pages/Payment/Payment";
 import Fundraiser from "../Pages/Fundraiser/Fundraiser";
 import ForgotPassword from "../Pages/Password/ForgotPassword";
 import ResetPassword from "../Pages/Password/ResetPassword";
-export default function Routers() {
+
 
 
 export default function Routers({ inputSearch }) {
