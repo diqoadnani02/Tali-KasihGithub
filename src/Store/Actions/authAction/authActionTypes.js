@@ -17,4 +17,4 @@ const userActionTypes = {
     LOGOUT: 'LOGOUT'
 }
 
-export default userActionTypes
+export default userActionTypes;

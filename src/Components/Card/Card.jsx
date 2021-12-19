@@ -3,11 +3,12 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Skeleton from "@mui/material/Skeleton";
 import styles from "./Card.module.scss";
 
-const Card = ({ image, category, title, author, data_funding, raised, goal }) => {
+const Card = ({ image, category, title, author, raised, goal }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   });
+  const percentage = (raised / goal) * 100;
   return (
     <div className={styles.Container}>
       {loading ? (
@@ -40,7 +41,7 @@ const Card = ({ image, category, title, author, data_funding, raised, goal }) =>
       ) : (
         <>
           <div className={styles.image_category}>
-            <img src={image} alt="gambar" />
+            <img src={image} alt="gambar" className={styles.set_image} />
           </div>
           <div className={styles.category}>
             <button className={styles.button_category}>{category}</button>
@@ -49,7 +50,7 @@ const Card = ({ image, category, title, author, data_funding, raised, goal }) =>
               <p className={styles.title2}>{author}</p>
             </div>
             <div>
-              <LinearProgress variant="determinate" sx={{ height: "8px" }} value={data_funding} className={styles.progress} />
+              <LinearProgress variant="determinate" sx={{ height: "8px" }} value={percentage} className={styles.progress} />
             </div>
             <div className={styles.goals_card}>
               <div>

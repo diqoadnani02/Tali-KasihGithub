@@ -1,18 +1,16 @@
 import Header from "./Components/Header/Header";
 import Routers from "./Routes/Routes";
-import Footer from './Components/Footer/Footer';
+import Footer from "./Components/Footer/Footer";
 import "./App.css";
-
-
-
+import { useState } from "react";
 
 function App() {
+  const [inputSearch, setInputSearch] = useState("");
   return (
     <>
-      <Header />
-      <Routers />
+      <Header inputSearch={inputSearch} setInputSearch={setInputSearch} />
+      <Routers inputSearch={inputSearch} />
       <Footer />
-
     </>
   );
 }

@@ -9,6 +9,13 @@
   font-weight: 700;
   margin: 24px 0;
 }
+.title_search {
+  font-family: Nunito;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 24px 0;
+}
 
 .title1 {
   font-family: Nunito;
@@ -16,6 +23,7 @@
   font-size: 24px;
   font-weight: 700;
   margin-top: 130px;
+  text-decoration: underline;
 }
 .title2 {
   font-family: Nunito;
@@ -23,6 +31,20 @@
   font-size: 24px;
   font-weight: 700;
   margin-top: 80px;
+  text-decoration: underline;
+}
+
+.icons_category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 175px;
+  justify-content: space-evenly;
+  color: black;
+}
+.title_category {
+  font-family: Nunito;
+  font-weight: bold;
 }
 
 .button_card {

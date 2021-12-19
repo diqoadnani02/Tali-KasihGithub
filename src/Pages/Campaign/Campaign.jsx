@@ -10,9 +10,7 @@ import Profile from "./assets/profile.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
+import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 
 export default function Campaign() {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -21,8 +19,7 @@ export default function Campaign() {
     marginBottom: 20,
     marginRight: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      backgroundColor: theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
@@ -98,22 +95,14 @@ export default function Campaign() {
       <Donation />
 
       {/* Comments Component */}
-      <Comment/>
+      <Comment />
 
       {/* Card Components */}
       <div className={styles.linkCardBottom}>
         <Link to="#">Related campaign</Link>
         <div className={styles.cardBottom}>
           {list.map((item) => (
-            <Card
-              image={item.image}
-              category={item.category}
-              title={item.title}
-              author={item.author}
-              data_funding={item.data_funding}
-              raised={item.raised}
-              goal={item.goal}
-            />
+            <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
           ))}
         </div>
       </div>

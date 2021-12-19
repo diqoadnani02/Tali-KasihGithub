@@ -12,6 +12,8 @@ import ForgotPassword from "../Pages/Password/ForgotPassword";
 import ResetPassword from "../Pages/Password/ResetPassword";
 export default function Routers() {
 
+
+export default function Routers({ inputSearch }) {
   return (
     <>
       <Routes>
@@ -20,8 +22,8 @@ export default function Routers() {
         <Route exact path="/fundraiser" element={<Fundraiser />} />
         <Route path="/campaign/donate" element={<Payment />} />
         <Route exact path="/create" element={<CampaignCreation />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/discover/category" element={<DiscoverCategory />} />
+        <Route path="/discover" element={<Discover inputSearch={inputSearch} />} />
+        <Route path="/discover/category/:categoryId/:sort" element={<DiscoverCategory />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/forget-password" element={<ForgotPassword />} />

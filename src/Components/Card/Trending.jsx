@@ -1,50 +1,40 @@
 import React from "react";
-import Image from "./assets/Rectangle33.png";
+import Card from "./Card";
 import thick from "./assets/thick.png";
 import thick2 from "./assets/thick2.png";
 import style from "./Trending.module.scss";
-import Author from "./assets/Author.png";
 import image1 from "./assets/Rectangle38.png";
 import image2 from "./assets/image1.png";
-import Card from "./Card";
-import data from "./data";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { cardHomeStart } from "../../Store/Actions/cardHomeAction/cardHomeAction";
 const Trending = () => {
-  const [list, setList] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const getData = () => {
-      setList(data.campaign);
-    };
-
+    const getData = () => {};
+    dispatch(cardHomeStart());
     getData();
   }, []);
+
+  const { cardHome } = useSelector((state) => state.cardHomeReducer);
   return (
     <>
       <div className={style.container}>
         <div>
           <p className={style.title1}>Trending Topic</p>
-          <p className={style.title2}>Clean Water For Country Side Region</p>
+          <p className={style.title2}>{cardHome && cardHome.trendingCampaign[0].title}</p>
         </div>
         <div className={style.container1}>
           <div>
-            <img src={Image} alt="rectangle33" />
+            <img src={cardHome && cardHome.trendingCampaign[0].image} alt="rectangle33" className={style.main_image} />
           </div>
           <div>
             <div>
               <img src={thick} alt="doublethick" />
             </div>
-            <p className={style.paragraph}>
-              Id praesent imperdiet lectus scelerisque id.
-              <br />
-              Proin netus amet, viverra consequat consequat
-              <br />
-              consectetur dignissim. Erat at volutpat et ac.
-              <br />
-              Ullamcorper urna, elementum bibendum donec
-              <br />
-              at mauris arcu, quam aenean.
-            </p>
+            <p className={style.paragraph}>{cardHome && cardHome.trendingCampaign[0].story}</p>
             <div>
               <div className={style.thickright}>
                 <img src={thick2} alt="doublethick" />
@@ -52,23 +42,23 @@ const Trending = () => {
             </div>
             <div className={style.author}>
               <div>
-                <img src={Author} alt="author" />
+                <img src={cardHome && cardHome.trendingCampaign[0].user.image} alt="author" className={style.author_image} />
               </div>
               <div className={style.text_author}>
-                <h3 className={style.text}>Dian Endang</h3>
+                <h3 className={style.text}>{cardHome && cardHome.trendingCampaign[0].user.name}</h3>
                 <p className={style.text}>Fundraiser</p>
               </div>
             </div>
           </div>
         </div>
         <div className={style.latest_card}>
-          <p className={style.title1}>New</p>
+          <Link to="/Discover">
+            <p className={style.title1}>New</p>
+          </Link>
           <p className={style.title2}>The latest people who need your help</p>
           <div>
             <div className={style.list_container}>
-              {list.map((item) => (
-                <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
-              ))}
+              {cardHome && cardHome.newCampaign.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
             </div>
           </div>
         </div>
