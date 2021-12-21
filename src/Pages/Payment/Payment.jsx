@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Payment.module.scss";
 import TextField from "@mui/material/TextField";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -11,7 +11,8 @@ import { useState, useRef } from "react";
 import useClipboard from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
-
+import { useDispatch, useSelector } from "react-redux";
+import { bankTransferStart } from "./../../Store/Actions/donationAction/donationAction";
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
   const [values, setValues] = React.useState({
@@ -62,7 +63,7 @@ const Payment = () => {
 
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
-  // eslint-disable-next-line
+
   const [clipboard, copyToClipboard] = useClipboard();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -81,6 +82,12 @@ const Payment = () => {
 
   const validation = values.numberformat !== "" && values.name !== "" && values.cardnumber !== "" && values.expirydate !== "" && values.cvv !== "";
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(bankTransferStart());
+  }, []);
+  const { bankTransfer } = useSelector((state) => state.donationReducer);
+  console.log(bankTransfer);
   return (
     <div className={style.payment}>
       <div>

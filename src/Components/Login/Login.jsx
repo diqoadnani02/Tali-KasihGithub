@@ -1,24 +1,17 @@
-import React from 'react'
-import { Formik } from 'formik'
-import * as yup from 'yup'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from '@mui/material'
-import Google from './google.png'
-// import Paper from '@mui/material/Paper'
-import { logInStart, googleLoginStart } from '../../Store/Actions/authAction/authAction'
-import { useDispatch, useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-
+import React from "react";
+import { Formik } from "formik";
+import * as yup from "yup";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from "@mui/material";
+import Google from "./google.png";
+import { logInStart, googleLoginStart } from "../../Store/Actions/authAction/authAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
-	email: yup
-		.string()
-		.email('enter valid email')
-		.required('required'),
-	password: yup
-		.string()
-		.required('required')
-})
+  email: yup.string().email("enter valid email").required("required"),
+  password: yup.string().required("required"),
+});
 
 export default function Login({handleClose}) {
 	const theme = createTheme({
@@ -30,32 +23,24 @@ export default function Login({handleClose}) {
 		},
 	})
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { token, status, error } = useSelector((state) => state.auth);
 
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
-	const { token, status, error } = useSelector(state => state.auth)
-	console.log(token, status)
-	console.log(error, "error")
-
-
-	return (
-		<Formik
-			validationSchema={schema}
-			onSubmit={(values) => { console.log(values); dispatch(logInStart(values)) }}
-			initialValues={{
-				email: '',
-				password: ''
-			}}
-		>
-			{({
-				handleSubmit,
-				handleChange,
-				values,
-				touched,
-				errors,
-			}) => (
-				<ThemeProvider theme={theme}>
-					{/* <Paper 
+  return (
+    <Formik
+      validationSchema={schema}
+      onSubmit={(values) => {
+        dispatch(logInStart(values));
+      }}
+      initialValues={{
+        email: "",
+        password: "",
+      }}
+    >
+      {({ handleSubmit, handleChange, values, touched, errors }) => (
+        <ThemeProvider theme={theme}>
+          {/* <Paper 
             elevation={0} 
             variant="outlined" 
             sx={{
@@ -67,7 +52,6 @@ export default function Login({handleClose}) {
                 
             }}
             > */}
-
 					<Grid item xs={8}>
 						<Typography sx={{
 							fontStyle: 'normal',
@@ -140,10 +124,9 @@ export default function Login({handleClose}) {
 					<Divider variant="middle" />
 					<Button onClick={() => dispatch(googleLoginStart())} sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
 
-					{/* </Paper> */}
-				</ThemeProvider>)}
-		</Formik>
-	)
+          {/* </Paper> */}
+        </ThemeProvider>
+      )}
+    </Formik>
+  );
 }
-
-

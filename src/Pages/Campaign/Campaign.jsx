@@ -26,12 +26,6 @@ export default function Campaign() {
     },
   }));
 
-  
-
-  
-
-  
-
   return (
     <>
       {/* Top Campaign Components*/}

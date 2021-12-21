@@ -52,9 +52,7 @@ const Trending = () => {
           </div>
         </div>
         <div className={style.latest_card}>
-          <Link to="/Discover">
-            <p className={style.title1}>New</p>
-          </Link>
+          <p className={style.title1}>New</p>
           <p className={style.title2}>The latest people who need your help</p>
           <div>
             <div className={style.list_container}>

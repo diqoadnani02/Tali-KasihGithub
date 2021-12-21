@@ -2,12 +2,10 @@ import styles from "./TopFundraiser.module.scss";
 import image from "../assets/img.png";
 import fundraiser from "../assets/fundraiser.png";
 import ModalUpdateCampaign from "../Modal/UpdateCampaign";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
+import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
@@ -21,8 +19,7 @@ export default function TopFundraiser() {
     marginBottom: 20,
     marginRight: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      backgroundColor: theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
@@ -48,13 +45,7 @@ export default function TopFundraiser() {
           <div className={styles.settingFundraiser}>
             <h1>Aid for necessary items to help our country</h1>
             <div className={styles.dropdown}>
-              <Button
-                aria-controls="basic-menu"
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-                sx={{ color: "black" }}
-              >
+              <Button aria-controls="basic-menu" aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick} sx={{ color: "black" }}>
                 <SettingsIcon />
                 <ArrowDropDownIcon />
               </Button>
