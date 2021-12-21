@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from "./Header.module.scss";
 import Logo from "./assets/Logo.png";
 import { useState, useRef, useEffect } from "react";
@@ -16,7 +17,7 @@ export default function Header({ inputSearch, setInputSearch }) {
     if (Token) {
       dispatch(ProfileAction());
     }
-  }, []);
+  }, [Token, dispatch]);
 
   const profile = useSelector((state) => state.profileReducer.profile);
   console.log(profile, "myProfile");
@@ -61,10 +62,15 @@ export default function Header({ inputSearch, setInputSearch }) {
   const [openRegister, setOpenRegister] = useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
+  
+
+  
   return (
     <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
+        <Link to="/">
         <img src={Logo} alt="TaliKasih" />
+        </Link>
       </div>
       {!Token ? (
         <div className={styles.barBeforeAuth}>
@@ -90,7 +96,7 @@ export default function Header({ inputSearch, setInputSearch }) {
             </Link>
             <Modal open={openLogin} onClose={handleClose}>
               <Box sx={styleLogin}>
-                <Login />
+                <Login handleClose={handleClose} />
               </Box>
             </Modal>
             <span></span>

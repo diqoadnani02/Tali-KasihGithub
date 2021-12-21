@@ -10,7 +10,7 @@ import Card from '../Card/Card'
 // import data from '../Card/data'
 import {getMycampaignStart} from '../../Store/Actions/mycampaignAction/mycampaignAction'
 import {useDispatch, useSelector} from 'react-redux' 
-import data from '../Card/data'
+// import data from '../Card/data'
 
 const MyCampaign = () => {
 	// const [list, setList] = React.useState([]);

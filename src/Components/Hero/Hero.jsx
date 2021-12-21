@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 import HeroImage2 from './Assets/HeroImage2.png'
 import HeroImage3 from './Assets/HeroImage3.png'
 import Carousel from 'react-material-ui-carousel'
+import {Link} from 'react-router-dom'
 
 export default function Hero() {
     const font = "'Nunito', sans-serif"
@@ -121,6 +122,7 @@ export default function Hero() {
                             >
                             DONATE
                             </Button>
+                            <Link to='/create'>
                             <Button
                                 variant="contained"
                                 sx={{
@@ -136,6 +138,7 @@ export default function Hero() {
                                 >
                                     CREATE CAMPAIGN
                                 </Button>
+                                </Link>
                         </Grid>
                     </Box>
                 </Grid>

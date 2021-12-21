@@ -3,8 +3,7 @@ import ReadMore from "./ReadMore/ReadMore";
 import CampaignUpdate from "./CampaignUpdate/CampaignUpdate";
 import Donation from "./Donation/Donation";
 import Comment from "./Comment/Comment";
-import Card from "../Card/Card";
-import data from "../Card/data";
+import Card from "../../Components/Card/Card";
 import Image from "./assets/img.png";
 import Profile from "./assets/profile.png";
 import { useState, useEffect } from "react";
@@ -27,15 +26,11 @@ export default function Campaign() {
     },
   }));
 
-  const [list, setList] = useState([]);
+  
 
-  useEffect(() => {
-    const getData = () => {
-      setList(data.campaign);
-    };
+  
 
-    getData();
-  }, []);
+  
 
   return (
     <>
@@ -101,9 +96,9 @@ export default function Campaign() {
       <div className={styles.linkCardBottom}>
         <Link to="#">Related campaign</Link>
         <div className={styles.cardBottom}>
-          {list.map((item) => (
+          {/* {list.map((item) => (
             <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
-          ))}
+          ))} */}
         </div>
       </div>
     </>

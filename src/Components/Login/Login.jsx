@@ -20,7 +20,7 @@ const schema = yup.object({
 		.required('required')
 })
 
-export default function Login() {
+export default function Login({handleClose}) {
 	const theme = createTheme({
 		typography: {
 			fontFamily: [
@@ -119,7 +119,9 @@ export default function Login() {
 							error={touched.password && Boolean(errors.password)}
 							helperText={touched.password && errors.password}
 						/>
-						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color="" onClick={() => navigate('/forget-password')} sx={{cursor: 'pointer'}}><Link href="#">Forget Password?</Link></Typography>
+						<Typography variant="caption" display="block" gutterBottom textDecoration="underlined" color="" ><Link onClick={() => {
+							navigate('/forget-password'); handleClose();
+						} } sx={{cursor: 'pointer'}}>Forget Password?</Link></Typography>
 						{error !== null && <Alert severity="error"><AlertTitle>Error</AlertTitle><strong>EMAIL AND/OR PASSWORD INVALID</strong></Alert>}
 						<Button
 							type="submit"
@@ -136,7 +138,7 @@ export default function Login() {
 						</Button>
 					</Box>
 					<Divider variant="middle" />
-					<Button onClick={() => dispatch(googleLoginStart(values))} sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
+					<Button onClick={() => dispatch(googleLoginStart())} sx={{ mt: 3, mb: 2 }} fullWidth variant="Contained" startIcon={<img src={Google} alt="Google" />}>Connect With Google</Button>
 
 					{/* </Paper> */}
 				</ThemeProvider>)}

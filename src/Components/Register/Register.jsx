@@ -7,8 +7,7 @@ import { registerStart } from '../../Store/Actions/authAction/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 // import Paper from '@mui/material/Paper'
 import Google from './google.png'
-// import AlertMessage from '../AlertMessage/AlertMessage'
-
+import {useNavigate} from 'react-router-dom'
 
 const schema = yup.object({
     name: yup
