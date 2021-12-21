@@ -3,13 +3,13 @@ import Routers from "./Routes/Routes";
 import Footer from "./Components/Footer/Footer";
 import "./App.css";
 import { useState } from "react";
-
+import SearchDiscover from "./Pages/Discover/SearchDiscover";
 function App() {
   const [inputSearch, setInputSearch] = useState("");
   return (
     <>
       <Header inputSearch={inputSearch} setInputSearch={setInputSearch} />
-      <Routers inputSearch={inputSearch} />
+      {inputSearch == "" ? <Routers inputSearch={inputSearch} /> : <SearchDiscover inputSearch={inputSearch} />}
       <Footer />
     </>
   );

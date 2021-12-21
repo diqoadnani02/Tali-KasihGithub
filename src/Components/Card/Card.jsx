@@ -7,7 +7,7 @@ const Card = ({ image, category, title, author, raised, goal }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
-  });
+  }, []);
   const percentage = (raised / goal) * 100;
   return (
     <div className={styles.Container}>

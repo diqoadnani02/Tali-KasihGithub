@@ -52,7 +52,6 @@ export default function Header({ inputSearch, setInputSearch }) {
   };
 
   const location = useLocation();
-  console.log(inputSearch);
   const Home = window.location.pathname === "/";
 
   const [openLogin, setOpenLogin] = useState();
@@ -64,7 +63,9 @@ export default function Header({ inputSearch, setInputSearch }) {
   return (
     <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
-        <img src={Logo} alt="TaliKasih" />
+        <Link to="/">
+          <img src={Logo} alt="TaliKasih" />
+        </Link>
       </div>
       {!Token ? (
         <div className={styles.barBeforeAuth}>

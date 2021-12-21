@@ -15,14 +15,16 @@ const DiscoverCategory = () => {
   const dispatch = useDispatch();
   const { categoryId, sort } = useParams();
   const categoryName = category.find((item) => item.id == categoryId);
-  const [sorting, setSorting] = useState("Newest");
+  const [page, setPage] = useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
   const navigate = useNavigate();
   const selected = (e) => {
     navigate(`/discover/category/${categoryId}/${e.target.value}`);
   };
   useEffect(() => {
-    dispatch(discoverByCategoryStart({ category: categoryId, sort: sort }));
-    console.log("popular");
+    dispatch(discoverByCategoryStart({ category: categoryId, sort: sort, page: page }));
   }, [sort]);
   const { discoverByCategory } = useSelector((state) => state.discoverReducer);
   return (
@@ -58,7 +60,7 @@ const DiscoverCategory = () => {
         </div>
         <div className={styles.pagination}>
           <Stack spacing={2}>
-            <Pagination count={10} shape="rounded" />
+            <Pagination count={discoverByCategory && discoverByCategory.totalPages} shape="rounded" page={page} onChange={handleChange} />
           </Stack>
         </div>
       </div>

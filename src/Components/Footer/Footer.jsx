@@ -1,6 +1,6 @@
 import styles from "./Footer.module.scss";
 import Logo from "./assets/Logo.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -13,6 +13,9 @@ export default function Footer() {
           <div className={styles.list}>
             <h5>FUNDRAISE FOR</h5>
             <ul>
+              <li>
+                <Link to="/Discover">All Categories</Link>
+              </li>
               <li>
                 <Link to="">Education</Link>
               </li>

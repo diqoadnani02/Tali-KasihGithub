@@ -21,8 +21,8 @@ export const discoverByCategory = async (data) => {
 
 // search
 
-export const discoverBySearch = async (search) => {
-  const response = await axios.get(`${API_URL}discover/search?search=${search}`);
+export const discoverBySearch = async (data) => {
+  const response = await axios.get(`${API_URL}discover/search?search=${data.inputSearch}&page=${data.page}`);
   console.log(response, "res");
   return response.data;
 };
@@ -62,9 +62,9 @@ export function* getDiscoverByCategory(action) {
 }
 
 //search
-export function* getDiscoverBySearch() {
+export function* getDiscoverBySearch(action) {
   try {
-    const discoverBySearchPage = yield call(discover);
+    const discoverBySearchPage = yield call(discoverBySearch, action.payload);
     yield put({
       type: "GET_DISCOVER_BY_SEARCH_SUCCESS",
       payload: discoverBySearchPage,

@@ -11,8 +11,6 @@ import Fundraiser from "../Pages/Fundraiser/Fundraiser";
 import ForgotPassword from "../Pages/Password/ForgotPassword";
 import ResetPassword from "../Pages/Password/ResetPassword";
 
-
-
 export default function Routers({ inputSearch }) {
   return (
     <>
