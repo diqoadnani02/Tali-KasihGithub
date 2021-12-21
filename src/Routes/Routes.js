@@ -16,7 +16,7 @@ export default function Routers({ inputSearch }) {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/campaign" element={<Campaign />} />
+        <Route exact path="/campaign/:category/:id" element={<Campaign />} />
         <Route exact path="/fundraiser" element={<Fundraiser />} />
         <Route path="/campaign/donate" element={<Payment />} />
         <Route exact path="/create" element={<CampaignCreation />} />

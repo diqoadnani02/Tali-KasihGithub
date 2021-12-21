@@ -11,7 +11,7 @@ import { discoverByCategoryStart } from "./../../Store/Actions/discoverAction/di
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { category } from "./Discover";
 
-const DiscoverCategory = () => {
+const DiscoverCategory = (id) => {
   const dispatch = useDispatch();
   const { categoryId, sort } = useParams();
   const categoryName = category.find((item) => item.id == categoryId);
@@ -31,8 +31,13 @@ const DiscoverCategory = () => {
     <div className={styles.discover_category}>
       <div className={styles.main_category}>
         <div className={styles.detail_category}>
-          <button className={styles.button_category}>{categoryName.name}</button>
-          <h1 className={styles.title_category}>{discoverByCategory && discoverByCategory.campaigns[0].category.quotes}</h1>
+          <button className={styles.button_category}>
+            {categoryName.name}
+          </button>
+          <h1 className={styles.title_category}>
+            {discoverByCategory &&
+              discoverByCategory.campaigns[0].category.quotes}
+          </h1>
           <Link to="/discover">
             <div className={styles.icons_category}>
               <KeyboardBackspaceIcon />
@@ -41,12 +46,24 @@ const DiscoverCategory = () => {
           </Link>
         </div>
         <div className={styles.main_pict}>
-          <img src={discoverByCategory && discoverByCategory.campaigns[0].category.categoryImage} alt="main" className={styles.img_category} />
+          <img
+            src={
+              discoverByCategory &&
+              discoverByCategory.campaigns[0].category.categoryImage
+            }
+            alt="main"
+            className={styles.img_category}
+          />
         </div>
       </div>
       <div className={styles.sorting}>
         <p className={styles.text_category}>Sort</p>
-        <select name="sort" id="sort" className={styles.sort} onChange={(e) => selected(e)}>
+        <select
+          name="sort"
+          id="sort"
+          className={styles.sort}
+          onChange={(e) => selected(e)}
+        >
           <option value="Newest">Newest</option>
           <option value="Most urgent">Most Urgent</option>
           <option value="Popular">Popular</option>
@@ -55,9 +72,22 @@ const DiscoverCategory = () => {
         <SortIcon />
       </div>
       <div>
-        <div className={styles.component_card}>
-          {discoverByCategory && discoverByCategory.campaigns.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-        </div>
+        <Link to={`/campaign/${category}/${id}`}>
+          <div className={styles.component_card}>
+            {discoverByCategory &&
+              discoverByCategory.campaigns.map((item) => (
+                <Card
+                  id={item.id}
+                  image={item.image}
+                  category={item.category.category}
+                  title={item.title}
+                  author={item.user.name}
+                  raised={item.collected}
+                  goal={item.goal}
+                />
+              ))}
+          </div>
+        </Link>
         <div className={styles.pagination}>
           <Stack spacing={2}>
             <Pagination count={discoverByCategory && discoverByCategory.totalPages} shape="rounded" page={page} onChange={handleChange} />

@@ -35,46 +35,52 @@ const Discover = () => {
   const { discover } = useSelector((state) => state.discoverReducer);
   console.log(discover);
   return (
-    <div className={styles.discover}>
-      <div>
-        <h3 className={styles.title}>Find causes you truly care about</h3>
-      </div>
-      {/* Button Category */}
-      <div className={styles.button_card}>
-        {category.map((data) => (
-          <button
-            className={styles.button}
-            onClick={() => {
-              navigate(`/discover/category/${data.id}/latest`);
-            }}
-          >
-            <img src={data.icon} alt={data.name} />
-            <p className={styles.button_title}>{data.name}</p>
-          </button>
-        ))}
-      </div>
-      {/* Card Newest */}
-      <div>
-        <h4 className={styles.title1}>Newest</h4>
-      </div>
-      <div className={styles.component_card}>
-        {discover && discover.dataNewest.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-      </div>
-      {/* Card Most Urgent */}
-      <div>
-        <h4 className={styles.title2}>Most Urgent</h4>
-      </div>
-      <div className={styles.component_card}>
-        {discover && discover.dataUrgent.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-      </div>
-      {/* Card Gain Momentum */}
-      <div>
-        <h4 className={styles.title2}>Gain Momentum</h4>
-      </div>
-      <div className={styles.component_card2}>
-        {discover && discover.gainedMomentum.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-      </div>
-    </div>
+    <>
+      {inputSearch === "" ? (
+        <div className={styles.discover}>
+          <div>
+            <h3 className={styles.title}>Find causes you truly care about</h3>
+          </div>
+          {/* Button Category */}
+          <div className={styles.button_card}>
+            {category.map((data) => (
+              <button
+                className={styles.button}
+                onClick={() => {
+                  navigate(`/discover/category/${data.id}/latest`);
+                }}
+              >
+                <img src={data.icon} alt={data.name} />
+                <p className={styles.button_title}>{data.name}</p>
+              </button>
+            ))}
+          </div>
+          {/* Card Newest */}
+          <div>
+            <h4 className={styles.title1}>Newest</h4>
+          </div>
+          <div className={styles.component_card}>
+            {discover && discover.dataNewest.map((item) => <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
+          </div>
+          {/* Card Most Urgent */}
+          <div>
+            <h4 className={styles.title2}>Most Urgent</h4>
+          </div>
+          <div className={styles.component_card}>
+            {discover && discover.dataUrgent.map((item) => <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
+          </div>
+          {/* Card Gain Momentum */}
+          <div>
+            <h4 className={styles.title2}>Gain Momentum</h4>
+          </div>
+          <div className={styles.component_card2}>
+            {discover && discover.gainedMomentum.map((item) => <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
+          </div>
+        </div>
+      ) : (
+        <SearchDiscover inputSearch={inputSearch} />
+      )}
+    </>
   );
 };
 

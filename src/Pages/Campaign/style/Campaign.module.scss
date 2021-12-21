@@ -18,6 +18,15 @@
       border-radius: 4px 4px 0px 0px;
     }
   }
+  .setting {
+    display: flex;
+
+    .dropdownCampaign {
+      position: relative;
+      left: 890px;
+      top: 42px;
+    }
+  }
   .cardCampaign {
     margin-top: 85px;
     padding-left: 20px;
@@ -32,6 +41,7 @@
       color: #a43f3c;
       padding: 10px 0;
     }
+
     p {
       padding-bottom: 10px;
       color: #9f9f9f;
@@ -55,10 +65,12 @@
         h4 {
           padding: 0 10px;
         }
-
-        p {
-          padding-left: 10px;
-          color: #9f9f9f;
+        a {
+          text-decoration: none;
+          p {
+            padding-left: 10px;
+            color: #9f9f9f;
+          }
         }
       }
     }

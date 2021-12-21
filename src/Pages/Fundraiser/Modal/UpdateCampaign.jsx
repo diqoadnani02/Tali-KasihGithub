@@ -12,17 +12,30 @@ import { BiLinkAlt } from "react-icons/bi";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import FilledInput from "@mui/material/FilledInput";
+import { useDispatch } from "react-redux";
+import {updateCampaignAction} from "../../../Store/Actions/Campaign/campaign";
 
 export default function ModalUpdateCampaign(props) {
-  const [Selector, setSelector] = useState(false);
+  const dispatch = useDispatch();
+  const [inputUpdate, setInputUpdate] = useState({
+    update:"",
+    amount:"",
 
-  const [values, setValues] = useState({
-    amount: "",
-  });
+  })
+  console.log("inputUpdate", inputUpdate);
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  const changeUpdate = (e) => {
+    setInputUpdate({
+      ...inputUpdate,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const submitUpdate = () => {
+    dispatch(updateCampaignAction(inputUpdate));
+  };
+
+  const [Selector, setSelector] = useState(false);
 
   if (!props.show) {
     return null;
@@ -63,9 +76,10 @@ export default function ModalUpdateCampaign(props) {
                       Amount*
                     </InputLabel>
                     <FilledInput
+                      name="amount"
                       id="filled-adornment-amount"
-                      value={values.amount}
-                      onChange={handleChange("amount")}
+                      value={inputUpdate.amount}
+                      onChange={(e) => changeUpdate(e)}
                     />
                   </FormControl>
                   <h4>
@@ -126,16 +140,17 @@ export default function ModalUpdateCampaign(props) {
                 </div>
               </div>
               <textarea
-                name=""
+                name="update"
                 id=""
                 cols="30"
                 rows="10"
                 placeholder="Tell your story..."
+                onChange={(e) => changeUpdate(e)}
               ></textarea>
             </div>
           </div>
           <div className={styles.modalButton}>
-            <button>SUBMIT</button>
+            <button onClick={submitUpdate} >SUBMIT</button>
           </div>
         </div>
       </div>

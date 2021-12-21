@@ -1,70 +1,74 @@
 .donationCampaign {
-    font-family: Nunito;
-    margin: 72px 122px;
-    border: 1px solid #e1e0e0;
-    box-sizing: border-box;
-    border-radius: 4px;
-  
-    .donation {
-      h3 {
-        padding: 20px 20px;
-      }
+  font-family: Nunito;
+  margin: 72px 122px;
+  border: 1px solid #e1e0e0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  .donation {
+    h3 {
+      padding: 20px 20px;
     }
-  
-    .containerAllCards {
-      display: flex;
-      .containerCards {
-        width: 600px;
-        height: 245px;
-        border: 2px solid #f4f4f4;
-        box-sizing: border-box;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-        margin: 20px 20px;
-        .cardDonation {
-          display: flex;
-          .cards {
-            margin: 20px 20px;
+  }
+
+  .containerAllCards {
+    display: flex;
+    flex-direction:column;
+    .containerCards {
+      width: 600px;
+      height: 245px;
+      border: 2px solid #f4f4f4;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      margin: 20px 20px;
+      .cardDonation {
+        display: flex;
+        .cards {
+          margin: 20px 20px;
+          img {
+            width: 72px;
+            height: 72px;
           }
-          .cardsTitle {
-            padding: 20px 0;
-            h4 {
-              color: #1d94a8;
-              padding-bottom: 8px;
-  
-              p {
-                font-weight: bold;
-                font-size: 14px;
-              }
+        }
+        .cardsTitle {
+          padding: 20px 0;
+          h4 {
+            color: #1d94a8;
+            padding-bottom: 8px;
+
+            p {
+              font-weight: bold;
+              font-size: 14px;
             }
           }
         }
-        .paragraphDonation {
-          margin-left: 20px;
-          margin-right: 20px;
-        }
       }
-    }
-    .showButton {
-      padding: 50px 530px;
-      button {
-        width: 208px;
-        height: 44px;
-        background: #ffffff;
-        border: 1px solid #1d94a8;
-        box-sizing: border-box;
-        border-radius: 3px;
-        color: #1d94a8;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
-        letter-spacing: 1px;
-      }
-  
-      button:hover {
-        background: #1d94a8;
-        color: #ffffff;
+      .paragraphDonation {
+        margin-left: 20px;
+        margin-right: 20px;
       }
     }
   }
-  
+  .showButton {
+    padding: 50px 530px;
+    button {
+      width: 208px;
+      height: 44px;
+      background: #ffffff;
+      border: 1px solid #1d94a8;
+      box-sizing: border-box;
+      border-radius: 3px;
+      color: #1d94a8;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: #1d94a8;
+      color: #ffffff;
+    }
+  }
+}
