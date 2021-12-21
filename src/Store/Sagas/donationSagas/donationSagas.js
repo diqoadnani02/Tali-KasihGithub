@@ -2,7 +2,7 @@ import axios from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import types from "../../Actions/donationAction/donationActionTypes";
 
-const bankTransfer = async (data, campaignId) => {
+const bankTransfer = async (campaignId, data) => {
   const response = await axios.post(
     `https://api-talikasih.herokuapp.com/charge/${campaignId}`,
     {
@@ -74,7 +74,7 @@ const donateStatus = async () => {
 
 export function* postBankTransfer(action) {
   try {
-    const transferBank = yield call(bankTransfer, action.payload);
+    const transferBank = yield call(bankTransfer, action.campaignId, action.payload);
     console.log(transferBank, "transferBank");
     yield put({
       type: "BANK_TRANSFER_DONATE_SUCCESS",
