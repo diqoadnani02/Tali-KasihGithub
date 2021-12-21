@@ -9,7 +9,6 @@ import {
 } from '@mui/material'
 import {useDispatch,useSelector} from 'react-redux'
 import { resetPasswordStart } from '../../Store/Actions/authAction/authAction'
-import {ProfileAction} from '../../Store/Actions/profile'
 import Redirect from '../../Components/Redirect'
 import {useParams} from 'react-router-dom'
 
@@ -18,16 +17,9 @@ import {useParams} from 'react-router-dom'
 export default function ResetPassword() {
     const [password,setPassword] = React.useState("")
     const [confirmPassword, setConfirmPassword] = React.useState("")
-const Token = localStorage.getItem("token");
-const {profile} = useSelector((state) => state.profileReducer.profile)
 const {message} = useSelector((state) => state.auth)
 const dispatch = useDispatch()
 
-React.useEffect(() => {
-    if (Token) {
-        dispatch(ProfileAction());
-    }
-}, [Token, dispatch])
 
 const {token} = useParams()
 
@@ -72,32 +64,6 @@ const handleSubmit = () => {
                     </Typography>
                 </Grid>
         <Box component="form" sx={{ mt: 2 }}>
-            <Grid
-                container
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-evenly'
-                }}
-            >
-                <TextField
-                    disabled
-                    id="name"
-                    label="Name"
-                    values={`${profile && profile.name}`}
-                    variant="standard"
-                    sx={{ width: '384px' }}
-                />
-                <TextField
-                    disabled
-                    id="email"
-                    label="Email"
-                    values={`${profile && profile.email}`}
-                    variant="standard"
-                    sx={{ width: '384px' }}
-                />
-            </Grid>
             <Grid
                         container
                         sx={{
