@@ -9,7 +9,7 @@ import {
 } from "../../../Constants/types";
 
 const initialState = {
-  campaign: [],
+  detailCampaign: [],
   loading: false,
   error: null,
 };
@@ -32,14 +32,14 @@ const campaignReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        campaign: payload,
+        detailCampaign: payload,
       };
     case GET_DETAIL_CAMPAIGN_FAIL:
       return {
         ...state,
         loading: false,
         error: error,
-        campaign: [],
+        detailCampaign: [],
       };
     case CREATE_CAMPAIGN_BEGIN:
       return {
@@ -52,7 +52,7 @@ const campaignReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
-        campaign: [],
+        detailCampaign: [],
       };
     case UPDATE_CAMPAIGN_BEGIN:
       return {
@@ -65,7 +65,7 @@ const campaignReducer = (state = initialState, action) => {
         ...state,
         loading: true,
         error: null,
-        campaign: [],
+        detailCampaign: [],
       };
   }
 };

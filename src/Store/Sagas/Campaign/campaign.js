@@ -86,8 +86,8 @@ function* postUpdateCampaign(actions) {
   }
 }
 
-function* addShareCampaign(action) {
-  const { id } = action;
+function* addShareCampaign(actions) {
+  const { id } = actions;
   try {
     const res = yield axios.patch(`${BASE_URL}discover/count${id}`, {
       headers: { access_token: localStorage.getItem("token") },
@@ -97,14 +97,20 @@ function* addShareCampaign(action) {
       type: SHARE_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
+    const resShareCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    console.log(res);
+    yield put({
+      type: GET_DETAIL_CAMPAIGN_SUCCESS,
+      payload: resShareCampaign.data.data,
+    });
   } catch (err) {
     console.log(err);
     yield put({ type: SHARE_CAMPAIGN_FAIL, error: err });
   }
 }
 
-function* editCampaign(action) {
-  const { id, body } = action;
+function* editCampaign(actions) {
+  const { id, body } = actions;
   try {
     const res = yield axios.patch(`${BASE_URL}discover/edit/${id}`, body, {
       headers: { access_token: localStorage.getItem("token") },
@@ -113,6 +119,12 @@ function* editCampaign(action) {
     yield put({
       type: EDIT_CAMPAIGN_SUCCESS,
       payload: res.data.data,
+    });
+    const resEditCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    console.log(res);
+    yield put({
+      type: GET_DETAIL_CAMPAIGN_SUCCESS,
+      payload: resEditCampaign.data.data,
     });
   } catch (err) {
     console.log(err);
@@ -125,17 +137,17 @@ export function* watchGetDetailCampaign() {
 }
 
 export function* watchPostCreateCampaign() {
-  yield takeEvery(CREATE_CAMPAIGN_BEGIN, postCreateCampaign());
+  yield takeEvery(CREATE_CAMPAIGN_BEGIN, postCreateCampaign);
 }
 
 export function* watchPostUpdateCampaign() {
-  yield takeEvery(UPDATE_CAMPAIGN_BEGIN, postUpdateCampaign());
+  yield takeEvery(UPDATE_CAMPAIGN_BEGIN, postUpdateCampaign);
 }
 
 export function* watchAddShareCampaign() {
-  yield takeEvery(SHARE_CAMPAIGN_BEGIN, addShareCampaign());
+  yield takeEvery(SHARE_CAMPAIGN_BEGIN, addShareCampaign);
 }
 
 export function* watchEditCampaign() {
-  yield takeEvery(EDIT_CAMPAIGN_BEGIN, editCampaign());
+  yield takeEvery(EDIT_CAMPAIGN_BEGIN, editCampaign);
 }

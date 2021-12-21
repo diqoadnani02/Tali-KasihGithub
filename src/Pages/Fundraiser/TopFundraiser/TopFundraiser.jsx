@@ -13,6 +13,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 export default function TopFundraiser() {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -68,7 +69,9 @@ export default function TopFundraiser() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
+                <Link to="/create" style={{textDecoration:"none", color:"black"}}>
+                  <MenuItem onClick={handleClose}>Edit</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
                 <MenuItem onClick={handleClose}>Delete</MenuItem>
               </Menu>
@@ -110,7 +113,9 @@ export default function TopFundraiser() {
             </div>
           </div>
           <div className={styles.buttonCard}>
-            <button onClick={() => setShare(true)} className={styles.buttonUp}>SHARE</button>
+            <button onClick={() => setShare(true)} className={styles.buttonUp}>
+              SHARE
+            </button>
             <Share onClose={() => setShare(false)} share={share} />
             <button onClick={() => setShow(true)} className={styles.buttonDown}>
               CAMPAIGN UPDATE

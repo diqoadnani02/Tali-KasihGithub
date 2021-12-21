@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import {useDispatch, useSelector} from 'react-redux'
 import {ProfileAction} from '../../Store/Actions/profile'
+import {useNavigate} from 'react-router-dom'
 
 export default function ProfileCard() {
 
@@ -19,6 +20,7 @@ export default function ProfileCard() {
     window.location.href = "/";
   };
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     dispatch(ProfileAction())
@@ -81,7 +83,9 @@ export default function ProfileCard() {
           sx={{ mt: 2, display: "flex", justifyContent: "center" }}
         >
           <Link
-            to='/edit-profile'
+            onClick={() => {
+              navigate('/edit-profile')
+            }}
             sx={{
               fontFamily: "nunito",
               fontStyle: "normal",
@@ -90,6 +94,7 @@ export default function ProfileCard() {
               lineHeight: "19px",
               color: "#1D94A8",
               textDecoration: "underline",
+              cursor: 'pointer'
             }}
           >
             Edit Profile
@@ -109,14 +114,16 @@ export default function ProfileCard() {
               disabled
               id="name"
               label="Name"
-              defaultValue={profile && profile.name}
+              value={`${profile && profile.name}`}
+              sx={{width: "384px"}}
               variant="standard"
             />
             <TextField
               disabled
               id="email"
               label="Email"
-              defaultValue={profile && profile.email}
+              value={`${profile && profile.email}`}
+              sx={{width: "384px"}}
               variant="standard"
             />
           </Grid>
@@ -124,16 +131,19 @@ export default function ProfileCard() {
             sx={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              padding: "10px 140px",
+              justifyContent: "flex-start",
+              pl: 7,
+              pt: 1,
+              m: 1,
+  
             }}
           >
             <TextField
               disabled
               id="bankInfo"
               label="Bank Info"
-              defaultValue={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
+              sx={{width: "384px"}}
+              value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
               variant="standard"
             />
           </Grid>

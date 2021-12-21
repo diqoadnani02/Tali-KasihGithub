@@ -14,6 +14,7 @@ import { BiLinkAlt } from "react-icons/bi";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+import dayjs from "dayjs";
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -32,6 +33,7 @@ export default function CampaignCreation() {
     categoryId: "",
     share: "",
   });
+
   console.log("inputCampaign", inputCampaign);
   const changeInput = (e) => {
     setInputCampaign({
@@ -56,47 +58,59 @@ export default function CampaignCreation() {
   }
 
   const submitCampaign = () => {
-    dispatch(createCampaignAction(changeInput));
+    dispatch(createCampaignAction(inputCampaign));
+
   };
 
   const [currency, setCurrency] = useState();
   const [value, setValue] = useState(null);
 
-  const handleChange = (event) => {
-    setCurrency(event.target.value);
+  const handleChange = (e) => {
+    setInputCampaign({
+      ...inputCampaign,
+      categoryId: e.target.value,
+    });
   };
 
-  const currencies = [
+  const categories = [
     {
-      value: "Disability",
+      categoryId: "1",
+      value: "1",
       label: "Disability",
     },
     {
-      value: "Medical",
+      categoryId: "2",
+      value: "2",
       label: "Medical",
     },
     {
-      value: "Education",
+      categoryId: "3",
+      value: "3",
       label: "Education",
     },
     {
-      value: "Religious",
+      categoryId: "4",
+      value: "4",
       label: "Religious",
     },
     {
-      value: "Humanity",
+      categoryId: "5",
+      value: "5",
       label: "Humanity",
     },
     {
-      value: "Environment",
+      categoryId: "6",
+      value: "6",
       label: "Environment",
     },
     {
-      value: "Disaster",
+      categoryId: "7",
+      value: "7",
       label: "Disaster",
     },
     {
-      value: "Sociopreneur",
+      categoryId: "8",
+      value: "8",
       label: "Sociopreneur",
     },
   ];
@@ -114,18 +128,19 @@ export default function CampaignCreation() {
                 <div className={styles.boxAddImage}>
                   <div className={styles.iconAdd}>
                     <label htmlFor="upload-campaign">
-                        <AddCircleOutlineIcon
-                          sx={{ fontSize: 50, color: "#9f9f9f" }}
-                        />
+                      <AddCircleOutlineIcon
+                        sx={{ fontSize: 50, color: "#9f9f9f" }}
+                      />
                     </label>
                   </div>
-                    <input
-                      style={{ visibility: "hidden" }}
-                      id="upload-campaign"
-                      accept="image/*"
-                      type="file"
-                      onChange={ChangeImageCampaign}
-                    />
+                  <input
+                    style={{ visibility: "hidden" }}
+                    id="upload-campaign"
+                    accept="image/*"
+                    type="file"
+                    name="image"
+                    onChange={ChangeImageCampaign}
+                  />
                   <h2>Add Header Photo</h2>
                 </div>
               </>
@@ -169,9 +184,14 @@ export default function CampaignCreation() {
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="categoryId"
             >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+              {categories.map((inputCampaign) => (
+                <MenuItem
+                  name="categoryId"
+                  key={inputCampaign.categoryId}
+                  value={inputCampaign.categoryId}
+                  onChange={(e) => changeInput(e)}
+                >
+                  {inputCampaign.label}
                 </MenuItem>
               ))}
             </TextField>
@@ -184,19 +204,27 @@ export default function CampaignCreation() {
               placeholder="e.g. 20000000"
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              name="goal"
+              onChange={(e) => changeInput(e)}
             />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
+                name="dueDate"
                 label="Due Date"
                 value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
+                onChange={(e) =>
+                  setInputCampaign({
+                    ...inputCampaign,
+                    dueDate: dayjs(e).format("YYYY/MM/DD"),
+                  })
+                }
                 renderInput={(params) => (
                   <TextField
                     id="standard"
                     variant="standard"
                     placeholder="Select due date"
+                    name="dueDate"
+                    onChange={(e) => changeInput(e)}
                     sx={{
                       border: "none",
                       outline: "none",
@@ -259,17 +287,20 @@ export default function CampaignCreation() {
               </div>
             </div>
             <textarea
-              name=""
+              name="story"
               id=""
               cols="30"
               rows="10"
               placeholder="Tell your story..."
+              onChange={(e) => changeInput(e)}
             ></textarea>
           </div>
         </div>
       </div>
       <div className={styles.campaignButton}>
-        <button className={styles.button}>CREATE CAMPAIGN</button>
+        <button className={styles.button} onClick={submitCampaign}>
+          CREATE CAMPAIGN
+        </button>
       </div>
     </>
   );

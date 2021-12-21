@@ -1,53 +1,91 @@
 import React from "react";
 import SortIcon from "@mui/icons-material/Sort";
 import { useState, useEffect } from "react";
-import data from "../../Components/Card/data";
 import Card from "../../Components/Card/Card";
 import styles from "./DiscoverCategory.module.scss";
-import Main from "./assets/Main.png";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-const DiscoverCategory = () => {
-  const [category, setCategory] = useState([]);
-  useEffect(() => {
-    const getData = () => {
-      setCategory(data.campaign);
-    };
+import { useDispatch, useSelector } from "react-redux";
+import { discoverByCategoryStart } from "./../../Store/Actions/discoverAction/discoverAction";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { category } from "./Discover";
 
-    getData();
-  }, []);
+const DiscoverCategory = (id) => {
+  const dispatch = useDispatch();
+  const { categoryId, sort } = useParams();
+  const categoryName = category.find((item) => item.id == categoryId);
+  const [sorting, setSorting] = useState("Newest");
+  const navigate = useNavigate();
+  const selected = (e) => {
+    navigate(`/discover/category/${categoryId}/${e.target.value}`);
+  };
+  useEffect(() => {
+    dispatch(discoverByCategoryStart({ category: categoryId, sort: sort }));
+    console.log("popular");
+  }, [sort]);
+  const { discoverByCategory } = useSelector((state) => state.discoverReducer);
   return (
     <div className={styles.discover_category}>
       <div className={styles.main_category}>
         <div className={styles.detail_category}>
-          <button className={styles.button_category}>Medical</button>
-          <h1 className={styles.title_category}>Your little kindness is precious</h1>
-          <div className={styles.icons_category}>
-            <KeyboardBackspaceIcon />
-            <p className={styles.text_category}>See all categories</p>
-          </div>
+          <button className={styles.button_category}>
+            {categoryName.name}
+          </button>
+          <h1 className={styles.title_category}>
+            {discoverByCategory &&
+              discoverByCategory.campaigns[0].category.quotes}
+          </h1>
+          <Link to="/discover">
+            <div className={styles.icons_category}>
+              <KeyboardBackspaceIcon />
+              <p className={styles.text_category}>See all categories</p>
+            </div>
+          </Link>
         </div>
         <div className={styles.main_pict}>
-          <img src={Main} alt="main" />
+          <img
+            src={
+              discoverByCategory &&
+              discoverByCategory.campaigns[0].category.categoryImage
+            }
+            alt="main"
+            className={styles.img_category}
+          />
         </div>
       </div>
       <div className={styles.sorting}>
         <p className={styles.text_category}>Sort</p>
-        <select name="sort" id="sort" className={styles.sort}>
-          <option value="newest">Newest</option>
-          <option value="most-urgent">Most Urgent</option>
-          <option value="opel">Popular</option>
-          <option value="less-donation">Less Donation</option>
+        <select
+          name="sort"
+          id="sort"
+          className={styles.sort}
+          onChange={(e) => selected(e)}
+        >
+          <option value="Newest">Newest</option>
+          <option value="Most urgent">Most Urgent</option>
+          <option value="Popular">Popular</option>
+          <option value="Less donation">Less Donation</option>
         </select>
         <SortIcon />
       </div>
       <div>
-        <div className={styles.component_card}>
-          {category.map((item) => (
-            <Card image={item.image} category={item.category} title={item.title} author={item.author} data_funding={item.data_funding} raised={item.raised} goal={item.goal} />
-          ))}
-        </div>
+        <Link to={`/campaign/${category}/${id}`}>
+          <div className={styles.component_card}>
+            {discoverByCategory &&
+              discoverByCategory.campaigns.map((item) => (
+                <Card
+                  id={item.id}
+                  image={item.image}
+                  category={item.category.category}
+                  title={item.title}
+                  author={item.user.name}
+                  raised={item.collected}
+                  goal={item.goal}
+                />
+              ))}
+          </div>
+        </Link>
         <div className={styles.pagination}>
           <Stack spacing={2}>
             <Pagination count={10} shape="rounded" />

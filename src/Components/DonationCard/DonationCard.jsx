@@ -7,7 +7,7 @@ import {
 
 const DonationCard = ({time, title, fund, description}) => {
     return (
-        <Card  sx={{ maxWidth: 415, p: 2, m: 1}}>
+        <Card  sx={{ width: 381.88, p: 2, m: 1}}>
             <CardContent>
                 <Typography sx={{ fontFamily: 'nunito', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '16px', fontSize: '12px', display: 'flex', justifyContent: 'flex-end' }} color="text.secondary" gutterBottom>
                     {time}

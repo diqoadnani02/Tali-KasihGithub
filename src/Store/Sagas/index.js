@@ -4,6 +4,9 @@ import { watchProfile } from "./profile";
 import { watchUpdateProfile } from "./updateProfile";
 import { mydonationSagas } from "./mydonationSagas/mydonationSagas";
 import { mycampaignSagas } from "./mycampaignSagas/mycampaignSagas";
+import { donationSagas } from "./donationSagas/donationSagas";
+import { cardHomeSagas } from "./cardHomeSagas/cardHomeSagas";
+import { discoverSagas } from "./discoverSagas/discoverSagas";
 import { watchGetComment, watchPostComment } from "./Campaign/comment";
 import {
   watchGetDetailCampaign,
@@ -27,6 +30,9 @@ function* rootSaga() {
     watchPostUpdateCampaign(),
     watchAddShareCampaign(),
     watchEditCampaign(),
+    donationSagas(),
+    cardHomeSagas(),
+    discoverSagas(),
   ]);
 }
 

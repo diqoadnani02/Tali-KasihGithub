@@ -4,22 +4,14 @@ import Skeleton from "@mui/material/Skeleton";
 import styles from "./Card.module.scss";
 import { Link } from "react-router-dom";
 
-const Card = ({
-  id,
-  image,
-  category,
-  title,
-  author,
-  data_funding,
-  raised,
-  goal,
-}) => {
+const Card = ({ id, image, category, title, author, raised, goal }) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   });
+  const percentage = (raised / goal) * 100;
   return (
-    <Link to={`/campaign/${id}`}>
+    <Link to={`/campaign/${category}/${id}`}>
       <div className={styles.Container}>
         {loading ? (
           <>
@@ -81,7 +73,7 @@ const Card = ({
         ) : (
           <>
             <div className={styles.image_category}>
-              <img src={image} alt="gambar" />
+              <img src={image} alt="gambar" className={styles.set_image} />
             </div>
             <div className={styles.category}>
               <button className={styles.button_category}>{category}</button>
@@ -93,7 +85,7 @@ const Card = ({
                 <LinearProgress
                   variant="determinate"
                   sx={{ height: "8px" }}
-                  value={data_funding}
+                  value={percentage}
                   className={styles.progress}
                 />
               </div>

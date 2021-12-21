@@ -1,0 +1,7 @@
+const cardHomeActionTypes = {
+  GET_CARD_HOME_START: "GET_CARD_HOME_START",
+  GET_CARD_HOME_SUCCESS: "GET_CARD_HOME_SUCCESS",
+  GET_CARD_HOME_FAILURE: "GET_CARD_HOME_FAILURE",
+};
+
+export default cardHomeActionTypes;

@@ -9,7 +9,7 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { ProfileAction } from "../../Store/Actions/profile";
 
-export default function Header() {
+export default function Header({ inputSearch, setInputSearch }) {
   const Token = localStorage.getItem("token");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,10 +19,10 @@ export default function Header() {
   }, []);
 
   const profile = useSelector((state) => state.profileReducer.profile);
-  console.log(profile, 'myProfile');
+  console.log(profile, "myProfile");
 
   const [search, setSearch] = useState(false);
-  const inputref = useRef();
+  const inputref = useRef(null);
   console.log(inputref.current);
 
   const styleLogin = {
@@ -52,7 +52,7 @@ export default function Header() {
   };
 
   const location = useLocation();
-  console.log(location);
+  console.log(inputSearch);
   const Home = window.location.pathname === "/";
 
   const [openLogin, setOpenLogin] = useState();
@@ -61,7 +61,6 @@ export default function Header() {
   const [openRegister, setOpenRegister] = useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
-
   return (
     <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
@@ -74,6 +73,12 @@ export default function Header() {
             <input
               onFocus={() => setSearch(true)}
               onBlur={() => setSearch(false)}
+              value={inputSearch}
+              onChange={(e) => {
+                e.preventDefault();
+
+                setInputSearch(e.target.value);
+              }}
               className={styles.input}
               placeholder="Search"
             />
@@ -116,6 +121,12 @@ export default function Header() {
             <input
               onFocus={() => setSearch(true)}
               onBlur={() => setSearch(false)}
+              value={inputSearch}
+              onChange={(e) => {
+                e.preventDefault();
+
+                setInputSearch(e.target.value);
+              }}
               className={styles.input}
               placeholder="Search"
               ref={inputref}
@@ -123,7 +134,7 @@ export default function Header() {
           </div>
           <div className={styles.barProfile}>
             <span></span>
-            <Link to="/profile" >Hi, {profile.name} </Link>
+            <Link to="/profile">Hi, {profile.name} </Link>
           </div>
         </div>
       )}
