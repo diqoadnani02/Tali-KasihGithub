@@ -1,8 +1,9 @@
 import types from "./donationActionTypes";
 
-export const bankTransferStart = (data) => ({
+export const bankTransferStart = (campaignId, data) => ({
   type: types.BANK_TRANSFER_DONATE_START,
   payload: data,
+  campaignId,
 });
 
 export const bankTransferSuccess = (data) => ({

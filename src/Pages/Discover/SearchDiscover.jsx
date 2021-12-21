@@ -52,7 +52,7 @@ const SearchDiscover = ({ inputSearch }, id, category ) => {
           </div>
           <div>
             <Stack spacing={2}>
-              <Pagination count={discoverBySearch && discoverBySearch.totalPages} shape="rounded" page={page} onChange={handleChange} />
+              <Pagination count={discoverBySearch && discoverBySearch.totalPages} shape="rounded" page={page} onChange={handleChange} className={style.pagination} />
             </Stack>
           </div>
           <Link to={`/campaign/${category}/${id}`}>
