@@ -77,24 +77,42 @@
 .button_payment {
   display: flex;
   justify-content: space-between;
-  width: 320px;
+  width: 420px;
   margin-top: 15px;
 }
 
 .credit_card {
   background-color: #ffffff;
-  width: 153px;
+  width: 200px;
   height: 87px;
   border: 1px solid #9f9f9f;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  &_active {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 87px;
+  }
 }
 
 .bank_transfer {
   background-color: #ffffff;
-  width: 153px;
+  width: 200px;
   height: 87px;
   border: 1px solid #9f9f9f;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  &_active {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 87px;
+  }
 }
 
 .button_approve {
@@ -104,7 +122,7 @@
 }
 
 .approve {
-  background-color: #9f9f9f;
+  background-color: #a43f3c;
   color: #ffffff;
   width: 208px;
   height: 48px;

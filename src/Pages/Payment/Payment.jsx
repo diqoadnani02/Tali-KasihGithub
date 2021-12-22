@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./Payment.module.scss";
 import TextField from "@mui/material/TextField";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -7,13 +6,15 @@ import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
 import Card from "../../Components/Card/Card";
 import itemDonate from "./assets/itemDonate.png";
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import useClipboard from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { bankTransferStart } from "./../../Store/Actions/donationAction/donationAction";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
   const [values, setValues] = React.useState({
@@ -61,10 +62,14 @@ const Payment = () => {
       return `${setOne}-${setTwo}-${setThree}-${setFour}`;
     }
   };
-
+  const [togglePayment, setTogglePayment] = React.useState("");
+  const handleChangeButton = (event, newTogglePayment) => {
+    if (setTogglePayment !== null) {
+      setTogglePayment(newTogglePayment);
+    }
+  };
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
-
   const [clipboard, copyToClipboard] = useClipboard();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -162,26 +167,22 @@ const Payment = () => {
           </p>
         </div>
         <div className={style.button_payment}>
-          <button
-            className={style.credit_card}
+          <ToggleButton
+            className={togglePayment === "Card" ? style.credit_card_active : style.credit_card}
             onClick={() => {
               setDetailCard(!detailCard);
-              setTransferBank(false);
+              setTogglePayment("Card");
             }}
           >
             <CreditCardIcon sx={{ fontSize: 40 }} />
             <p className={style.text_button}>Credit/Debit Card</p>
-          </button>
-          <button
-            className={style.bank_transfer}
-            onClick={() => {
-              setTransferBank(!transferBank);
-              setDetailCard(false);
-            }}
-          >
-            <AccountBalanceIcon sx={{ fontSize: 40 }} />
-            <p className={style.text_button}>Bank Transfer</p>
-          </button>
+          </ToggleButton>
+          <ToggleButtonGroup>
+            <ToggleButton className={togglePayment === "Bank" ? style.bank_transfer_active : style.bank_transfer} onClick={() => setTogglePayment("Bank")}>
+              <AccountBalanceIcon sx={{ fontSize: 40 }} />
+              <p className={style.text_button}>Bank Transfer</p>
+            </ToggleButton>
+          </ToggleButtonGroup>
         </div>
         {detailCard && (
           <div className={style.form_card}>

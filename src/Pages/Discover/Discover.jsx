@@ -13,7 +13,7 @@ import Sociopreneur from "./assets/Sociopreneur.png";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { discoverStart } from "./../../Store/Actions/discoverAction/discoverAction";
-import SearchDiscover from "./SearchDiscover";
+
 export const category = [
   { id: 1, icon: Disability, name: "Disability" },
   { id: 2, icon: Medical, name: "Medical" },
