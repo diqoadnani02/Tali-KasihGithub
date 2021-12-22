@@ -24,8 +24,6 @@ build:
 
 test: 
   stage: test
-  include:
-  - template: Security/SAST.gitlab-ci.yml
   script: 
     - npm install
     - CI=true npm run test
@@ -36,7 +34,7 @@ deploy:
   script: 
     - npm i -g netlify-cli
     - npx netlify deploy --site https://talikasih.netlify.app/ --auth jqHEeTEH8pwaveuVcYYPB91pkbqHL7LFycw1g4cDfGY --prod
-    dependencies:
+  dependencies:
     - build
   only :
   - default
