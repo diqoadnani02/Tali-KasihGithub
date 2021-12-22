@@ -14,7 +14,7 @@ import { category } from "./Discover";
 const DiscoverCategory = (id) => {
   const dispatch = useDispatch();
   const { categoryId, sort } = useParams();
-  const categoryName = category.find((item) => item.id == categoryId);
+  const categoryName = category.find((item) => item.id === categoryId);
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
     setPage(value);
@@ -25,7 +25,7 @@ const DiscoverCategory = (id) => {
   };
   useEffect(() => {
     dispatch(discoverByCategoryStart({ category: categoryId, sort: sort, page: page }));
-  }, [sort]);
+  }, [sort, categoryId, dispatch, page]);
   const { discoverByCategory } = useSelector((state) => state.discoverReducer);
   return (
     <div className={styles.discover_category}>

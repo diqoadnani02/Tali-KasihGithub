@@ -8,12 +8,11 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { discoverBySearchStart } from "./../../Store/Actions/discoverAction/discoverAction";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { discoverStart } from "./../../Store/Actions/discoverAction/discoverAction";
 
 const SearchDiscover = ({ inputSearch }, id, category ) => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const handleChange = (event, value) => {
+  const handleChange = (value) => {
     setPage(value);
   };
   useEffect(() => {
@@ -57,7 +56,7 @@ const SearchDiscover = ({ inputSearch }, id, category ) => {
           </div>
           <Link to={`/campaign/${category}/${id}`}>
           <div className="Card">
-            {filterAll.map((item) => (
+            {discoverSearch.map((item) => (
               <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />
             ))}
           </div>

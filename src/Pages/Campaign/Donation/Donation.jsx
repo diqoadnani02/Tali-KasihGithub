@@ -1,5 +1,5 @@
 import styles from "./Donation.module.scss";
-import CardProfile from "../assets/donation.png";
+// import CardProfile from "../assets/donation.png";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";

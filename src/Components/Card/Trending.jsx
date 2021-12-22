@@ -6,7 +6,7 @@ import style from "./Trending.module.scss";
 import image1 from "./assets/Rectangle38.png";
 import image2 from "./assets/image1.png";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cardHomeStart } from "../../Store/Actions/cardHomeAction/cardHomeAction";
 const Trending = () => {
@@ -16,6 +16,7 @@ const Trending = () => {
     const getData = () => {};
     dispatch(cardHomeStart());
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { cardHome } = useSelector((state) => state.cardHomeReducer);

@@ -65,6 +65,7 @@ const Payment = () => {
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
 
+  // eslint-disable-next-line no-unused-vars
   const [clipboard, copyToClipboard] = useClipboard();
 
   const [anchorEl, setAnchorEl] = React.useState(null);

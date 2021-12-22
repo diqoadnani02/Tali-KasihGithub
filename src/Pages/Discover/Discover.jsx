@@ -25,12 +25,13 @@ export const category = [
   { id: 8, icon: Sociopreneur, name: "Sociopreneur" },
 ];
 
-const Discover = () => {
+const Discover = ({inputSearch}) => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(discoverStart());
-  }, []);
+  }, [dispatch]);
 
   const { discover } = useSelector((state) => state.discoverReducer);
   console.log(discover);

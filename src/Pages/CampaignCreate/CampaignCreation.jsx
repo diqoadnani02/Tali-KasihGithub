@@ -62,7 +62,9 @@ export default function CampaignCreation() {
 
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [currency, setCurrency] = useState();
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(null);
 
   const handleChange = (e) => {

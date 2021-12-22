@@ -7,6 +7,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 // import {shareCampaignAction} from "../../"
 
 export default function Share(props) {
+  // eslint-disable-next-line no-unused-vars
   const [copySuccess, setCopySuccess] = useState("");
   const textAreaRef = useRef(null);
 

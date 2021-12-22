@@ -1,17 +1,10 @@
 import React from "react";
 import { Paper, Typography, Grid, Button, Box } from "@mui/material";
 import Card from "../Card/Card";
-// import data from '../Card/data'
-<<<<<<< HEAD
 import {getMycampaignStart} from '../../Store/Actions/mycampaignAction/mycampaignAction'
 import {useDispatch, useSelector} from 'react-redux' 
 // import data from '../Card/data'
-=======
-import { getMycampaignStart } from "../../Store/Actions/mycampaignAction/mycampaignAction";
-import { useDispatch, useSelector } from "react-redux";
-import data from "../Card/data";
 import { Link } from "react-router-dom";
->>>>>>> f1991e400b5503d5bb5663b639c47931167b095e
 
 const MyCampaign = (id, category) => {
   // const [list, setList] = React.useState([]);
