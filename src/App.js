@@ -6,7 +6,6 @@ import { useState } from "react";
 import SearchDiscover from "./Pages/Discover/SearchDiscover";
 import { Provider } from "react-redux";
 import store from "./Store";
-
 function App() {
   const [inputSearch, setInputSearch] = useState("");
   return (
