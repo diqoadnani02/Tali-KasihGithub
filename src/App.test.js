@@ -1,13 +1,12 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react';
-import Routes from './Routes/Routes'
+import Login from './Components/Login/Login'
 
 
 
 
-
-test('testing di app lagi', () => {
-  render(<Routes />);
-  const linkElement = screen.getByText(/Donate/i);
+test('renders learn react link', () => {
+  render(<Login />);
+  const linkElement = screen.getByText(/new/i);
   expect(linkElement).toBeInTheDocument();
 });
