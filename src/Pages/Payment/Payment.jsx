@@ -7,9 +7,9 @@ import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
 import Card from "../../Components/Card/Card";
 import itemDonate from "./assets/itemDonate.png";
-import useClipboard from "react-hook-clipboard"
-import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
+// import useClipboard from "react-hook-clipboard"
+// import Popover from "@mui/material/Popover";
+// import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { bankTransferStart } from "./../../Store/Actions/donationAction/donationAction";
@@ -65,19 +65,19 @@ const Payment = () => {
   const copyTotalAmount = useRef();
 
   // eslint-disable-next-line no-unused-vars
-  const [clipboard, copyToClipboard] = useClipboard();
+  // const [clipboard, copyToClipboard] = useClipboard();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const handleClickCopied = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const handleClickCopied = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleCloseCopied = () => {
-    setAnchorEl(null);
-  };
+  // const handleCloseCopied = () => {
+  //   setAnchorEl(null);
+  // };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
   const [detailCard, setDetailCard] = useState(false);
   const [transferBank, setTransferBank] = useState(false);
 
@@ -240,14 +240,11 @@ const Payment = () => {
                 <div className={style.button_copied}>
                   <button
                     className={style.button_styling}
-                    onClick={(e) => {
-                      copyToClipboard(copyAccountNumber.current.innerText);
-                      handleClickCopied(e);
-                    }}
+                    onClick={() => {navigator.clipboard.writeText(this.state.textToCopy)}}
                   >
                     COPY
                   </button>
-                  <Popover
+                  {/* <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
@@ -258,7 +255,7 @@ const Payment = () => {
                     }}
                   >
                     <Typography sx={{ p: 2 }}>Copied</Typography>
-                  </Popover>
+                  </Popover> */}
                 </div>
               </div>
               <div className={style.account}>
@@ -275,14 +272,12 @@ const Payment = () => {
                 <div className={style.button_copied}>
                   <button
                     className={style.button_styling}
-                    onClick={(e) => {
-                      copyToClipboard(copyTotalAmount.current.innerText);
-                      handleClickCopied(e);
-                    }}
+                    onClick={() => {navigator.clipboard.writeText(this.state.textToCopy)}
+                    }
                   >
                     COPY
                   </button>
-                  <Popover
+                  {/* <Popover
                     id={id}
                     open={open}
                     anchorEl={anchorEl}
@@ -293,7 +288,7 @@ const Payment = () => {
                     }}
                   >
                     <Typography sx={{ p: 2 }}>Copied</Typography>
-                  </Popover>
+                  </Popover> */}
                 </div>
               </div>
             </div>
