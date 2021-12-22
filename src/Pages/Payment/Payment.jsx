@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import style from "./Payment.module.scss";
 import TextField from "@mui/material/TextField";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -7,7 +7,6 @@ import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
 import Card from "../../Components/Card/Card";
 import itemDonate from "./assets/itemDonate.png";
-import { useState, useRef } from "react";
 import {useClipboard} from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
