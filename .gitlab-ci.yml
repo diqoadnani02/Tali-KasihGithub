@@ -1,7 +1,5 @@
 image: node:14.18.0
 
-before_script:
-  - apt-get udpate -qq && apt-get install
 
 cache:
   paths: 
@@ -15,7 +13,7 @@ stages:
 build: 
   stage: build
   script:
-    - npm install
+    - yarn install
   artifacts:
     paths:
       - node_modules/
@@ -25,14 +23,14 @@ build:
 test: 
   stage: test
   script: 
-    - npm install
-    - CI=true npm run test
+    - yarn install
+    - CI=true yarn run test
 
 deploy:
   stage: deploy
   image: ruby:latest
   script: 
-    - npm i -g netlify-cli
+    - yarn add -g netlify-cli
     - npx netlify deploy --site https://talikasih.netlify.app/ --auth jqHEeTEH8pwaveuVcYYPB91pkbqHL7LFycw1g4cDfGY --prod
     dependencies:
     - build

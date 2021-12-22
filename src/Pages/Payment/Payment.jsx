@@ -8,7 +8,7 @@ import InputPayment from "../../Components/InputPayment/InputPayment";
 import Card from "../../Components/Card/Card";
 import itemDonate from "./assets/itemDonate.png";
 import { useState, useRef } from "react";
-import useClipboard from "react-hook-clipboard";
+import {useClipboard} from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
