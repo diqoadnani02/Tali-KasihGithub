@@ -32,7 +32,7 @@ deploy:
   script: 
     - yarn add -g netlify-cli
     - npx netlify deploy --site https://talikasih.netlify.app/ --auth jqHEeTEH8pwaveuVcYYPB91pkbqHL7LFycw1g4cDfGY --prod
-    dependencies:
+  dependencies:
     - build
   only :
   - default
