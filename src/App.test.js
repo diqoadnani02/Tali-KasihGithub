@@ -1,12 +1,19 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react';
-import Login from './Components/Login/Login'
+import { render, screen, fireEvent } from '@testing-library/react';
+import App from './App';
 
 
+describe('testing text', () => {
+  test('cek tulisan donate', () => {
+    render(<App />);
+    const txt = screen.getByText("donate")
+    expect(txt).toBeInTheDocument();
+  })
 
-
-test('renders learn react link', () => {
-  render(<Login />);
-  const linkElement = screen.getByText(/new/i);
-  expect(linkElement).toBeInTheDocument();
+  test('cek tulisan campaign', () => {
+    render(<App />);
+    const txt =  screen.getByText(/campaign/i);
+    expect(txt).toBeInTheDocument();
+  })
 });
+
