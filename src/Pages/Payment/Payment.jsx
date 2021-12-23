@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bankTransferStart } from "./../../Store/Actions/donationAction/donationAction";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import { getDetailCampaignAction } from "./../../Store/Actions/Campaign/campaign";
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
   const [values, setValues] = React.useState({
@@ -87,11 +88,14 @@ const Payment = () => {
   const [transferBank, setTransferBank] = useState(false);
 
   const { campaignId } = useParams();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getDetailCampaignAction(campaignId));
+  }, []);
 
   const validation = values.numberformat !== "" && values.name !== "" && values.cardnumber !== "" && values.expirydate !== "" && values.cvv !== "";
 
-  const dispatch = useDispatch();
-  const donation = useSelector((state) => state.donationReducer);
+  const donation = useSelector((state) => state.campaignReducer);
   console.log(donation);
   return (
     <div className={style.payment}>
@@ -149,7 +153,7 @@ const Payment = () => {
             <textarea className={style.text_box} type="text" placeholder="Give them Support!"></textarea>
           </div>
         </div>
-        <Card image={itemDonate} category="Medical" title="Aid for necessary items to help our country" author="Aksi Cepat Tanggap" data_funding={60} raised="IDR 30.000.000" goal="IDR 50.000.000" />
+        <Card id={campaignId} category="Medical" title="Aid for necessary items to help our country" author="Aksi Cepat Tanggap" data_funding={60} raised="IDR 30.000.000" goal="IDR 50.000.000" />
       </div>
 
       <div>

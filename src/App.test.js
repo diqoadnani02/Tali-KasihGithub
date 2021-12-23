@@ -1,8 +1,20 @@
+import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Routes from './Routes/Routes'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+describe('testing text', () => {
+  test('cek tulisan donate', () => {
+    render(<Routes />);
+    const txt = screen.getByText("donate")
+    expect(txt).toBeInTheDocument();
+  })
+
+  test('cek tulisan campaign', () => {
+    render(<Routes />);
+    const txt =  screen.getByText(/campaign/i);
+    expect(txt).toBeInTheDocument();
+  })
 });
+
+

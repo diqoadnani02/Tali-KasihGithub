@@ -11,10 +11,10 @@ import { discoverByCategoryStart } from "./../../Store/Actions/discoverAction/di
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { category } from "./Discover";
 
-const DiscoverCategory = () => {
+const DiscoverCategory = (id) => {
   const dispatch = useDispatch();
   const { categoryId, sort } = useParams();
-  const categoryName = category.find((item) => item.id == categoryId);
+  const categoryName = category.find((item) => item.id === categoryId);
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
     setPage(value);
@@ -25,13 +25,13 @@ const DiscoverCategory = () => {
   };
   useEffect(() => {
     dispatch(discoverByCategoryStart({ category: categoryId, sort: sort, page: page }));
-  }, [sort]);
+  }, [sort, categoryId, dispatch, page]);
   const { discoverByCategory } = useSelector((state) => state.discoverReducer);
   return (
     <div className={styles.discover_category}>
       <div className={styles.main_category}>
         <div className={styles.detail_category}>
-          <button className={styles.button_category}>{categoryName.name}</button>
+          <button className={styles.button_category}>{categoryName?.name}</button>
           <h1 className={styles.title_category}>{discoverByCategory && discoverByCategory.campaigns[0].category.quotes}</h1>
           <Link to="/discover">
             <div className={styles.icons_category}>
@@ -55,9 +55,11 @@ const DiscoverCategory = () => {
         <SortIcon />
       </div>
       <div>
-        <div className={styles.component_card}>
-          {discoverByCategory && discoverByCategory.campaigns.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-        </div>
+        <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none", color: "black" }}>
+          <div className={styles.component_card}>
+            {discoverByCategory && discoverByCategory.campaigns.map((item) => <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
+          </div>
+        </Link>
         <div className={styles.pagination}>
           <Stack spacing={2}>
             <Pagination count={discoverByCategory && discoverByCategory.totalPages} shape="rounded" page={page} onChange={handleChange} />

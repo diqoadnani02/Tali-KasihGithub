@@ -33,20 +33,19 @@ const forgotPassword = async (data) => {
     return response.data
 }
 
-const resetPassword = async (data, token) => {
-    const response = await axios.patch(`https://api-talikasih.herokuapp.com/resetPassword/${token}`, {
-        password: data,
-        confirmPassword: data
+
+const resetPassword = async (data) => {
+    const response = await axios.patch(`https://api-talikasih.herokuapp.com/resetPassword/${data.token}`, {
+        password: data.password,
+        confirmPassword: data.confirmPassword
     });
+    console.log(response.data)
     return response.data
 }
 
-const googleLogin = async (data) => {
-    const response = await axios.post('https://api-talikasih.herokuapp.com/signinGoogle', {
-        email: data.email,
-        password: data.password
-    });
-    return response.data
+const googleLogin = async () => {
+    const response = await axios.post('https://api-talikasih.herokuapp.com/signinGoogle');
+    return response
 }
 
 export function* postLogIn(action) {
@@ -120,8 +119,10 @@ export function* postRegister(action) {
 }
 
 export function* patchResetPassword(action) {
+
     try {
         const user = yield call(resetPassword, action.payload)
+        console.log(action.payload,"action.payload")
         console.log(user, "user")
         yield put ({
             type: 'RESET_PASSWORD_SUCCESS',

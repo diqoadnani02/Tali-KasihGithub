@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header inputSearch={inputSearch} setInputSearch={setInputSearch} />
-      {inputSearch == "" ? <Routers inputSearch={inputSearch} /> : <SearchDiscover inputSearch={inputSearch} />}
+      {inputSearch === "" ? <Routers inputSearch={inputSearch} /> : <SearchDiscover inputSearch={inputSearch} />}
       <Footer />
     </>
   );

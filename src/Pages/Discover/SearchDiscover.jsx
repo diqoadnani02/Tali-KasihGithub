@@ -8,10 +8,11 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { discoverBySearchStart } from "./../../Store/Actions/discoverAction/discoverAction";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-const SearchDiscover = ({ inputSearch }) => {
+
+const SearchDiscover = ({ inputSearch }, id, category) => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const handleChange = (event, value) => {
+  const handleChange = (value) => {
     setPage(value);
   };
   useEffect(() => {
@@ -43,11 +44,13 @@ const SearchDiscover = ({ inputSearch }) => {
               </div>
             </Link>
           </div>
-          <div className={style.card_search}>
-            {discoverSearch.map((item) => (
-              <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />
-            ))}
-          </div>
+          <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none", color: "black" }}>
+            <div className={style.card_search}>
+              {discoverSearch.map((item) => (
+                <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />
+              ))}
+            </div>
+          </Link>
           <div>
             <Stack spacing={2}>
               <Pagination count={discoverBySearch && discoverBySearch.totalPages} shape="rounded" page={page} onChange={handleChange} className={style.pagination} />

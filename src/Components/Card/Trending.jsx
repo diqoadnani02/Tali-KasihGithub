@@ -6,12 +6,12 @@ import style from "./Trending.module.scss";
 import image1 from "./assets/Rectangle38.png";
 import image2 from "./assets/image1.png";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { cardHomeStart } from "../../Store/Actions/cardHomeAction/cardHomeAction";
 const Trending = () => {
   const dispatch = useDispatch();
-
+  const { category, id } = useParams();
   useEffect(() => {
     const getData = () => {};
     dispatch(cardHomeStart());
@@ -55,9 +55,11 @@ const Trending = () => {
           <p className={style.title1}>New</p>
           <p className={style.title2}>The latest people who need your help</p>
           <div>
-            <div className={style.list_container}>
-              {cardHome && cardHome.newCampaign.map((item) => <Card image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
-            </div>
+            <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none", color: "black" }}>
+              <div className={style.list_container}>
+                {cardHome && cardHome.newCampaign.map((item) => <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.collected} goal={item.goal} />)}
+              </div>
+            </Link>
           </div>
         </div>
         <div className={style.section_bottom}>

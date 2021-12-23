@@ -2,7 +2,7 @@ import styles from "./TopFundraiser.module.scss";
 import image from "../assets/img.png";
 import fundraiser from "../assets/fundraiser.png";
 import ModalUpdateCampaign from "../Modal/UpdateCampaign";
-// import { Link } from "react-router-dom";
+import Share from "../Modal/Share";
 import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
@@ -11,6 +11,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 export default function TopFundraiser() {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -37,6 +38,7 @@ export default function TopFundraiser() {
   };
 
   const [show, setShow] = useState(false);
+  const [share, setShare] = useState(false);
 
   return (
     <div>
@@ -58,7 +60,9 @@ export default function TopFundraiser() {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
+                <Link to="/create" style={{textDecoration:"none", color:"black"}}>
+                  <MenuItem onClick={handleClose}>Edit</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
                 <MenuItem onClick={handleClose}>Delete</MenuItem>
               </Menu>
@@ -100,7 +104,10 @@ export default function TopFundraiser() {
             </div>
           </div>
           <div className={styles.buttonCard}>
-            <button className={styles.buttonUp}>SHARE</button>
+            <button onClick={() => setShare(true)} className={styles.buttonUp}>
+              SHARE
+            </button>
+            <Share onClose={() => setShare(false)} share={share} />
             <button onClick={() => setShow(true)} className={styles.buttonDown}>
               CAMPAIGN UPDATE
             </button>

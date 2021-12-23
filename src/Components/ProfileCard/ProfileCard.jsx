@@ -63,8 +63,9 @@ export default function ProfileCard() {
             lineHeight: "19px",
             color: "#A43F3C",
             textDecoration: "underline",
+            cursor: 'pointer'
           }}
-          href="#"
+          to="#"
           onClick={logOut}
         >
           Logout

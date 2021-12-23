@@ -2,13 +2,12 @@ import React from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle } from '@mui/material'
+import { Link, Typography, Grid, TextField, Box, Button, Divider, Alert, AlertTitle, Modal } from '@mui/material'
 import { registerStart } from '../../Store/Actions/authAction/authAction'
 import { useDispatch, useSelector } from 'react-redux'
 // import Paper from '@mui/material/Paper'
 import Google from './google.png'
-// import AlertMessage from '../AlertMessage/AlertMessage'
-
+import Login from "../Login/Login";
 
 const schema = yup.object({
     name: yup
@@ -34,7 +33,7 @@ const schema = yup.object({
 
 
 
-export default function Register() {
+export default function Register(handleCloseRegister) {
     const { user, error } = useSelector(state => state.auth)
     console.log(user, error)
     // const [status, setStatusBase] = React.useState("");
@@ -46,6 +45,23 @@ export default function Register() {
             ].join(','),
         },
     })
+
+    const [openLogin, setOpenLogin] = React.useState();
+    const handleOpen = () => setOpenLogin(true);
+    const handleClose = () => setOpenLogin(false);
+
+    const styleLogin = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: 400,
+        backgroundColor: "#F1EDE4",
+        boxShadow: 24,
+        p: 4,
+        pt: "60px",
+        pb: "100px",
+    };
 
     // const submitRegister = async () => {
     //     setStatusBase({msg: "register successful", key: Math.random() })
@@ -111,8 +127,13 @@ export default function Register() {
                                 textDecoration: 'underline'
                             }}
                         >
-                            Already have an account <Link href="#">Sign in</Link>
+                            Already have an account <Link href="#" onClick={handleOpen} onClose={handleCloseRegister}>Sign in</Link>
                         </Typography>
+                        <Modal open={openLogin} onClose={handleClose}>
+                            <Box sx={styleLogin}>
+                                <Login handleClose={handleClose} />
+                            </Box>
+                        </Modal>
                     </Grid>
                     <Box component="form" onSubmit={handleSubmit}>
                         <TextField
