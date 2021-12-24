@@ -16,13 +16,12 @@ import { useDispatch } from "react-redux";
 import {updateCampaignAction} from "../../../Store/Actions/Campaign/campaign";
 
 export default function ModalUpdateCampaign(props) {
+  const { id } = props
   const dispatch = useDispatch();
   const [inputUpdate, setInputUpdate] = useState({
     update:"",
-    amount:"",
-
+    amount: 0,
   })
-  console.log("inputUpdate", inputUpdate);
 
   const changeUpdate = (e) => {
     setInputUpdate({
@@ -32,9 +31,8 @@ export default function ModalUpdateCampaign(props) {
   };
 
   const submitUpdate = () => {
-    dispatch(updateCampaignAction(inputUpdate));
+    dispatch(updateCampaignAction(id, inputUpdate));
   };
-
   const [Selector, setSelector] = useState(false);
 
   if (!props.show) {

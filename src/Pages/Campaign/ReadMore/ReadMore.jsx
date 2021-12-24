@@ -1,14 +1,28 @@
 import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "../ReadMore/ReadMore.module.scss";
 import storyImage from "../assets/story.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getDetailCampaignAction } from "../../../Store/Actions/Campaign/campaign";
 
 export default function ReadMore() {
+  const { id, categoryId } = useParams();
+  const dispatch = useDispatch();
+  const detailStoryCampaign = useSelector(
+    (state) => state.campaignReducer.detailCampaign
+  );
+  console.log("detailStoryCampaign", detailStoryCampaign);
+  useEffect(() => {
+    dispatch(getDetailCampaignAction(id));
+  }, [dispatch, id, categoryId]);
+
   const ReadMore = ({ children }) => {
     const text = children;
-    const [isReadMore, setIsReadMore] = useState(true);
+    const [isReadMore, setIsReadMore] = useState(false);
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
     };
@@ -17,7 +31,7 @@ export default function ReadMore() {
         {isReadMore ? text.slice(0, 1000) : text}
         {!isReadMore ? <img src={storyImage} alt="" /> : null}
         <Link to="#" onClick={toggleReadMore} className="read-or-hide">
-          {isReadMore ? (
+          {!isReadMore ? (
             <div className={styles.collapsible}>
               Read More
               <div className={styles.expandIcons}>
@@ -42,15 +56,22 @@ export default function ReadMore() {
         <h3>The Story</h3>
 
         <ReadMore>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nunc pellentesque enim ultrices nunc. Pretium massa, vel viverra id mi sed sit. In faucibus leo etiam cras elit malesuada augue. Sagittis quisque non, nullam facilisis.
-          Tempus cras nibh vitae vitae. Risus gravida arcu non a rhoncus suscipit a eu ultrices. Vestibulum, ut cursus pellentesque turpis ipsum arcu congue. Sit arcu, non gravida praesent turpis varius. Phasellus morbi donec pulvinar nisi
-          ac augue at duis dolor. Sed ut hendrerit neque nunc accumsan ac massa. Nullam scelerisque aliquet diam laoreet lorem egestas lacus est sapien. Non blandit egestas tortor pharetra. Ut donec ornare nunc, magna ac scelerisque. At leo
-          eget neque purus tellus placerat id. Lacus, eu non mollis placerat viverra et, id. Facilisi non consectetur aliquet condimentum tempor sapien libero, lacinia. Senectus malesuada ac gravida viverra egestas quam. Lorem et dignissim
-          in dolor. Nec nam aliquam fermentum, imperdiet in dictum morbi odio. Pellentesque eget nunc id mus pretium. Neque lobortis phasellus purus pretium est leo. Morbi porttitor ac morbi sit auctor integer proin consectetur eget.
-          Commodo aliquet aliquam, urna et ut aliquam tellus habitant eu. Sed suscipit quis ut tincidunt. Morbi porttitor ac morbi sit auctor integer proin consectetur eget. Commodo aliquet aliquam, urna et ut aliquam tellus habitant eu.
-          Sed suscipit quis ut tincidunt. Orci in interdum id luctus neque, posuere. Vitae orci molestie volutpat porta elementum elementum metus, pharetra a. Morbi porttitor ac morbi sit auctor integer proin consectetur eget. Commodo
-          aliquet aliquam, urna et ut aliquam tellus habitant eu. Sed suscipit quis ut tincidunt.Morbi porttitor ac morbi sit auctor integer proin consectetur eget. Commodo aliquet aliquam, urna et ut aliquam tellus habitant eu. Sed
-          suscipit quis ut tincidunt. Orci in interdum id luctus neque, posuere. Vitae orci molestie volutpat porta elementum elementum metus, pharetra a.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          viverra turpis quis pellentesque iaculis. Fusce ac mauris ac ex
+          pretium interdum non vel eros. Curabitur in suscipit ante. Maecenas
+          urna enim, ultrices non metus nec, laoreet maximus sem. Quisque
+          maximus ex vel ligula convallis, quis mollis lorem sagittis.
+          Pellentesque laoreet felis non odio rhoncus, at fermentum augue
+          semper. Donec odio mauris, rutrum a eros sit amet, posuere maximus ex.
+          Quisque tristique ullamcorper dolor, nec posuere ligula consequat et.
+          Nulla vitae justo viverra, malesuada mauris id, porta nunc. Vestibulum
+          risus velit, bibendum sed nisl eget, pellentesque maximus diam. Sed
+          varius efficitur magna, at pharetra est sagittis ac. Pellentesque ac
+          ante at tortor bibendum ullamcorper quis nec nulla. Aenean a laoreet
+          dui. Maecenas mollis libero condimentum, aliquam enim consectetur,
+          ullamcorper dui. Pellentesque habitant morbi tristique senectus et
+          netus et malesuada fames ac turpis egestas. Duis ac rutrum nisi, vitae
+          tincidunt mi.
         </ReadMore>
       </div>
     </div>

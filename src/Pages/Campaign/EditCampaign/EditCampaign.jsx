@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CampaignCreation.module.scss";
+import styles from "./EditCampaign.module.scss";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
@@ -16,16 +16,16 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import dayjs from "dayjs";
 
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import {useNavigate} from 'react-router-dom'
-import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { editCampaignAction } from "../../../Store/Actions/Campaign/campaign";
 
-
-export default function CampaignCreation() {
-  const navigate = useNavigate();
+export default function EditCampaign() {
+  const { id, category } = useParams();
   const dispatch = useDispatch();
-  const [inputCampaign, setInputCampaign] = useState({
+  const edit = useSelector((state) => state.campaignReducer.detailCampaign);
+  const [editCampaign, setEditCampaign] = useState({
     image: null,
     title: "",
     story: "",
@@ -34,46 +34,63 @@ export default function CampaignCreation() {
     categoryId: "",
   });
 
-  const changeInput = (e) => {
-    setInputCampaign({
-      ...inputCampaign,
-      [e.target.name]: e.target.value,
+  useEffect(() => {
+    setEditCampaign({
+      image: edit.image,
+      story: edit.story,
+      title: edit.title,
+      goal: edit.goal,
     });
-  };
+  }, [edit]);
 
-  const [imageCampaign, setImageCampaign] = useState();
-  const [isCampaign, setIsCampaign] = useState(false);
-  function ChangeImageCampaign(e) {
+  const [imageEdit, setImageEdit] = useState();
+  const [isEdit, setIsEdit] = useState(false);
+  function ChangeImageEdit(e) {
     if (e.target.files && e.target.files[0]) {
-      setInputCampaign({ ...inputCampaign, image: e.target.files[0] });
+      setEditCampaign({ ...editCampaign, image: e.target.files[0] });
       let reader = new FileReader();
 
       reader.onload = function (e) {
-        setImageCampaign(e.target.result);
-        setIsCampaign(true);
+        setImageEdit(e.target.result);
+        setIsEdit(true);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
   }
 
-  const submitCampaign = () => {
+  const navigate = useNavigate();
+  const submitEdit = () => {
     let form = new FormData();
-    form.append('image', inputCampaign.image)
-    form.append('title', inputCampaign.title)
-    form.append('goal', inputCampaign.goal)
-    form.append('story', inputCampaign.story)
-    form.append('dueDate', inputCampaign.dueDate)
-    form.append('categoryId', inputCampaign.categoryId)
-    dispatch(createCampaignAction(form))
-    navigate('/profile')
+    form.append("image", editCampaign.image);
+    form.append("title", editCampaign.title);
+    form.append("story", editCampaign.story);
+    form.append("goal", editCampaign.goal);
+    form.append("dueDate", editCampaign.dueDate);
+    form.append("categoryId", editCampaign.categoryId);
+    dispatch(editCampaignAction(form, id, category));
+    navigate(`/campaign/${category}/${id}`);
   };
 
+  const Edit = (e) => {
+    setEditCampaign({
+      ...editCampaign,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const submitEditCampaign = () => {
+    dispatch(editCampaignAction(editCampaign));
+  };
+
+  // eslint-disable-next-line no-unused-vars
   const [currency, setCurrency] = useState();
+    // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(null);
 
   const handleChange = (e) => {
-    setInputCampaign({
-      ...inputCampaign,
+    setEditCampaign({
+      ...editCampaign,
       categoryId: e.target.value,
     });
   };
@@ -129,11 +146,11 @@ export default function CampaignCreation() {
         </div>
         <form>
           <div className={styles.boxImage}>
-            {!isCampaign ? (
+            {!isEdit ? (
               <>
                 <div className={styles.boxAddImage}>
                   <div className={styles.iconAdd}>
-                    <label htmlFor="upload-campaign">
+                    <label htmlFor="edit-upload">
                       <AddCircleOutlineIcon
                         sx={{ fontSize: 50, color: "#9f9f9f" }}
                       />
@@ -141,11 +158,11 @@ export default function CampaignCreation() {
                   </div>
                   <input
                     style={{ visibility: "hidden" }}
-                    id="upload-campaign"
+                    id="edit-upload"
                     accept="image/*"
                     type="file"
                     name="image"
-                    onChange={ChangeImageCampaign}
+                    onChange={ChangeImageEdit}
                   />
                   <h2>Add Header Photo</h2>
                 </div>
@@ -154,13 +171,13 @@ export default function CampaignCreation() {
               <div className={styles.imagePreview}>
                 <img
                   id={styles.uploadedImage}
-                  src={imageCampaign}
-                  alt="uploaded-img"
+                  src={imageEdit}
+                  alt="uploaded-edit"
                   onClick={() => {
-                    setIsCampaign(false);
-                    setImageCampaign(null);
+                    setIsEdit(false);
+                    setIsEdit(null);
                   }}
-                  value={inputCampaign.image}
+                  value={editCampaign.image}
                 />
               </div>
             )}
@@ -177,7 +194,7 @@ export default function CampaignCreation() {
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="title"
-              onChange={(e) => changeInput(e)}
+              onChange={(e) => Edit(e)}
             />
             <TextField
               required
@@ -190,14 +207,14 @@ export default function CampaignCreation() {
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="categoryId"
             >
-              {categories.map((inputCampaign) => (
+              {categories.map((editCampaign) => (
                 <MenuItem
                   name="categoryId"
-                  key={inputCampaign.categoryId}
-                  value={inputCampaign.categoryId}
-                  onChange={(e) => changeInput(e)}
+                  key={editCampaign.categoryId}
+                  value={editCampaign.categoryId}
+                  onChange={(e) => Edit(e)}
                 >
-                  {inputCampaign.label}
+                  {editCampaign.label}
                 </MenuItem>
               ))}
             </TextField>
@@ -211,7 +228,7 @@ export default function CampaignCreation() {
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="goal"
-              onChange={(e) => changeInput(e)}
+              onChange={(e) => Edit(e)}
             />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
@@ -219,8 +236,8 @@ export default function CampaignCreation() {
                 label="Due Date"
                 value={value}
                 onChange={(e) =>
-                  setInputCampaign({
-                    ...inputCampaign,
+                  setEditCampaign({
+                    ...editCampaign,
                     dueDate: dayjs(e).format("YYYY/MM/DD"),
                   })
                 }
@@ -230,7 +247,7 @@ export default function CampaignCreation() {
                     variant="standard"
                     placeholder="Select due date"
                     name="dueDate"
-                    onChange={(e) => changeInput(e)}
+                    onChange={(e) => Edit(e)}
                     sx={{
                       border: "none",
                       outline: "none",
@@ -298,14 +315,14 @@ export default function CampaignCreation() {
               cols="30"
               rows="10"
               placeholder="Tell your story..."
-              onChange={(e) => changeInput(e)}
+              onChange={(e) => Edit(e)}
             ></textarea>
           </div>
         </div>
       </div>
       <div className={styles.campaignButton}>
-        <button className={styles.button} onClick={submitCampaign}>
-          CREATE CAMPAIGN
+        <button className={styles.button} onClick={submitEdit}>
+          SAVE CAMPAIGN
         </button>
       </div>
     </>

@@ -4,10 +4,8 @@
   font-family: Nunito;
   display: flex;
   margin: 72px 121px;
-
+  justify-content: space-between;
   .campaign {
-    padding-right: 50px;
-
     h1 {
       padding: 20px 0;
     }
@@ -19,11 +17,9 @@
     }
   }
   .setting {
-    display: flex;
-
     .dropdownCampaign {
       position: relative;
-      left: 890px;
+      left: 420px;
       top: 42px;
     }
   }

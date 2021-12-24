@@ -16,37 +16,41 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
-import { ProfileAction } from "../../Store/Actions/profile";
+import Skeleton from "@mui/material/Skeleton";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
+import { ProfileAction } from "../../Store/Actions/profile";
+import { relatedCampaignAction } from "../../Store/Actions/Campaign/campaign";
+import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 
 export default function Campaign() {
   dayjs.extend(relativeTime);
   const { id, categoryId } = useParams();
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(ProfileAction());
   }, []);
+  useEffect(() => {
+    dispatch(relatedCampaignAction());
+  }, []);
+  useEffect(() => {
+    dispatch(getDetailCampaignAction(id));
+  }, [dispatch, id, categoryId]);
+  useEffect(() => {
+    dispatch(deleteCampaignAction(id));
+  }, [dispatch, id]);
+
   const campaignUser = useSelector((state) => state.profileReducer.profile);
-  console.log(campaignUser);
-
-  
-
-  const RoleUser = window.location.pathname === "/profile";
-
   const { detailCampaign } = useSelector(
     (state) => state.campaignReducer.detailCampaign
   );
   console.log("detailCampaign", detailCampaign);
-  useEffect(() => {
-    dispatch(getDetailCampaignAction(id));
-  }, [dispatch, id, categoryId]);
+  const { related } = useSelector((state) => state.relatedCampaignReducer);
+  console.log("related", related);
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
@@ -63,7 +67,13 @@ export default function Campaign() {
     },
   }));
 
+  const [loadingCampaign, setLoadingCampaign] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setLoadingCampaign(false), 5000);
+  });
+
   const [list, setList] = useState([]);
+  console.log(dayjs(detailCampaign?.dueDate).toNow(true) === "a month");
 
   useEffect(() => {
     const getData = () => {
@@ -81,50 +91,134 @@ export default function Campaign() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    dispatch(deleteCampaignAction(id));
     setAnchorEl(null);
   };
 
   return (
     <>
       {/* Top Campaign Components*/}
+      {loadingCampaign ? (
+        <div
+          className={styles.topCampaign}
+          styles={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <div className={styles.campaign}>
+            <Skeleton sx={{ height: "100px" }} variant="text" />
+            <Skeleton
+              sx={{ height: "500px", width: "800px" }}
+              animation="wave"
+              variant="rectangular"
+            />
+          </div>
+          <div className="skel">
+            <div className={styles.setting}>
+              {detailCampaign?.userId === campaignUser?.id ? (
+                <Skeleton
+                  sx={{
+                    width: "80px",
+                    position: "relative",
+                    left: "320px",
+                    top: " 42px",
+                  }}
+                  variant="rectangular"
+                />
+              ) : null}
+            </div>
+            <div className={styles.cardCampaign}>
+              <div className="skel1">
+                <Skeleton variant="text" width="200px" />
+                <Skeleton variant="text" width="200px" />
+                <Skeleton variant="text" width="200px" />
+                <Skeleton variant="text" width="350px" />
+                <Skeleton variant="text" width="200px" />
+                <div className={styles.cardProfile}>
+                  <Skeleton variant="rectangular" width="50px" height="50px" />
+                  <div className={styles.cardTitleProfile}>
+                    <Skeleton variant="text" width="200px" />
+                    <Skeleton variant="text" width="200px" />
+                  </div>
+                </div>
+                <div className={styles.smallCard}>
+                  <div className={styles.listCard}>
+                    <Skeleton
+                      variant="rectangular"
+                      width="70px;"
+                      height="80px"
+                    />
+                  </div>
+                  <div className={styles.listCard}>
+                    <Skeleton
+                      variant="rectangular"
+                      width="70px;"
+                      height="80px"
+                    />
+                  </div>
+                  <div className={styles.listCard}>
+                    <Skeleton
+                      variant="rectangular"
+                      width="70px;"
+                      height="80px"
+                    />
+                  </div>
+                </div>
+                <div className={styles.buttonCard}>
+                  <Skeleton
+                    variant="rectangular"
+                    width="300px;"
+                    height="60px"
+                  />
+                </div>
+                <div className={styles.buttonCard}>
+                  <Skeleton
+                    variant="rectangular"
+                    width="300px;"
+                    height="60px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
         <div className={styles.topCampaign}>
           <div className={styles.campaign}>
-            <div className={styles.setting}>
-              <h1>{detailCampaign?.title}</h1>
-              {detailCampaign?.userId === campaignUser?.id && (
-                <div className={styles.dropdownCampaign}>
-                  <Button
-                    aria-controls="basic-menu"
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    onClick={handleClick}
-                    sx={{ color: "black" }}
-                  >
-                    <SettingsIcon />
-                    <ArrowDropDownIcon />
-                  </Button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      "aria-labelledby": "basic-button",
-                    }}
-                  >
-                    <Link
-                      to="/create"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      <MenuItem onClick={handleClose}>Edit</MenuItem>
-                    </Link>
-                    <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
-                    <MenuItem onClick={handleClose}>Delete</MenuItem>
-                  </Menu>
-                </div>
-              )}
-            </div>
+            <h1>{detailCampaign?.title}</h1>
             <img src={detailCampaign?.image} alt="" />
+          </div>
+          <div className={styles.setting}>
+            {detailCampaign?.userId === campaignUser?.id && (
+              <div className={styles.dropdownCampaign}>
+                <Button
+                  aria-controls="basic-menu"
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                  sx={{ color: "black" }}
+                >
+                  <SettingsIcon />
+                  <ArrowDropDownIcon />
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <Link
+                    to={`/edit-campaign/${id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <MenuItem onClick={handleClose}>Edit</MenuItem>
+                  </Link>
+                  <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
+                  <MenuItem onClick={handleClose}>Delete</MenuItem>
+                </Menu>
+              </div>
+            )}
           </div>
           <div className={styles.cardCampaign}>
             <h3>IDR {detailCampaign?.collected}</h3>
@@ -149,7 +243,11 @@ export default function Campaign() {
             <div className={styles.smallCard}>
               <div className={styles.listCard}>
                 <h4>
-                  {dayjs(detailCampaign?.dueDate).fromNow(true).split(" ")[0]}
+                  {dayjs(detailCampaign?.dueDate).toNow(true) === "a month"
+                    ? "30"
+                    : dayjs(detailCampaign?.dueDate)
+                        .fromNow(true)
+                        .split(" ")[0]}
                 </h4>
                 <p>Days left</p>
               </div>
@@ -179,7 +277,7 @@ export default function Campaign() {
               >
                 SHARE
               </button>
-              <Share onClose={() => setShare(false)} share={share} />
+              <Share onClose={() => setShare(false)} share={share} id={id} />
               {detailCampaign?.userId === campaignUser?.id ? (
                 <>
                   <button
@@ -191,6 +289,7 @@ export default function Campaign() {
                   <ModalUpdateCampaign
                     onClose={() => setShow(false)}
                     show={show}
+                    id={detailCampaign?.id}
                   />
                 </>
               ) : (
@@ -201,32 +300,34 @@ export default function Campaign() {
             </div>
           </div>
         </div>
-        );
-        {/* Read More Campaign */}
-        <ReadMore />
-        {/* Detail Donor Components */}
-        <CampaignUpdate />
-        {/* Donations Components*/}
-        <Donation />
-        {/* Comments Component */}
-        <Comment />
-        {/* Card Components */}
-        <div className={styles.linkCardBottom}>
-          <Link to="#">Related campaign</Link>
-          <div className={styles.cardBottom}>
-            {list.map((item) => (
-              <Card
-                image={item.image}
-                category={item.category}
-                title={item.title}
-                author={item.author}
-                data_funding={item.data_funding}
-                raised={item.raised}
-                goal={item.goal}
-              />
-            ))}
-          </div>
+      )}
+
+      {/* Read More Campaign */}
+      <ReadMore />
+      {/* Details Update Campaign Components */}
+      <CampaignUpdate />
+      {/* Donations Components*/}
+      <Donation />
+      {/* Comments Component */}
+      <Comment />
+
+      {/* Card Components */}
+      <div className={styles.linkCardBottom}>
+        <Link to="#">Related campaign</Link>
+        <div className={styles.cardBottom}>
+          {related?.map((item) => (
+            <Card
+              id={item.id}
+              image={item.image}
+              category={item.category.category}
+              title={item.title}
+              author={item.user.name}
+              raised={item.jumlahCollected}
+              goal={item.jumlahGoal}
+            />
+          ))}
         </div>
+      </div>
     </>
   );
 }

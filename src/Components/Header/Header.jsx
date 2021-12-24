@@ -19,11 +19,9 @@ export default function Header({ inputSearch, setInputSearch }) {
   }, []);
 
   const profile = useSelector((state) => state.profileReducer.profile);
-  console.log(profile, "myProfile");
 
   const [search, setSearch] = useState(false);
   const inputref = useRef(null);
-  console.log(inputref.current);
 
   const styleLogin = {
     position: "absolute",
@@ -52,7 +50,6 @@ export default function Header({ inputSearch, setInputSearch }) {
   };
 
   const location = useLocation();
-  console.log(inputSearch);
   const Home = window.location.pathname === "/";
 
   const [openLogin, setOpenLogin] = useState();

@@ -15,6 +15,9 @@ import {
   EDIT_CAMPAIGN_BEGIN,
   EDIT_CAMPAIGN_SUCCESS,
   EDIT_CAMPAIGN_FAIL,
+  DELETE_CAMPAIGN_BEGIN,
+  DELETE_CAMPAIGN_SUCCESS,
+  DELETE_CAMPAIGN_FAIL,
 } from "../../../Constants/types";
 import axios from "axios";
 import { BASE_URL } from "../../../Constants/Constants";
@@ -39,7 +42,7 @@ function* getDetailCampaign(actions) {
 }
 
 function* postCreateCampaign(actions) {
-  const { body, id } = actions;
+  const { body } = actions;
   try {
     const res = yield axios.post(`${BASE_URL}campaign`, body, {
       headers: { access_token: localStorage.getItem("token") },
@@ -48,7 +51,7 @@ function* postCreateCampaign(actions) {
     yield put({
       type: CREATE_CAMPAIGN_SUCCESS,
     });
-    const resCreateCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    const resCreateCampaign = yield axios.get(`${BASE_URL}discover/all`);
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
@@ -72,11 +75,11 @@ function* postUpdateCampaign(actions) {
     yield put({
       type: UPDATE_CAMPAIGN_SUCCESS,
     });
-    const resUpdateCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    const resUpdateCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
-      payload: resUpdateCampaign.data.data,
+      payload: resUpdateCampaign.data,
     });
   } catch (err) {
     yield put({
@@ -87,9 +90,9 @@ function* postUpdateCampaign(actions) {
 }
 
 function* addShareCampaign(actions) {
-  const { id } = actions;
+  const { id, body } = actions;
   try {
-    const res = yield axios.patch(`${BASE_URL}discover/count${id}`, {
+    const res = yield axios.patch(`${BASE_URL}discover/count/${id}`, body, {
       headers: { access_token: localStorage.getItem("token") },
     });
     console.log(res);
@@ -97,11 +100,11 @@ function* addShareCampaign(actions) {
       type: SHARE_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
-    const resShareCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    const resShareCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
-      payload: resShareCampaign.data.data,
+      payload: resShareCampaign.data,
     });
   } catch (err) {
     console.log(err);
@@ -120,7 +123,7 @@ function* editCampaign(actions) {
       type: EDIT_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
-    const resEditCampaign = yield axios.get(`${BASE_URL}discover/${id}`);
+    const resEditCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
@@ -129,6 +132,23 @@ function* editCampaign(actions) {
   } catch (err) {
     console.log(err);
     yield put({ type: EDIT_CAMPAIGN_FAIL, error: err });
+  }
+}
+
+function* deleteCampaign(actions) {
+  const { id, body } = actions;
+  try {
+    const res = yield axios.patch(`${BASE_URL}deleteCampaign/${id}`, body, {
+      headers: { access_token: localStorage.getItem("token") },
+    });
+    console.log(res);
+    yield put({
+      type: DELETE_CAMPAIGN_SUCCESS,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({ type: DELETE_CAMPAIGN_FAIL, error: err });
   }
 }
 
@@ -150,4 +170,8 @@ export function* watchAddShareCampaign() {
 
 export function* watchEditCampaign() {
   yield takeEvery(EDIT_CAMPAIGN_BEGIN, editCampaign);
+}
+
+export function* watchDeleteCampaign() {
+  yield takeEvery(DELETE_CAMPAIGN_BEGIN, deleteCampaign);
 }

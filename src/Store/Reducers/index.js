@@ -8,6 +8,7 @@ import campaignReducer from "./Campaign/campaign";
 import donationReducer from './donationReducer/donationReducer'
 import discoverReducer from "./discoverReducer/discoverReducer";
 import cardHomeReducer from './cardHomeReducer/cardHomeReducer';
+import relatedCampaignReducer from "./Campaign/related";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   campaignReducer,
   cardHomeReducer,
   discoverReducer,
-  donate: donationReducer 
+  donate: donationReducer,
+  relatedCampaignReducer,
 });
 
 
