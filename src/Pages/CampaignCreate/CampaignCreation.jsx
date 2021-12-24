@@ -16,14 +16,12 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import dayjs from "dayjs";
 
-import { useState } from "react";
+import { useState} from "react";
 import { useDispatch } from "react-redux";
-import {useNavigate} from 'react-router-dom'
 import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
 
-
 export default function CampaignCreation() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputCampaign, setInputCampaign] = useState({
     image: null,
@@ -56,16 +54,15 @@ export default function CampaignCreation() {
     }
   }
 
-  const submitCampaign = () => {
+  const submitCampaign = (reason) => {
     let form = new FormData();
-    form.append('image', inputCampaign.image)
-    form.append('title', inputCampaign.title)
-    form.append('goal', inputCampaign.goal)
-    form.append('story', inputCampaign.story)
-    form.append('dueDate', inputCampaign.dueDate)
-    form.append('categoryId', inputCampaign.categoryId)
-    dispatch(createCampaignAction(form))
-    navigate('/profile')
+    form.append("image", inputCampaign.image);
+    form.append("title", inputCampaign.title);
+    form.append("goal", inputCampaign.goal);
+    form.append("story", inputCampaign.story);
+    form.append("dueDate", inputCampaign.dueDate);
+    form.append("categoryId", inputCampaign.categoryId);
+    dispatch(createCampaignAction(form));
   };
 
   const [currency, setCurrency] = useState();

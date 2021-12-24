@@ -20,6 +20,7 @@ import {
   DELETE_CAMPAIGN_FAIL,
 } from "../../../Constants/types";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { BASE_URL } from "../../../Constants/Constants";
 
 function* getDetailCampaign(actions) {
@@ -51,6 +52,12 @@ function* postCreateCampaign(actions) {
     yield put({
       type: CREATE_CAMPAIGN_SUCCESS,
     });
+    Swal.fire(
+      'Success',
+      res.data.message,
+      'success'
+      (window.location.href='/profile')
+    )
     const resCreateCampaign = yield axios.get(`${BASE_URL}discover/all`);
     console.log(res);
     yield put({
@@ -136,9 +143,9 @@ function* editCampaign(actions) {
 }
 
 function* deleteCampaign(actions) {
-  const { id, body } = actions;
+  const { id} = actions;
   try {
-    const res = yield axios.patch(`${BASE_URL}deleteCampaign/${id}`, body, {
+    const res = yield axios.delete(`${BASE_URL}deleteCampaign/${id}`,{
       headers: { access_token: localStorage.getItem("token") },
     });
     console.log(res);

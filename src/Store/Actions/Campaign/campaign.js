@@ -52,10 +52,9 @@ export const relatedCampaignAction = (id) => {
   };
 };
 
-export const deleteCampaignAction = (body, id) => {
+export const deleteCampaignAction = (id) => {
   return {
-    type: CREATE_CAMPAIGN_BEGIN,
-    body,
+    type: DELETE_CAMPAIGN_BEGIN,
     id,
   };
 };

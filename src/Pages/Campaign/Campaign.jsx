@@ -40,9 +40,6 @@ export default function Campaign() {
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
-  useEffect(() => {
-    dispatch(deleteCampaignAction(id));
-  }, [dispatch, id]);
 
   const campaignUser = useSelector((state) => state.profileReducer.profile);
   const { detailCampaign } = useSelector(
@@ -212,10 +209,12 @@ export default function Campaign() {
                     to={`/edit-campaign/${id}`}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <MenuItem onClick={handleClose}>Edit</MenuItem>
+                    <MenuItem>Edit</MenuItem>
                   </Link>
-                  <MenuItem onClick={handleClose}>Close Campaign</MenuItem>
-                  <MenuItem onClick={handleClose}>Delete</MenuItem>
+                  <MenuItem>Close Campaign</MenuItem>
+                  <MenuItem onClick={() => dispatch(deleteCampaignAction(id))}>
+                    Delete
+                  </MenuItem>
                 </Menu>
               </div>
             )}
