@@ -26,8 +26,10 @@ import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
 import { relatedCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
+import { useNavigate } from "react-router-dom";
 
 export default function Campaign() {
+  const navigate = useNavigate();
   dayjs.extend(relativeTime);
   const { id, categoryId } = useParams();
   const dispatch = useDispatch();
@@ -48,11 +50,10 @@ export default function Campaign() {
   console.log("detailCampaign", detailCampaign);
   const { related } = useSelector((state) => state.relatedCampaignReducer);
   console.log("related", related);
-
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
-    marginBottom: 20,
+    marginBottom: 15,
     marginRight: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor:
@@ -103,21 +104,16 @@ export default function Campaign() {
           <div className={styles.campaign}>
             <Skeleton sx={{ height: "100px" }} variant="text" />
             <Skeleton
-              sx={{ height: "500px", width: "800px" }}
+              className={styles.campaignSkelleton}
               animation="wave"
               variant="rectangular"
             />
           </div>
-          <div className="skel">
+          <div>
             <div className={styles.setting}>
               {detailCampaign?.userId === campaignUser?.id ? (
                 <Skeleton
-                  sx={{
-                    width: "80px",
-                    position: "relative",
-                    left: "320px",
-                    top: " 42px",
-                  }}
+                  className={styles.settingSkelleton}
                   variant="rectangular"
                 />
               ) : null}
@@ -127,7 +123,7 @@ export default function Campaign() {
                 <Skeleton variant="text" width="200px" />
                 <Skeleton variant="text" width="200px" />
                 <Skeleton variant="text" width="200px" />
-                <Skeleton variant="text" width="350px" />
+                <Skeleton variant="text" className={styles.linearSkelleton} />
                 <Skeleton variant="text" width="200px" />
                 <div className={styles.cardProfile}>
                   <Skeleton variant="rectangular" width="50px" height="50px" />
@@ -140,22 +136,19 @@ export default function Campaign() {
                   <div className={styles.listCard}>
                     <Skeleton
                       variant="rectangular"
-                      width="70px;"
-                      height="80px"
+                      className={styles.cardSkelleton}
                     />
                   </div>
                   <div className={styles.listCard}>
                     <Skeleton
                       variant="rectangular"
-                      width="70px;"
-                      height="80px"
+                      className={styles.cardSkelleton}
                     />
                   </div>
                   <div className={styles.listCard}>
                     <Skeleton
                       variant="rectangular"
-                      width="70px;"
-                      height="80px"
+                      className={styles.cardSkelleton}
                     />
                   </div>
                 </div>
@@ -212,7 +205,11 @@ export default function Campaign() {
                     <MenuItem>Edit</MenuItem>
                   </Link>
                   <MenuItem>Close Campaign</MenuItem>
-                  <MenuItem onClick={() => dispatch(deleteCampaignAction(id))}>
+                  <MenuItem
+                    onClick={() =>
+                      dispatch(deleteCampaignAction(id), navigate("/profile"))
+                    }
+                  >
                     Delete
                   </MenuItem>
                 </Menu>
@@ -260,13 +257,7 @@ export default function Campaign() {
               </div>
               <div className={styles.listCard}>
                 <h4>{detailCampaign?.share}</h4>
-                <p
-                  style={{
-                    paddingLeft: "5px",
-                  }}
-                >
-                  Share
-                </p>
+                <p>Share</p>
               </div>
             </div>
             <div className={styles.buttonCard}>

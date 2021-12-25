@@ -20,8 +20,8 @@ import {
   DELETE_CAMPAIGN_FAIL,
 } from "../../../Constants/types";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { BASE_URL } from "../../../Constants/Constants";
+import Swal from "sweetalert2";
 
 function* getDetailCampaign(actions) {
   const { id } = actions;
@@ -53,11 +53,10 @@ function* postCreateCampaign(actions) {
       type: CREATE_CAMPAIGN_SUCCESS,
     });
     Swal.fire(
-      'Success',
-      res.data.message,
-      'success'
-      (window.location.href='/profile')
-    )
+      "Success",
+      "Campaign was Created",
+      "success",
+    );
     const resCreateCampaign = yield axios.get(`${BASE_URL}discover/all`);
     console.log(res);
     yield put({
@@ -82,12 +81,19 @@ function* postUpdateCampaign(actions) {
     yield put({
       type: UPDATE_CAMPAIGN_SUCCESS,
     });
-    const resUpdateCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
+    const resUpdateCampaign = yield axios.get(
+      `${BASE_URL}discover/details/${id}`
+    );
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
       payload: resUpdateCampaign.data,
     });
+    // Swal.fire(
+    //   "Success",
+    //   "Campaign was Created!",
+    //   "success"((window.location.href = "/profile"))
+    // );
   } catch (err) {
     yield put({
       type: UPDATE_CAMPAIGN_FAIL,
@@ -107,7 +113,9 @@ function* addShareCampaign(actions) {
       type: SHARE_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
-    const resShareCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
+    const resShareCampaign = yield axios.get(
+      `${BASE_URL}discover/details/${id}`
+    );
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
@@ -130,7 +138,9 @@ function* editCampaign(actions) {
       type: EDIT_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
-    const resEditCampaign = yield axios.get(`${BASE_URL}discover/details/${id}`);
+    const resEditCampaign = yield axios.get(
+      `${BASE_URL}discover/details/${id}`
+    );
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
@@ -143,9 +153,9 @@ function* editCampaign(actions) {
 }
 
 function* deleteCampaign(actions) {
-  const { id} = actions;
+  const { id } = actions; 
   try {
-    const res = yield axios.delete(`${BASE_URL}deleteCampaign/${id}`,{
+    const res = yield axios.delete(`${BASE_URL}deleteCampaign/${id}`, {
       headers: { access_token: localStorage.getItem("token") },
     });
     console.log(res);
@@ -153,6 +163,11 @@ function* deleteCampaign(actions) {
       type: DELETE_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
+    Swal.fire(
+      "Success",
+      "Campaign was Deleted",
+      "success",
+    );
   } catch (err) {
     console.log(err);
     yield put({ type: DELETE_CAMPAIGN_FAIL, error: err });

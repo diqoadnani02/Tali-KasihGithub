@@ -44,6 +44,19 @@
     .textInputCreation {
       display: flex;
       justify-content: space-between;
+
+      .inputCampaign {
+        width: 477px;
+        height: 200px;
+        padding-top: 20px;
+      }
+      .inputDateCampaign {
+        border: none;
+        outline: none;
+        width: 477px;
+        height: 200px;
+        padding-top: 20px;
+      }
     }
   }
 
@@ -105,4 +118,57 @@
 .button:hover {
   background: #ffffff;
   color: #a43f3c;
+}
+
+@media screen and (max-width: 1200px) {
+  .campaignCreation {
+    margin: 50px 275px;
+    h1 {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #9f9f9f;
+    }
+    .boxImage {
+      width: 650px;
+      .boxAddImage {
+        padding: 150px 238px;
+        .iconAdd {
+          padding: 20px 63px;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+    }
+    .imagePreview {
+      img {
+        width: 650px;
+      }
+    }
+    .textareaCreation {
+      .containerTextarea {
+        margin-bottom: 20px;
+        textarea {
+          width: 650px;
+          height: 280px;
+        }
+      }
+    }
+    .formCreation {
+      .textInputCreation {
+        .inputCampaign {
+          width: 300px;
+        }
+        .inputDateCampaign {
+          width: 300px;
+        }
+      }
+    }
+  }
+  .campaignButton {
+    margin: 50px 260px;
+
+    button {
+      width:200px;
+    }
+  }
 }

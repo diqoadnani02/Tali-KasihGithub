@@ -1,109 +1,161 @@
 .campaignCreation {
-    font-family: Nunito;
-    margin: 50px 267px;
-  
+  font-family: Nunito;
+  margin: 50px 267px;
+
+  h1 {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #9f9f9f;
+  }
+
+  .boxImage {
+    margin-top: 20px;
+    width: 980px;
+    height: 490px;
+    border: 1px solid #9f9f9f;
+    border: none;
+    background: #e1e0e0;
+    color: #9f9f9f;
+
+    .boxAddImage {
+      padding: 150px 385px;
+
+      .iconAdd {
+        padding: 20px 80px;
+
+        button {
+          background: #e1e0e0;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .imagePreview {
+    img {
+      width: 980px;
+      height: 490px;
+    }
+  }
+
+  .formCreation {
+    padding-top: 40px;
+
+    .textInputCreation {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .textareaCreation {
+    h3 {
+      padding-bottom: 20px;
+    }
+    .containerTextarea {
+      margin-bottom: 20px;
+      textarea {
+        background: #fcfcfc;
+        padding: 18px 10px;
+        font-family: "Nunito";
+        font-size: 17px;
+        width: 977px;
+        height: 385px;
+        border: none;
+      }
+      .iconsTextarea {
+        display: flex;
+        padding-right: 50px;
+        padding-bottom: 20px;
+
+        .icons {
+          width: 37px;
+          height: 36px;
+          border-radius: 2px;
+          margin-right: 15px;
+
+          button {
+            background: #ffffff;
+            border: 1px solid;
+          }
+          button:hover {
+            background: #f1ede4;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+.campaignButton {
+  font-family: Nunito;
+  margin: 50px 270px;
+  direction: rtl;
+}
+.button {
+  width: 208px;
+  height: 46px;
+  background: #a43f3c;
+  border: 1px solid #a43f3c;
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+.button:hover {
+  background: #ffffff;
+  color: #a43f3c;
+}
+
+@media screen and (max-width: 1200px) {
+  .campaignCreation {
+    margin: 50px 275px;
     h1 {
       padding-bottom: 20px;
       border-bottom: 1px solid #9f9f9f;
     }
-  
     .boxImage {
-      margin-top: 20px;
-      width: 980px;
-      height: 490px;
-      border: 1px solid #9f9f9f;
-      border: none;
-      background: #e1e0e0;
-      color: #9f9f9f;
-  
+      width: 650px;
       .boxAddImage {
-        padding: 150px 385px;
-  
+        padding: 150px 238px;
         .iconAdd {
-          padding: 20px 80px;
-  
-          button {
-            background: #e1e0e0;
-            border: none;
-            outline: none;
-          }
+          padding: 20px 63px;
+        }
+        h2 {
+          font-size: 20px;
         }
       }
     }
-  
     .imagePreview {
       img {
-        width: 980px;
-        height: 490px;
+        width: 650px;
       }
     }
-  
-    .formCreation {
-      padding-top: 40px;
-  
-      .textInputCreation {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  
     .textareaCreation {
-      h3 {
-        padding-bottom: 20px;
-      }
       .containerTextarea {
         margin-bottom: 20px;
         textarea {
-          background: #fcfcfc;
-          padding: 18px 10px;
-          font-family: "Nunito";
-          font-size: 17px;
-          width: 977px;
-          height: 385px;
-          border: none;
+          width: 650px;
+          height: 280px;
         }
-        .iconsTextarea {
-          display: flex;
-          padding-right: 50px;
-          padding-bottom: 20px;
-  
-          .icons {
-            width: 37px;
-            height: 36px;
-            border-radius: 2px;
-            margin-right: 15px;
-  
-            button {
-              background: #ffffff;
-              border: 1px solid;
-            }
-            button:hover {
-              background: #f1ede4;
-              border: none;
-            }
-          }
+      }
+    }
+    .formCreation {
+      .textInputCreation {
+        .inputCampaign {
+          width: 300px;
+        }
+        .inputDateCampaign {
+          width: 300px;
         }
       }
     }
   }
   .campaignButton {
-    font-family: Nunito;
-    margin: 50px 270px;
-    direction: rtl;
+    margin: 50px 260px;
+
+    button {
+      width: 200px;
+    }
   }
-  .button {
-    width: 208px;
-    height: 46px;
-    background: #a43f3c;
-    border: 1px solid #a43f3c;
-    color: #ffffff;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 1px;
-  }
-  .button:hover {
-    background: #ffffff;
-    color: #a43f3c;
-  }
-  
+}

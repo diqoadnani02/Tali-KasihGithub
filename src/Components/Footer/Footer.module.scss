@@ -2,14 +2,13 @@
 
 .footer {
   background-color: #f9f7f3;
-  
 
   .footerWrapper {
     display: flex;
     justify-content: space-between;
     font-family: "Nunito";
     padding-left: 120px;
-    padding-right:100px;
+    padding-right: 100px;
   }
 
   .logo {
@@ -50,5 +49,33 @@
     font-family: Nunito;
     padding: 20px 120px;
     border: 0.5px solid #e1e0e0;
+  }
+}
+
+@media screen and (max-width: 700px), (max-width:900px) {
+  .footer {
+    .footerWrapper {
+      padding: 0 60px;
+      .list {
+        padding: 0 25px;
+        h5 {
+          font-size: 12px;
+        }
+        a {
+          font-size: 14px;
+        }
+      }
+    }
+    .foot {
+      padding: 20px 50px;
+      p {
+        font-size:14px;
+      }
+    }
+  }
+  .logo {
+    img {
+      width: 120px;
+    }
   }
 }

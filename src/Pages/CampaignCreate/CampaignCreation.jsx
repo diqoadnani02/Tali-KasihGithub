@@ -13,15 +13,16 @@ import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
+import DesktopDatePicker from "@mui/lab/DatePicker";
 import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
 
-import { useState} from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
 
 export default function CampaignCreation() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputCampaign, setInputCampaign] = useState({
     image: null,
@@ -63,6 +64,7 @@ export default function CampaignCreation() {
     form.append("dueDate", inputCampaign.dueDate);
     form.append("categoryId", inputCampaign.categoryId);
     dispatch(createCampaignAction(form));
+    navigate("/profile");
   };
 
   const [currency, setCurrency] = useState();
@@ -172,7 +174,7 @@ export default function CampaignCreation() {
               label="Title"
               placeholder="e.g. Help we get clean water"
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               name="title"
               onChange={(e) => changeInput(e)}
             />
@@ -183,8 +185,8 @@ export default function CampaignCreation() {
               label="Category"
               value={currency}
               onChange={handleChange}
+              className={styles.inputCampaign}
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="categoryId"
             >
               {categories.map((inputCampaign) => (
@@ -206,12 +208,12 @@ export default function CampaignCreation() {
               label="Goal"
               placeholder="e.g. 20000000"
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               name="goal"
               onChange={(e) => changeInput(e)}
             />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
+              <DesktopDatePicker
                 name="dueDate"
                 label="Due Date"
                 value={value}
@@ -227,14 +229,8 @@ export default function CampaignCreation() {
                     variant="standard"
                     placeholder="Select due date"
                     name="dueDate"
+                    className={styles.inputDateCampaign}
                     onChange={(e) => changeInput(e)}
-                    sx={{
-                      border: "none",
-                      outline: "none",
-                      width: "477px",
-                      height: "200px",
-                      paddingTop: "20px",
-                    }}
                     {...params}
                   />
                 )}
