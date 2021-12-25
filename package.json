@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "type": "module",
+  "jest": {"verbose": true},
   "version": "0.1.0",
   "private": true,
   "dependencies": {
