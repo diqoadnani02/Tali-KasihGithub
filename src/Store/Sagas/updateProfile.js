@@ -6,6 +6,7 @@ import {
 } from "../../Constants/types";
 import axios from "axios";
 import { BASE_URL } from "../../Constants/Constants";
+import Swal from "sweetalert2";
 
 function* updateProfile(action) {
   const {data} = action;
@@ -18,6 +19,11 @@ function* updateProfile(action) {
       type: PROFILE_UPDATE_SUCCESS,
       payload:res.data.data
     });
+    Swal.fire(
+      "Success",
+      "Profile has been Edited",
+      "success",
+    );
   } catch (err) {
     console.log(err);
     yield put({ type: PROFILE_UPDATE_FAIL, error: err });

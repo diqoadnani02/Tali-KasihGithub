@@ -44,19 +44,6 @@
     .textInputCreation {
       display: flex;
       justify-content: space-between;
-
-      .inputCampaign {
-        width: 477px;
-        height: 200px;
-        padding-top: 20px;
-      }
-      .inputDateCampaign {
-        border: none;
-        outline: none;
-        width: 477px;
-        height: 200px;
-        padding-top: 20px;
-      }
     }
   }
 
@@ -168,7 +155,7 @@
     margin: 50px 260px;
 
     button {
-      width:200px;
+      width: 200px;
     }
   }
 }

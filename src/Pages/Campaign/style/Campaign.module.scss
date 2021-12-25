@@ -4,10 +4,8 @@
   font-family: Nunito;
   display: flex;
   margin: 72px 121px;
-
+  justify-content: space-between;
   .campaign {
-    padding-right: 50px;
-
     h1 {
       padding: 20px 0;
     }
@@ -17,13 +15,21 @@
       height: 500px;
       border-radius: 4px 4px 0px 0px;
     }
+    .campaignSkelleton {
+      width: 800px;
+      height: 500px;
+    }
   }
   .setting {
-    display: flex;
-
     .dropdownCampaign {
       position: relative;
-      left: 890px;
+      left: 420px;
+      top: 42px;
+    }
+    .settingSkelleton {
+      width: 80px;
+      position: relative;
+      left: 320px;
       top: 42px;
     }
   }
@@ -49,6 +55,10 @@
 
     .goal {
       color: black;
+    }
+
+    .linearSkelleton {
+      width: 350px;
     }
 
     .cardProfile {
@@ -97,6 +107,10 @@
         p {
           padding-top: 13.5px;
           color: #9f9f9f;
+        }
+        .cardSkelleton {
+          width: 70px;
+          height: 80px;
         }
       }
     }
@@ -155,5 +169,82 @@
   .cardBottom {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .topCampaign {
+    .campaign {
+      img {
+        width: 550px;
+        height: 400px;
+      }
+      .campaignSkelleton {
+        width: 550px;
+        height: 400px;
+      }
+    }
+    .setting {
+      .dropdownCampaign {
+        position: relative;
+        left: 350px;
+        top: 42px;
+      }
+      .settingSkelleton {
+        width: 65px;
+        position: relative;
+        left: 280px;
+        top: 42px;
+      }
+    }
+    .cardCampaign {
+      width: 350px;
+      height: 400px;
+
+      h3 {
+        padding-top: 10px;
+      }
+      p {
+        padding: 5px 0;
+      }
+      .linearSkelleton {
+        width: 300px;
+      }
+      .smallCard {
+        padding: 10px 0;
+        .listCard {
+          width: 40px;
+          height: 40px;
+
+          h4 {
+            font-size: 20px;
+          }
+          p {
+            padding-top: 5px;
+            font-size: 10px;
+          }
+          .cardSkelleton {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+      .buttonCard {
+        padding-top: 10px;
+
+        .buttonUp {
+          width: 300px;
+          height: 30px;
+          font-weight: bold;
+          font-size: 12px;
+        }
+        .buttonDown {
+          width: 300px;
+          height: 30px;
+          font-weight: bold;
+          font-size: 12px;
+        }
+      }
+    }
   }
 }

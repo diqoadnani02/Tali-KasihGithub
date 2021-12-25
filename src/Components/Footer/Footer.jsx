@@ -11,7 +11,7 @@ export default function Footer() {
         </div>
         <div className={styles.listedLink}>
           <div className={styles.list}>
-            <h5>FUNDRAISE FOR</h5>
+            <h5>FUNDRAISER FOR</h5>
             <ul>
               <li>
                 <Link to="/Discover">All Categories</Link>

@@ -1,20 +1,9 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react';
-import Routes from './Routes/Routes'
+import App from './App'
 
-
-describe('testing text', () => {
-  test('cek tulisan donate', () => {
-    render(<Routes />);
-    const txt = screen.getByText("donate")
-    expect(txt).toBeInTheDocument();
-  })
-
-  test('cek tulisan campaign', () => {
-    render(<Routes />);
-    const txt =  screen.getByText(/campaign/i);
-    expect(txt).toBeInTheDocument();
-  })
+test('renders campaign text button', () => {
+  render(<App />);
+  const text = screen.getByText(/campaign/i);
+  expect(text).toBeInTheDocument();
 });
-
-

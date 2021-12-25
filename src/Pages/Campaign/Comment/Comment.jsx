@@ -14,10 +14,8 @@ export default function Comment() {
   const [inputComment, setPostComment] = useState({
     comment: "",
   });
-  console.log("postComment", inputComment);
 
   const comment = useSelector((state) => state.commentReducer.comment);
-  console.log("comment", comment);
   useEffect(() => {
     dispatch(getComment(id));
   }, [dispatch, id]);
@@ -35,6 +33,10 @@ export default function Comment() {
       comment: "",
     });
   };
+
+  const [commentNumber, setCommentNumber] = useState(5);
+  const dataComment = comment?.slice(0, commentNumber);
+
 
   return (
     <div>
@@ -56,7 +58,7 @@ export default function Comment() {
             <button onClick={submitComment}>POST</button>
           </div>
         </div>
-        {comment.map((item, index) => {
+        {dataComment?.map((item, index) => {
             return (
               <div key={index} className={styles.comentCards}>
                 <div className={styles.cards}>
@@ -84,7 +86,7 @@ export default function Comment() {
           }
         )}
         <div className={styles.showButton}>
-          <button>LOAD MORE</button>
+          <button  onClick={() => setCommentNumber(comment?.length)}>LOAD MORE</button>
         </div>
       </div>
     </div>

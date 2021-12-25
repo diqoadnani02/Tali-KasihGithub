@@ -7,8 +7,9 @@ import commentReducer from "./Campaign/comment";
 import campaignReducer from "./Campaign/campaign";
 import donationReducer from './donationReducer/donationReducer'
 import discoverReducer from "./discoverReducer/discoverReducer";
-import cardHomeReducer from "./cardHomeReducer/cardHomeReducer";
 import discoverRelatedReducer from "./discoverReducer/discoverRelatedReducer";
+import cardHomeReducer from './cardHomeReducer/cardHomeReducer';
+import relatedCampaignReducer from "./Campaign/related";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   cardHomeReducer,
   discoverRelatedReducer,
   discoverReducer,
-  donate: donationReducer 
+  donate: donationReducer,
+  relatedCampaignReducer,
 });
 
 

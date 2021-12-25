@@ -62,6 +62,9 @@ export default function Redirect() {
                     >
                         If you haven’t been redirected in 30 seconds, please click this button.
                     </Typography>
+                    <Grid 
+                    container
+                    sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Button
                         type="submit"
                         size="large"
@@ -75,6 +78,7 @@ export default function Redirect() {
                     >
                         CONTINUE TO HOMEPAGE
                     </Button>
+                    </Grid>
                 </Box>
         </Card>
     )

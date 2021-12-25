@@ -17,7 +17,6 @@ export default function MyDonation() {
   const dispatch = useDispatch()
 
   React.useEffect(() => {
-    console.log('useEffect')
     dispatch(getMydonationStart())
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

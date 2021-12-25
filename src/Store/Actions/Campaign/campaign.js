@@ -4,6 +4,8 @@ import {
   GET_DETAIL_CAMPAIGN_BEGIN,
   SHARE_CAMPAIGN_BEGIN,
   EDIT_CAMPAIGN_BEGIN,
+  GET_RELATED_CAMPAIGN_BEGIN,
+  DELETE_CAMPAIGN_BEGIN,
 } from "../../../Constants/types";
 
 export const createCampaignAction = (body) => {
@@ -13,10 +15,11 @@ export const createCampaignAction = (body) => {
   };
 };
 
-export const updateCampaignAction = (id) => {
+export const updateCampaignAction = (id, body) => {
   return {
     type: UPDATE_CAMPAIGN_BEGIN,
     id,
+    body,
   };
 };
 
@@ -38,6 +41,20 @@ export const editCampaignAction = (body, id) => {
   return {
     type: EDIT_CAMPAIGN_BEGIN,
     body,
+    id,
+  };
+};
+
+export const relatedCampaignAction = (id) => {
+  return {
+    type: GET_RELATED_CAMPAIGN_BEGIN,
+    id,
+  };
+};
+
+export const deleteCampaignAction = (id) => {
+  return {
+    type: DELETE_CAMPAIGN_BEGIN,
     id,
   };
 };

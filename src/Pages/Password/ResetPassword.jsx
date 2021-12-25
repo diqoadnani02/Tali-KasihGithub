@@ -127,7 +127,6 @@ const handleSubmit = () => {
                                         RESET PASSWORD
                                     </Typography>
                                 </Button>
-                                
                             </Grid>
                         </Grid>
                     </Grid>

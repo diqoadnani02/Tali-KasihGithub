@@ -69,7 +69,7 @@
         transition-duration: 1s;
 
         &:focus {
-          width: 400px;
+          width: 250px;
         }
       }
       ::placeholder {
@@ -95,7 +95,7 @@
       input {
         padding-left: 30px;
         color: #1d94a8;
-        background-color:#F4F4F4;
+        background-color: #f4f4f4;
         border: 0px solid;
         border-radius: 20px;
         outline: none;
@@ -108,7 +108,7 @@
         transition-duration: 1s;
 
         &:focus {
-          width: 400px;
+          width: 250px;
         }
       }
       ::placeholder {
@@ -136,7 +136,6 @@
   }
 
   .barProfile {
-
     span {
       margin: 0px 20px;
       border: 1px solid #a6dee8;
@@ -222,7 +221,7 @@
         transition-duration: 1s;
 
         &:focus {
-          width: 400px;
+          width: 250px;
         }
       }
       ::placeholder {
@@ -248,7 +247,7 @@
       input {
         padding-left: 30px;
         color: #1d94a8;
-        background-color:#F4F4F4;
+        background-color: #f4f4f4;
         border: 0px solid;
         border-radius: 20px;
         outline: none;
@@ -261,7 +260,7 @@
         transition-duration: 1s;
 
         &:focus {
-          width: 400px;
+          width: 250px;
         }
       }
       ::placeholder {
@@ -289,7 +288,6 @@
   }
 
   .barProfile {
-
     span {
       margin: 0px 20px;
       border: 1px solid #a6dee8;
@@ -302,6 +300,170 @@
       text-decoration: none;
       padding-right: 10px;
       color: #1d94a8;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px), (max-width: 1400px) {
+  .headerBeforeAuth {
+    .buttonNavbar {
+      .campaign {
+        width: 120px;
+        margin: 0 15px;
+        font-size: 10px;
+      }
+      .donate {
+        width: 70px;
+        font-size: 10px;
+      }
+    }
+  }
+  .headerAfterAuth {
+    .buttonNavbar {
+      .campaign {
+        width: 120px;
+        margin: 0 15px;
+        font-size: 10px;
+      }
+      .donate {
+        width: 70px;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px ),(max-width: 1200px) {
+  .headerBeforeAuth {
+    padding: 0 40px;
+    .logo {
+      img {
+        width: 100px;
+      }
+    }
+    .barBeforeAuth {
+      .search {
+        .icon {
+          width: 12px;
+          position: relative;
+          left: 26px;
+          top: 0px;
+        }
+        input {
+          width: 40px;
+          height: 25px;
+          font-size: 10px;
+
+          &:focus {
+            width: 150px;
+          }
+        }
+      }
+    }
+    .BarAfterAuth {
+      .search {
+        .icon {
+          width: 12px;
+          position: relative;
+          left: 26px;
+          top: 0px;
+        }
+        input {
+          width: 40px;
+          height: 25px;
+          font-size: 10px;
+
+          &:focus {
+            width: 150px;
+          }
+        }
+      }
+    }
+    .buttonNavbar {
+      min-width: 100px;
+      .campaign {
+        width: 80px;
+        height: 25px;
+        margin: 0 15px;
+        font-size: 7px;
+      }
+      .donate {
+        height: 25px;
+        width: 50px;
+        font-size: 7px;
+      }
+    }
+    .barProfile {
+      a {
+        font-size: 10px;
+        padding-right: 5px;
+      }
+    }
+  }
+  .headerAfterAuth {
+    padding: 0 40px;
+    .logo {
+      img {
+        width: 150px;
+      }
+    }
+    .barBeforeAuth {
+      .search {
+        .icon {
+          width: 12px;
+          position: relative;
+          left: 26px;
+          top: 0px;
+        }
+        input {
+          width: 40px;
+          height: 25px;
+          font-size: 10px;
+
+          &:focus {
+            width: 150px;
+          }
+        }
+      }
+    }
+    .BarAfterAuth {
+      .search {
+        .icon {
+          width: 12px;
+          position: relative;
+          left: 26px;
+          top: 0px;
+        }
+        input {
+          width: 40px;
+          height: 25px;
+          font-size: 10px;
+
+          &:focus {
+            width: 150px;
+          }
+        }
+      }
+    }
+    .buttonNavbar {
+      min-width: 100px;
+      .campaign {
+        height: 25px;
+        width: 80px;
+        margin: 0 15px;
+        font-size: 7px;
+      }
+      .donate {
+        height: 25px;
+        width: 50px;
+        font-size: 7px;
+      }
+    }
+    .barProfile {
+      a {
+        font-size: 10px;
+        padding-right: 5px;
+      }
     }
   }
 }

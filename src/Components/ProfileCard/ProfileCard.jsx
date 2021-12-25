@@ -1,17 +1,22 @@
 import React from "react";
 import {
-	Card,
-	CardContent,
-	Typography,
-	Grid,
-	Link,
-	Avatar,
-	TextField,
-	Box,
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Link,
+  Avatar,
+  TextField,
+  Box,
 } from "@mui/material";
-import {useDispatch, useSelector} from 'react-redux'
-import {ProfileAction} from '../../Store/Actions/profile'
-import {useNavigate} from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { ProfileAction } from '../../Store/Actions/profile'
+import { useNavigate } from 'react-router-dom'
+
+
+
+
 
 export default function ProfileCard() {
 
@@ -24,10 +29,10 @@ export default function ProfileCard() {
 
   React.useEffect(() => {
     dispatch(ProfileAction())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const {profile} = useSelector(state => state.profileReducer)
+  const { profile } = useSelector(state => state.profileReducer)
   console.log(profile)
   console.log(profile && profile.name)
 
@@ -109,6 +114,7 @@ export default function ProfileCard() {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-evenly",
+              flexWrap: 'wrap'
             }}
           >
             <TextField
@@ -116,7 +122,7 @@ export default function ProfileCard() {
               id="name"
               label="Name"
               value={`${profile && profile.name}`}
-              sx={{width: "384px"}}
+              sx={{ width: "384px" }}
               variant="standard"
             />
             <TextField
@@ -124,30 +130,21 @@ export default function ProfileCard() {
               id="email"
               label="Email"
               value={`${profile && profile.email}`}
-              sx={{width: "384px"}}
+              sx={{ width: "384px" }}
               variant="standard"
             />
-          </Grid>
-          <Grid
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              pl: 7,
-              pt: 1,
-              m: 1,
-  
-            }}
-          >
+            <Box sx={{flexGrow: 1,justifyContent: 'space-evenly'}}>
             <TextField
-              disabled
-              id="bankInfo"
-              label="Bank Info"
-              sx={{width: "384px"}}
-              value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
-              variant="standard"
-            />
-          </Grid>
+          disabled
+          margin="dense"
+          id="bankInfo"
+          label="Bank Info"
+          sx={{ width: "384px" }}
+          value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
+          variant="standard"
+        />
+        </Box>
+        </Grid>
         </Box>
       </CardContent>
     </Card>

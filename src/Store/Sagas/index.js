@@ -14,7 +14,9 @@ import {
   watchPostUpdateCampaign,
   watchAddShareCampaign,
   watchEditCampaign,
+  watchDeleteCampaign,
 } from "./Campaign/campaign";
+import { watchGetRelatedCampaign } from "./Campaign/related";
 
 function* rootSaga() {
   yield all([
@@ -30,6 +32,8 @@ function* rootSaga() {
     watchPostUpdateCampaign(),
     watchAddShareCampaign(),
     watchEditCampaign(),
+    watchGetRelatedCampaign(),
+    watchDeleteCampaign(),
     donationSagas(),
     cardHomeSagas(),
     discoverSagas(),

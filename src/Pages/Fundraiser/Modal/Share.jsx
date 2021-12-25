@@ -1,14 +1,15 @@
 import styles from "./Share.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import { BsLink45Deg } from "react-icons/bs";
-import { useState, useRef, forwardRef } from "react";
+import { useState, useRef, forwardRef} from "react";
 import MuiAlert from "@mui/material/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
-// import {shareCampaignAction} from "../../"
+import { useDispatch} from "react-redux";
+import {shareCampaignAction} from "../../../Store/Actions/Campaign/campaign";
 
 export default function Share(props) {
-  // eslint-disable-next-line no-unused-vars
-  const [copySuccess, setCopySuccess] = useState("");
+  const { id } = props
+  const dispatch = useDispatch();
   const textAreaRef = useRef(null);
 
   const Alert = forwardRef(function Alert(props, ref) {
@@ -16,13 +17,10 @@ export default function Share(props) {
   });
 
   const [open, setOpen] = useState(false);
-  const handleClick = (e) => {
+  const handleClick = () => {
     setOpen(true);
-    textAreaRef.current.select();
-    document.execCommand("copy", true, textAreaRef.current.defaultValue);
-    e.target.focus();
-    setCopySuccess(textAreaRef);
-    console.log(textAreaRef);
+    navigator.clipboard.writeText(window.location.href);
+    dispatch(shareCampaignAction(id));
   };
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -47,7 +45,7 @@ export default function Share(props) {
         <div className={styles.shareContent}>
           <div className={styles.shareInput}>
             <BsLink45Deg className={styles.shareIcon} />
-            <input type="text" ref={textAreaRef} />
+            <input type="text" disabled value={window.location.href} ref={textAreaRef} />
           </div>
           <div className={styles.shareButton}>
             <button onClick={handleClick}>COPY LINK</button>

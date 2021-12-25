@@ -19,7 +19,6 @@ export default function EditProfile() {
   const dispatch = useDispatch();
   // eslint-disable-next-line no-unused-vars
   const { profile, loading } = useSelector((state) => state.profileReducer);
-  console.log(profile, "profile");
   const [updateProfile, setUpdateProfile] = useState({
     name: "",
     email: "",
@@ -53,7 +52,6 @@ export default function EditProfile() {
       reader.readAsDataURL(e.target.files[0]);
     }
   }
-  console.log(updateProfile, "update profile")
   
   const submitProfile = () => {
     let form = new FormData();

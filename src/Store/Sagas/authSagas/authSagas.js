@@ -5,7 +5,7 @@ import {
     put,
     takeLatest
 } from 'redux-saga/effects';
-import types from '../../Actions/authAction/authActionTypes'
+import types from '../../Actions/authAction/authActionTypes';
 
 const logIn = async (data) => {
     const response= await axios.post('https://api-talikasih.herokuapp.com/login', {

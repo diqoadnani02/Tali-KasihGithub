@@ -20,11 +20,9 @@ export default function Header({ inputSearch, setInputSearch }) {
   }, [Token, dispatch]);
 
   const profile = useSelector((state) => state.profileReducer.profile);
-  console.log(profile, "myProfile");
 
   const [search, setSearch] = useState(false);
   const inputref = useRef(null);
-  console.log(inputref.current);
 
   const styleLogin = {
     position: "absolute",
