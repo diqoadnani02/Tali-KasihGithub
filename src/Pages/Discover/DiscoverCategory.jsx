@@ -35,7 +35,7 @@ const DiscoverCategory = (id) => {
           <h1 className={styles.title_category}>{discoverByCategory && discoverByCategory.campaigns[0].category.quotes}</h1>
           <Link to="/discover">
             <div className={styles.icons_category}>
-              <KeyboardBackspaceIcon />
+              <KeyboardBackspaceIcon className={styles.keyboard_backspace} />
               <p className={styles.text_category}>See all categories</p>
             </div>
           </Link>

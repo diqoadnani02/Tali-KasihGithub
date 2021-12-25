@@ -51,7 +51,7 @@ const Discover = ({ inputSearch }) => {
                   navigate(`/discover/category/${data.id}/latest`);
                 }}
               >
-                <img src={data.icon} alt={data.name} />
+                <img src={data.icon} alt={data.name} className={styles.img_button} />
                 <p className={styles.button_title}>{data.name}</p>
               </button>
             ))}

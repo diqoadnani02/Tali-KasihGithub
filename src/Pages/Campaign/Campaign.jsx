@@ -22,6 +22,7 @@ import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { discoverRelatedStart } from "../../Store/Actions/discoverAction/discoverRelatedAction";
 
 export default function Campaign() {
   dayjs.extend(relativeTime);
@@ -30,11 +31,12 @@ export default function Campaign() {
 
   useEffect(() => {
     dispatch(ProfileAction());
+    dispatch(discoverRelatedStart(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const campaignUser = useSelector((state) => state.profileReducer.profile);
-  console.log(campaignUser);
-
+  const discoverRelated = useSelector((state) => state.discoverRelatedReducer);
+  console.log(discoverRelated);
   // eslint-disable-next-line no-unused-vars
   const RoleUser = window.location.pathname === "/profile";
 

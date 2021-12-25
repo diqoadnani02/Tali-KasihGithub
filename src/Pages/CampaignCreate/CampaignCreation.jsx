@@ -15,7 +15,6 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import dayjs from "dayjs";
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
@@ -59,7 +58,6 @@ export default function CampaignCreation() {
 
   const submitCampaign = () => {
     dispatch(createCampaignAction(inputCampaign));
-
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -130,19 +128,10 @@ export default function CampaignCreation() {
                 <div className={styles.boxAddImage}>
                   <div className={styles.iconAdd}>
                     <label htmlFor="upload-campaign">
-                      <AddCircleOutlineIcon
-                        sx={{ fontSize: 50, color: "#9f9f9f" }}
-                      />
+                      <AddCircleOutlineIcon sx={{ fontSize: 50, color: "#9f9f9f" }} />
                     </label>
                   </div>
-                  <input
-                    style={{ visibility: "hidden" }}
-                    id="upload-campaign"
-                    accept="image/*"
-                    type="file"
-                    name="image"
-                    onChange={ChangeImageCampaign}
-                  />
+                  <input style={{ visibility: "hidden" }} id="upload-campaign" accept="image/*" type="file" name="image" onChange={ChangeImageCampaign} />
                   <h2>Add Header Photo</h2>
                 </div>
               </>
@@ -165,50 +154,17 @@ export default function CampaignCreation() {
 
         <div className={styles.formCreation}>
           <div className={styles.textInputCreation}>
-            <TextField
-              required
-              id="standard-required"
-              label="Title"
-              placeholder="e.g. Help we get clean water"
-              variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
-              name="title"
-              onChange={(e) => changeInput(e)}
-            />
-            <TextField
-              required
-              id="standard-required-select-currency"
-              select
-              label="Category"
-              value={currency}
-              onChange={handleChange}
-              variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
-              name="categoryId"
-            >
+            <TextField required id="standard-required" label="Title" placeholder="e.g. Help we get clean water" variant="standard" sx={{ width: "477px", height: "200px", paddingTop: "20px" }} name="title" onChange={(e) => changeInput(e)} />
+            <TextField required id="standard-required-select-currency" select label="Category" value={currency} onChange={handleChange} variant="standard" sx={{ width: "477px", height: "200px", paddingTop: "20px" }} name="categoryId">
               {categories.map((inputCampaign) => (
-                <MenuItem
-                  name="categoryId"
-                  key={inputCampaign.categoryId}
-                  value={inputCampaign.categoryId}
-                  onChange={(e) => changeInput(e)}
-                >
+                <MenuItem name="categoryId" key={inputCampaign.categoryId} value={inputCampaign.categoryId} onChange={(e) => changeInput(e)}>
                   {inputCampaign.label}
                 </MenuItem>
               ))}
             </TextField>
           </div>
           <div className={styles.textInputCreation}>
-            <TextField
-              required
-              id="standard-required"
-              label="Goal"
-              placeholder="e.g. 20000000"
-              variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
-              name="goal"
-              onChange={(e) => changeInput(e)}
-            />
+            <TextField required id="standard-required" label="Goal" placeholder="e.g. 20000000" variant="standard" sx={{ width: "477px", height: "200px", paddingTop: "20px" }} name="goal" onChange={(e) => changeInput(e)} />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 name="dueDate"
@@ -288,14 +244,7 @@ export default function CampaignCreation() {
                 </button>
               </div>
             </div>
-            <textarea
-              name="story"
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="Tell your story..."
-              onChange={(e) => changeInput(e)}
-            ></textarea>
+            <textarea name="story" id="" cols="30" rows="10" placeholder="Tell your story..." onChange={(e) => changeInput(e)}></textarea>
           </div>
         </div>
       </div>

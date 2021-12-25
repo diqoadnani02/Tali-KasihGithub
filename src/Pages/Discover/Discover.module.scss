@@ -83,3 +83,39 @@
   justify-content: space-between;
   margin-bottom: 160px;
 }
+
+@media screen and (max-width: 1200px) {
+  .button_card {
+    margin: 0px 75px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    font-size: 15px;
+  }
+  .button_card {
+    margin: 0;
+  }
+  .img_button {
+    width: 20px;
+  }
+  .button {
+    width: 65px;
+    height: 50px;
+  }
+  .button_title {
+    font-size: 10px;
+  }
+  .title1 {
+    font-size: 15px;
+    margin-top: 25px;
+  }
+  .title2 {
+    font-size: 15px;
+    margin-top: 0;
+  }
+  .component_card2 {
+    margin-bottom: 0;
+  }
+}

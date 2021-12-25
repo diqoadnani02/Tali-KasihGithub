@@ -4,8 +4,8 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
+import LinearProgress from "@mui/material/LinearProgress";
 import Card from "../../Components/Card/Card";
-import itemDonate from "./assets/itemDonate.png";
 import React, { useState, useRef, useEffect } from "react";
 import useClipboard from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
@@ -16,6 +16,8 @@ import { bankTransferStart } from "./../../Store/Actions/donationAction/donation
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { getDetailCampaignAction } from "./../../Store/Actions/Campaign/campaign";
+import { category } from "./../Discover/Discover";
+
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
   const [values, setValues] = React.useState({
@@ -69,6 +71,7 @@ const Payment = () => {
       setTogglePayment(newTogglePayment);
     }
   };
+
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
   const [clipboard, copyToClipboard] = useClipboard();
@@ -83,19 +86,19 @@ const Payment = () => {
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const idPopover = open ? "simple-popover" : undefined;
   const [detailCard, setDetailCard] = useState(false);
   const [transferBank, setTransferBank] = useState(false);
 
-  const { campaignId } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDetailCampaignAction(campaignId));
+    dispatch(getDetailCampaignAction(id));
   }, []);
 
   const validation = values.numberformat !== "" && values.name !== "" && values.cardnumber !== "" && values.expirydate !== "" && values.cvv !== "";
 
-  const donation = useSelector((state) => state.campaignReducer);
+  const donation = useSelector((state) => state.campaignReducer.detailCampaign);
   console.log(donation);
   return (
     <div className={style.payment}>
@@ -153,7 +156,34 @@ const Payment = () => {
             <textarea className={style.text_box} type="text" placeholder="Give them Support!"></textarea>
           </div>
         </div>
-        <Card id={campaignId} category="Medical" title="Aid for necessary items to help our country" author="Aksi Cepat Tanggap" data_funding={60} raised="IDR 30.000.000" goal="IDR 50.000.000" />
+        <div className={style.choosed_card}>
+          <div className={style.image_category}>
+            <img src={donation?.detailCampaign?.image} className={style.set_image} alt="gambar" />
+          </div>
+          <div className={style.category}>
+            <button className={style.button_category}>
+              {/* <img src={data.icon} alt={data.name} />
+              <p>{data.name}</p> */}
+            </button>
+            <div>
+              <p className={style.title1}>{donation?.detailCampaign?.title}</p>
+              <p className={style.title2}>{donation?.detailCampaign?.user?.name}</p>
+            </div>
+            <div>
+              <LinearProgress variant="determinate" sx={{ height: "8px" }} value={donation?.detailCampaign?.deviaton} className={style.progress} />
+            </div>
+            <div className={style.goals_card}>
+              <div>
+                <p className={style.raised}>Raised</p>
+                <p className={style.money1}>{donation?.detailCampaign?.collected}</p>
+              </div>
+              <div>
+                <p className={style.goal}>Goal</p>
+                <p className={style.money2}>{donation?.detailCampaign?.goal}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div>
@@ -171,7 +201,7 @@ const Payment = () => {
           </p>
         </div>
         <div className={style.button_payment}>
-          <ToggleButton
+          {/* <ToggleButton
             className={togglePayment === "Card" ? style.credit_card_active : style.credit_card}
             onClick={() => {
               setDetailCard(!detailCard);
@@ -180,13 +210,18 @@ const Payment = () => {
           >
             <CreditCardIcon sx={{ fontSize: 40 }} />
             <p className={style.text_button}>Credit/Debit Card</p>
+          </ToggleButton> */}
+          <ToggleButton
+            className={style.bank_transfer}
+            sx={{
+              "&:focus": {
+                backgroundColor: "#D7EBEE",
+              },
+            }}
+          >
+            <AccountBalanceIcon sx={{ fontSize: 40 }} />
+            <p className={style.text_button}>Bank Transfer</p>
           </ToggleButton>
-          <ToggleButtonGroup>
-            <ToggleButton className={togglePayment === "Bank" ? style.bank_transfer_active : style.bank_transfer} onClick={() => setTogglePayment("Bank")}>
-              <AccountBalanceIcon sx={{ fontSize: 40 }} />
-              <p className={style.text_button}>Bank Transfer</p>
-            </ToggleButton>
-          </ToggleButtonGroup>
         </div>
         {detailCard && (
           <div className={style.form_card}>
@@ -253,7 +288,7 @@ const Payment = () => {
                     COPY
                   </button>
                   <Popover
-                    id={id}
+                    idPopover={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleCloseCopied}
@@ -288,7 +323,7 @@ const Payment = () => {
                     COPY
                   </button>
                   <Popover
-                    id={id}
+                    idPopover={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleCloseCopied}
@@ -305,7 +340,7 @@ const Payment = () => {
           </>
         )}
         <div className={style.button_approve}>
-          <button className={style.approve} disabled={validation} onClick={() => dispatch(bankTransferStart(campaignId, values))}>
+          <button className={style.approve} disabled={validation} onClick={() => dispatch(bankTransferStart(id, values))}>
             DONATE
           </button>
         </div>

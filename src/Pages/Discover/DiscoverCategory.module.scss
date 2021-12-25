@@ -1,12 +1,14 @@
 .discover_category {
   margin: 0px 65px;
 }
+
 .main_category {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 100px 0;
 }
+
 .button_category {
   background-color: transparent;
   color: #a43f3c;
@@ -20,8 +22,11 @@
 .main_pict {
   display: flex;
   justify-content: flex-end;
-  width: 353px;
-  height: 334px;
+}
+
+.img_category {
+  width: 700px;
+  height: 550px;
 }
 
 .icons_category {
@@ -32,6 +37,7 @@
   justify-content: space-evenly;
   color: black;
 }
+
 .title_category {
   font-family: Nunito;
   font-weight: bold;
@@ -62,4 +68,33 @@
   justify-content: flex-end;
   margin-top: 40px;
   margin-bottom: 135px;
+}
+
+@media screen and (max-width: 1200px) {
+  .img_category {
+    width: 550px;
+    height: 450px;
+  }
+  .title_category {
+    font-size: larger;
+  }
+  .keyboard_backspace {
+    font-size: 1.2rem;
+  }
+  .text_category {
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main_category {
+    width: 565px;
+  }
+  .img_category {
+    width: 250px;
+    height: 150px;
+  }
+  .title_category {
+    width: fit-content;
+  }
 }

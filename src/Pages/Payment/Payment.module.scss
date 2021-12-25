@@ -74,10 +74,92 @@
   font-family: Nunito;
 }
 
+//Card
+.image_category {
+  margin-top: 24px;
+}
+
+.set_image {
+  width: 363px;
+  height: 222px;
+}
+
+.category {
+  margin: 10px 24px;
+}
+
+.button_category {
+  background-color: transparent;
+  color: #a43f3c;
+  border: 1px solid #a43f3c;
+  border-radius: 4px;
+  width: 100px;
+  height: 30px;
+  margin-top: 16px;
+}
+
+.title1 {
+  font-weight: bold;
+  font-family: Nunito;
+}
+
+.title2 {
+  font-size: 14px;
+  font-family: Nunito;
+}
+
+.progress {
+  width: 315px;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.goals_card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.raised {
+  margin: 0;
+  margin-top: 27px;
+  font-size: 14px;
+  font-family: Nunito;
+  color: #9f9f9f;
+}
+
+.goal {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  margin-top: 27px;
+  font-size: 14px;
+  font-family: Nunito;
+  color: #9f9f9f;
+}
+
+.money1 {
+  margin: 0;
+  color: #1d94a8;
+  font-weight: bold;
+  font-family: Nunito;
+}
+
+.money2 {
+  margin: 0;
+  font-weight: bold;
+  font-family: Nunito;
+}
+//doneCardLine
+.choosed_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .button_payment {
   display: flex;
   justify-content: space-between;
-  width: 420px;
+  width: 300px;
   margin-top: 15px;
 }
 
@@ -106,13 +188,6 @@
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  &_active {
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 87px;
-  }
 }
 
 .button_approve {
@@ -187,4 +262,71 @@
   font-family: Nunito;
   font-weight: bold;
   font-size: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+  .payment {
+    margin: 40px 120px 150px 120px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .payment {
+    margin: 20px 35px 100px 35px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .borderline {
+    width: 600px;
+  }
+  .Form {
+    width: 600px;
+  }
+  .input_field2 {
+    width: 350px;
+  }
+  .text_box {
+    width: 350px !important;
+    height: 230px !important;
+  }
+  .choosed_card {
+    width: 220px;
+  }
+  .set_image {
+    width: 200px;
+    height: 122px;
+  }
+  .category {
+    margin: 0;
+    width: 185px;
+  }
+  .button_category {
+    width: 90px;
+    height: 30px;
+  }
+  .title1 {
+    font-size: 10px;
+  }
+  .title2 {
+    font-size: 8px;
+    font-family: Nunito;
+  }
+  .progress {
+    width: 180px;
+  }
+  .raised {
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  .goal {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+  .money1 {
+    font-size: 10px;
+  }
+  .money2 {
+    font-size: 10px;
+  }
 }

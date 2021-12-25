@@ -30,14 +30,14 @@ const Trending = () => {
           <div>
             <img src={cardHome && cardHome.trendingCampaign[0].image} alt="rectangle33" className={style.main_image} />
           </div>
-          <div>
+          <div className={style.description}>
             <div>
-              <img src={thick} alt="doublethick" />
+              <img src={thick} alt="doublethick" className={style.thickleft} />
             </div>
             <p className={style.paragraph}>{cardHome && cardHome.trendingCampaign[0].story}</p>
             <div>
               <div className={style.thickright}>
-                <img src={thick2} alt="doublethick" />
+                <img src={thick2} alt="doublethick" className={style.thick_right} />
               </div>
             </div>
             <div className={style.author}>
@@ -67,10 +67,10 @@ const Trending = () => {
             <p className={style.title2}>Spread kindness anytime, anywhere</p>
           </div>
           <div className={style.image_section}>
-            <img src={image1} alt="section" />
+            <img src={image1} alt="section" className={style.image_bottom} />
             <div>
               <p className={style.title3}>Available now</p>
-              <img src={image2} alt="apps" />
+              <img src={image2} alt="apps" className={style.image_apps} />
             </div>
           </div>
         </div>

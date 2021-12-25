@@ -16,7 +16,7 @@ const Card = ({ id, image, category, title, author, raised, goal }) => {
         {loading ? (
           <>
             <div className={styles.image_category}>
-              <Skeleton sx={{ height: "190px", width: "340px" }} animation="wave" variant="rectangular" />
+              <Skeleton sx={{ height: "190px", width: "340px" }} animation="wave" variant="rectangular" className={styles.loading_img} />
             </div>
             <div className={styles.category}>
               <Skeleton variant="rectangular" animation="wave" width={100} height={30} className={styles.button_category_skeleton} />
@@ -47,7 +47,7 @@ const Card = ({ id, image, category, title, author, raised, goal }) => {
             </div>
             <div className={styles.category}>
               <button className={styles.button_category}>{category}</button>
-              <div>
+              <div className={styles.title_description}>
                 <p className={styles.title1}>{title}</p>
                 <p className={styles.title2}>{author}</p>
               </div>
