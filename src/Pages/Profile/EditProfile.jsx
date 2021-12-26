@@ -2,18 +2,8 @@ import { UpdateProfileAction } from "../../Store/Actions/updateProfile";
 import styles from "./EditProfile.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Link,
-  Avatar,
-  TextField,
-  Box,
-  Button,
-} from "@mui/material";
-import {useNavigate} from 'react-router-dom'
+import { Card, CardContent, Typography, Grid, Link, Avatar, TextField, Box, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function EditProfile() {
   const dispatch = useDispatch();
@@ -26,7 +16,7 @@ export default function EditProfile() {
     bankName: "",
     bankAccount: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUpdateProfile({
@@ -43,7 +33,7 @@ export default function EditProfile() {
   const [isUpload, setIsUpload] = useState(false);
   function handleImageChange(e) {
     if (e.target.files && e.target.files[0]) {
-      setUpdateProfile({...updateProfile, image: e.target.files[0]})
+      setUpdateProfile({ ...updateProfile, image: e.target.files[0] });
       let reader = new FileReader();
 
       reader.onload = function (e) {
@@ -52,17 +42,17 @@ export default function EditProfile() {
       reader.readAsDataURL(e.target.files[0]);
     }
   }
-  
+
   const submitProfile = () => {
     let form = new FormData();
-    form.append('name', updateProfile.name)
-    form.append('email', updateProfile.email)
-    form.append('image', updateProfile.image)
-    form.append('bankName', updateProfile.bankName)
-    form.append('bankAccount', updateProfile.bankAccount)
-    dispatch(UpdateProfileAction(form))
-    navigate('/profile')
-  }
+    form.append("name", updateProfile.name);
+    form.append("email", updateProfile.email);
+    form.append("image", updateProfile.image);
+    form.append("bankName", updateProfile.bankName);
+    form.append("bankAccount", updateProfile.bankAccount);
+    dispatch(UpdateProfileAction(form));
+    navigate("/profile");
+  };
 
   const Update = (e) => {
     setUpdateProfile({
@@ -110,27 +100,12 @@ export default function EditProfile() {
         <div className={styles.editProfile}>
           {/* {!isUpload ? ( */}
           <Grid container sx={{ display: "flex", justifyContent: "center" }}>
-            <Avatar
-              variant="square"
-              src={uploadImage ? uploadImage :updateProfile.image} 
-              sx={{ width: 200, height: 200 }}
-              name="image"
-              onChange={(e) => handleImageChange(e)}
-            ></Avatar>
+            <Avatar variant="square" src={uploadImage ? uploadImage : updateProfile.image} sx={{ width: 200, height: 200 }} name="image" onChange={(e) => handleImageChange(e)}></Avatar>
           </Grid>
           {/* ) : ( */}
           <div className={styles.uploadInput}>
-            <Grid
-              container
-              sx={{ mt: 2, display: "flex", justifyContent: "center" }}
-            >
-              <input
-                style={{ visibility: "hidden" }}
-                id="upload-input"
-                accept="image/*"
-                type="file"
-                onChange={handleImageChange}
-              />
+            <Grid container sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+              <input style={{ visibility: "hidden" }} id="upload-input" accept="image/*" type="file" onChange={handleImageChange} />
             </Grid>
             <label
               onClick={() => {
@@ -150,7 +125,7 @@ export default function EditProfile() {
                   lineHeight: "19px",
                   color: "#1D94A8",
                   textDecoration: "underline",
-                  cursor: 'pointer'
+                  cursor: "pointer",
                 }}
               >
                 Change Image Profile
@@ -169,27 +144,8 @@ export default function EditProfile() {
               justifyContent: "space-evenly",
             }}
           >
-            <TextField
-              size="large"
-              required
-              id="name"
-              label="Name"
-              defaultValue="Hasegawa Aiko"
-              value={updateProfile.name || ''}
-              variant="standard"
-              name="name"
-              onChange={(e) => Update(e)}
-            />
-            <TextField
-              disabled
-              id="email"
-              label="Email"
-              defaultValue="aiko@mail.com"
-              value={updateProfile.email || ''}
-              variant="standard"
-              name="email"
-              onChange={(e) => Update(e)}
-            />
+            <TextField size="large" required id="name" label="Name" defaultValue="Hasegawa Aiko" value={updateProfile.name || ""} variant="standard" name="name" onChange={(e) => Update(e)} />
+            <TextField disabled id="email" label="Email" defaultValue="aiko@mail.com" value={updateProfile.email || ""} variant="standard" name="email" onChange={(e) => Update(e)} />
           </Grid>
           <Grid
             container
@@ -201,37 +157,10 @@ export default function EditProfile() {
               mt: 2,
             }}
           >
-            <TextField
-              margin="dense"
-              required
-              id="nameBank"
-              label="Bank Name"
-              defaultValue="Bank BCA"
-              value={updateProfile.bankName || ''}
-              variant="standard"
-              name="bankName"
-              onChange={(e) => Update(e)}
-            />
-            <TextField
-              margin="dense"
-              required
-              id="accountNumber"
-              label="Bank Account Number"
-              defaultValue="1234567"
-              value={updateProfile.bankAccount || ''}
-              variant="standard"
-              name="bankAccount"
-              onChange={(e) => Update(e)}
-            />
+            <TextField margin="dense" required id="nameBank" label="Bank Name" defaultValue="Bank BCA" value={updateProfile.bankName || ""} variant="standard" name="bankName" onChange={(e) => Update(e)} />
+            <TextField margin="dense" required id="accountNumber" label="Bank Account Number" defaultValue="1234567" value={updateProfile.bankAccount || ""} variant="standard" name="bankAccount" onChange={(e) => Update(e)} />
           </Grid>
-          <Grid
-            container
-            sx={{ pt: 6 }}
-            spacing={50}
-            direction="row"
-            alignItems="flex-end"
-            justifyContent="flex-end"
-          >
+          <Grid container sx={{ pt: 6 }} spacing={50} direction="row" alignItems="flex-end" justifyContent="flex-end">
             <Grid item xs={5}>
               <Button
                 onClick={submitProfile}
