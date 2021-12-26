@@ -19,6 +19,7 @@ import {
   DELETE_CAMPAIGN_SUCCESS,
   DELETE_CAMPAIGN_FAIL,
 } from "../../../Constants/types";
+import mycampaignActionType from "../../Actions/mycampaignAction/mycampaignActionType";
 import axios from "axios";
 import { BASE_URL } from "../../../Constants/Constants";
 import Swal from "sweetalert2";
@@ -52,16 +53,14 @@ function* postCreateCampaign(actions) {
     yield put({
       type: CREATE_CAMPAIGN_SUCCESS,
     });
-    Swal.fire(
-      "Success",
-      "Campaign was Created",
-      "success",
-    );
-    const resCreateCampaign = yield axios.get(`${BASE_URL}discover/all`);
-    console.log(res);
+    Swal.fire("Success", "Campaign was Created", "success");
+    const resMyCampaign = axios.get(`${BASE_URL}profile/myCampaign`, {
+      headers: { access_token: localStorage.getItem("token") },
+    });
+    console.log(resMyCampaign);
     yield put({
-      type: GET_DETAIL_CAMPAIGN_SUCCESS,
-      payload: resCreateCampaign.data.data,
+      type: mycampaignActionType.GET_CAMPAIGN_SUCCESS,
+      payload: resMyCampaign.data,
     });
   } catch (err) {
     yield put({
@@ -89,11 +88,6 @@ function* postUpdateCampaign(actions) {
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
       payload: resUpdateCampaign.data,
     });
-    // Swal.fire(
-    //   "Success",
-    //   "Campaign was Created!",
-    //   "success"((window.location.href = "/profile"))
-    // );
   } catch (err) {
     yield put({
       type: UPDATE_CAMPAIGN_FAIL,
@@ -138,6 +132,7 @@ function* editCampaign(actions) {
       type: EDIT_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
+    Swal.fire("Success", "Campaign was Edited!", "success");
     const resEditCampaign = yield axios.get(
       `${BASE_URL}discover/details/${id}`
     );
@@ -153,7 +148,7 @@ function* editCampaign(actions) {
 }
 
 function* deleteCampaign(actions) {
-  const { id } = actions; 
+  const { id } = actions;
   try {
     const res = yield axios.delete(`${BASE_URL}deleteCampaign/${id}`, {
       headers: { access_token: localStorage.getItem("token") },
@@ -163,11 +158,7 @@ function* deleteCampaign(actions) {
       type: DELETE_CAMPAIGN_SUCCESS,
       payload: res.data.data,
     });
-    Swal.fire(
-      "Success",
-      "Campaign was Deleted",
-      "success",
-    );
+    Swal.fire("Success", "Campaign was Deleted", "success");
   } catch (err) {
     console.log(err);
     yield put({ type: DELETE_CAMPAIGN_FAIL, error: err });

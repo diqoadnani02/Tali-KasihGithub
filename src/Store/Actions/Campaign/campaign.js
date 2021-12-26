@@ -8,9 +8,10 @@ import {
   DELETE_CAMPAIGN_BEGIN,
 } from "../../../Constants/types";
 
-export const createCampaignAction = (body) => {
+export const createCampaignAction = (body, id) => {
   return {
     type: CREATE_CAMPAIGN_BEGIN,
+    id,
     body,
   };
 };
