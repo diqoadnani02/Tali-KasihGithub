@@ -1,46 +1,29 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Link,
-  Avatar,
-  TextField,
-  Box,
-} from "@mui/material";
+import { Card, CardContent, Typography, Grid, Link, Avatar, TextField, Box } from "@mui/material";
 
-import { useDispatch, useSelector } from 'react-redux'
-import { ProfileAction } from '../../Store/Actions/profile'
-import { useNavigate } from 'react-router-dom'
-
-
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { ProfileAction } from "../../Store/Actions/profile";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileCard() {
-
   const logOut = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    dispatch(ProfileAction())
+    dispatch(ProfileAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  const { profile } = useSelector(state => state.profileReducer)
-  console.log(profile)
-  console.log(profile && profile.name)
+  const { profile } = useSelector((state) => state.profileReducer);
+  console.log(profile);
+  console.log(profile && profile.name);
 
   return (
-    <Card
-      container
-      sx={{ borderRadius: 4, mt: "72px", ml: "267px", mr: "203px", p: 2 }}
-    >
+    <Card container sx={{ borderRadius: 4, mt: "72px", ml: "267px", mr: "203px", p: 2 }}>
       <Grid
         sx={{
           display: "flex",
@@ -68,7 +51,7 @@ export default function ProfileCard() {
             lineHeight: "19px",
             color: "#A43F3C",
             textDecoration: "underline",
-            cursor: 'pointer'
+            cursor: "pointer",
           }}
           to="#"
           onClick={logOut}
@@ -78,19 +61,12 @@ export default function ProfileCard() {
       </Grid>
       <CardContent>
         <Grid container sx={{ display: "flex", justifyContent: "center" }}>
-          <Avatar
-            variant="square"
-            src={profile && profile.image}
-            sx={{ width: 200, height: 200 }}
-          ></Avatar>
+          <Avatar variant="square" src={profile && profile.image} sx={{ width: 200, height: 200 }}></Avatar>
         </Grid>
-        <Grid
-          container
-          sx={{ mt: 2, display: "flex", justifyContent: "center" }}
-        >
+        <Grid container sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
           <Link
             onClick={() => {
-              navigate('/edit-profile')
+              navigate("/edit-profile");
             }}
             sx={{
               fontFamily: "nunito",
@@ -100,7 +76,7 @@ export default function ProfileCard() {
               lineHeight: "19px",
               color: "#1D94A8",
               textDecoration: "underline",
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
           >
             Edit Profile
@@ -114,37 +90,15 @@ export default function ProfileCard() {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-evenly",
-              flexWrap: 'wrap'
+              flexWrap: "wrap",
             }}
           >
-            <TextField
-              disabled
-              id="name"
-              label="Name"
-              value={`${profile && profile.name}`}
-              sx={{ width: "384px" }}
-              variant="standard"
-            />
-            <TextField
-              disabled
-              id="email"
-              label="Email"
-              value={`${profile && profile.email}`}
-              sx={{ width: "384px" }}
-              variant="standard"
-            />
-            <Box sx={{flexGrow: 1,justifyContent: 'space-evenly'}}>
-            <TextField
-          disabled
-          margin="dense"
-          id="bankInfo"
-          label="Bank Info"
-          sx={{ width: "384px" }}
-          value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`}
-          variant="standard"
-        />
-        </Box>
-        </Grid>
+            <TextField disabled id="name" label="Name" value={`${profile && profile.name}`} sx={{ width: "384px" }} variant="standard" />
+            <TextField disabled id="email" label="Email" value={`${profile && profile.email}`} sx={{ width: "384px" }} variant="standard" />
+            <Box sx={{ flexGrow: 1, justifyContent: "space-evenly", marginLeft: "65px" }}>
+              <TextField disabled id="bankInfo" label="Bank Info" sx={{ width: "384px" }} value={`${profile && profile.bankName} - ${profile && profile.bankAccount}`} variant="standard" />
+            </Box>
+          </Grid>
         </Box>
       </CardContent>
     </Card>

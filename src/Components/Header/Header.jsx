@@ -59,9 +59,7 @@ export default function Header({ inputSearch, setInputSearch }) {
   const [openRegister, setOpenRegister] = useState();
   const handleOpenRegister = () => setOpenRegister(true);
   const handleCloseRegister = () => setOpenRegister(false);
-  
 
-  
   return (
     <div className={Home ? styles.headerBeforeAuth : styles.headerAfterAuth}>
       <div className={styles.logo}>
@@ -114,7 +112,7 @@ export default function Header({ inputSearch, setInputSearch }) {
               <Link to="/create">
                 <button className={styles.campaign}>CREATE CAMPAIGN</button>
               </Link>
-              <Link to="/campaign/donate">
+              <Link to="/discover">
                 <button className={styles.donate}>DONATE</button>
               </Link>
             </div>
