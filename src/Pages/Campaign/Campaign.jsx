@@ -8,9 +8,7 @@ import ModalUpdateCampaign from "../Fundraiser/Modal/UpdateCampaign";
 import Card from "../../Components/Card/Card";
 import data from "../../Components/Card/data";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
+import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
@@ -44,9 +42,7 @@ export default function Campaign() {
   }, [dispatch, id, categoryId]);
 
   const campaignUser = useSelector((state) => state.profileReducer.profile);
-  const { detailCampaign } = useSelector(
-    (state) => state.campaignReducer.detailCampaign
-  );
+  const { detailCampaign } = useSelector((state) => state.campaignReducer.detailCampaign);
   console.log("detailCampaign", detailCampaign);
   const { related } = useSelector((state) => state.relatedCampaignReducer);
   console.log("related", related);
@@ -56,8 +52,7 @@ export default function Campaign() {
     marginBottom: 15,
     marginRight: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      backgroundColor: theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
@@ -97,27 +92,13 @@ export default function Campaign() {
     <>
       {/* Top Campaign Components*/}
       {loadingCampaign ? (
-        <div
-          className={styles.topCampaign}
-          styles={{ display: "flex", justifyContent: "space-between" }}
-        >
+        <div className={styles.topCampaign} styles={{ display: "flex", justifyContent: "space-between" }}>
           <div className={styles.campaign}>
             <Skeleton sx={{ height: "100px" }} variant="text" />
-            <Skeleton
-              className={styles.campaignSkelleton}
-              animation="wave"
-              variant="rectangular"
-            />
+            <Skeleton className={styles.campaignSkelleton} animation="wave" variant="rectangular" />
           </div>
           <div>
-            <div className={styles.setting}>
-              {detailCampaign?.userId === campaignUser?.id ? (
-                <Skeleton
-                  className={styles.settingSkelleton}
-                  variant="rectangular"
-                />
-              ) : null}
-            </div>
+            <div className={styles.setting}>{detailCampaign?.userId === campaignUser?.id ? <Skeleton className={styles.settingSkelleton} variant="rectangular" /> : null}</div>
             <div className={styles.cardCampaign}>
               <div className="skel1">
                 <Skeleton variant="text" width="200px" />
@@ -134,37 +115,20 @@ export default function Campaign() {
                 </div>
                 <div className={styles.smallCard}>
                   <div className={styles.listCard}>
-                    <Skeleton
-                      variant="rectangular"
-                      className={styles.cardSkelleton}
-                    />
+                    <Skeleton variant="rectangular" className={styles.cardSkelleton} />
                   </div>
                   <div className={styles.listCard}>
-                    <Skeleton
-                      variant="rectangular"
-                      className={styles.cardSkelleton}
-                    />
+                    <Skeleton variant="rectangular" className={styles.cardSkelleton} />
                   </div>
                   <div className={styles.listCard}>
-                    <Skeleton
-                      variant="rectangular"
-                      className={styles.cardSkelleton}
-                    />
+                    <Skeleton variant="rectangular" className={styles.cardSkelleton} />
                   </div>
                 </div>
                 <div className={styles.buttonCard}>
-                  <Skeleton
-                    variant="rectangular"
-                    width="300px;"
-                    height="60px"
-                  />
+                  <Skeleton variant="rectangular" width="300px;" height="60px" />
                 </div>
                 <div className={styles.buttonCard}>
-                  <Skeleton
-                    variant="rectangular"
-                    width="300px;"
-                    height="60px"
-                  />
+                  <Skeleton variant="rectangular" width="300px;" height="60px" />
                 </div>
               </div>
             </div>
@@ -179,13 +143,7 @@ export default function Campaign() {
           <div className={styles.setting}>
             {detailCampaign?.userId === campaignUser?.id && (
               <div className={styles.dropdownCampaign}>
-                <Button
-                  aria-controls="basic-menu"
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
-                  sx={{ color: "black" }}
-                >
+                <Button aria-controls="basic-menu" aria-haspopup="true" aria-expanded={open ? "true" : undefined} onClick={handleClick} sx={{ color: "black" }}>
                   <SettingsIcon />
                   <ArrowDropDownIcon />
                 </Button>
@@ -198,34 +156,20 @@ export default function Campaign() {
                     "aria-labelledby": "basic-button",
                   }}
                 >
-                  <Link
-                    to={`/edit-campaign/${id}`}
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
+                  <Link to={`/edit-campaign/${id}`} style={{ textDecoration: "none", color: "black" }}>
                     <MenuItem>Edit</MenuItem>
                   </Link>
                   <MenuItem>Close Campaign</MenuItem>
-                  <MenuItem
-                    onClick={() =>
-                      dispatch(deleteCampaignAction(id), navigate("/profile"))
-                    }
-                  >
-                    Delete
-                  </MenuItem>
+                  <MenuItem onClick={() => dispatch(deleteCampaignAction(id), navigate("/profile"))}>Delete</MenuItem>
                 </Menu>
               </div>
             )}
           </div>
           <div className={styles.cardCampaign}>
             <h3>IDR {detailCampaign?.collected}</h3>
-            <p>
-              IDR {detailCampaign?.goal - detailCampaign?.collected} remaining
-            </p>
+            <p>IDR {detailCampaign?.goal - detailCampaign?.collected} remaining</p>
             <p>IDR {detailCampaign?.availSaldo} available</p>
-            <BorderLinearProgress
-              variant="determinate"
-              value={(detailCampaign?.deviation / detailCampaign?.goal) * 100}
-            />
+            <BorderLinearProgress variant="determinate" value={(detailCampaign?.deviation / detailCampaign?.goal) * 100} />
             <p className={styles.goal}>from IDR {detailCampaign?.goal} goal</p>
             <div className={styles.cardProfile}>
               <img src={detailCampaign?.user?.image} alt="" />
@@ -238,21 +182,11 @@ export default function Campaign() {
             </div>
             <div className={styles.smallCard}>
               <div className={styles.listCard}>
-                <h4>
-                  {dayjs(detailCampaign?.dueDate).toNow(true) === "a month"
-                    ? "30"
-                    : dayjs(detailCampaign?.dueDate)
-                        .fromNow(true)
-                        .split(" ")[0]}
-                </h4>
+                <h4>{dayjs(detailCampaign?.dueDate).toNow(true) === "a month" ? "30" : dayjs(detailCampaign?.dueDate).fromNow(true).split(" ")[0]}</h4>
                 <p>Days left</p>
               </div>
               <div className={styles.listCard}>
-                <h4>
-                  {detailCampaign?.donatur?.length
-                    ? detailCampaign?.donatur?.length
-                    : 0}
-                </h4>
+                <h4>{detailCampaign?.donatur?.length ? detailCampaign?.donatur?.length : 0}</h4>
                 <p>Donation</p>
               </div>
               <div className={styles.listCard}>
@@ -261,29 +195,19 @@ export default function Campaign() {
               </div>
             </div>
             <div className={styles.buttonCard}>
-              <button
-                onClick={() => setShare(true)}
-                className={styles.buttonUp}
-              >
+              <button onClick={() => setShare(true)} className={styles.buttonUp}>
                 SHARE
               </button>
               <Share onClose={() => setShare(false)} share={share} id={id} />
               {detailCampaign?.userId === campaignUser?.id ? (
                 <>
-                  <button
-                    onClick={() => setShow(true)}
-                    className={styles.buttonDown}
-                  >
+                  <button onClick={() => setShow(true)} className={styles.buttonDown}>
                     CAMPAIGN UPDATE
                   </button>
-                  <ModalUpdateCampaign
-                    onClose={() => setShow(false)}
-                    show={show}
-                    id={detailCampaign?.id}
-                  />
+                  <ModalUpdateCampaign onClose={() => setShow(false)} show={show} id={detailCampaign?.id} />
                 </>
               ) : (
-                <Link to="/campaign/donate">
+                <Link to={`/campaign/donate/${id}`}>
                   <button className={styles.buttonDown}>DONATE</button>
                 </Link>
               )}
@@ -306,15 +230,7 @@ export default function Campaign() {
         <Link to="/discover">Related campaign</Link>
         <div className={styles.cardBottom}>
           {related?.map((item) => (
-            <Card
-              id={item.id}
-              image={item.image}
-              category={item.category.category}
-              title={item.title}
-              author={item.user.name}
-              raised={item.jumlahCollected}
-              goal={item.jumlahGoal}
-            />
+            <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.jumlahCollected} goal={item.jumlahGoal} />
           ))}
         </div>
       </div>

@@ -221,8 +221,8 @@
   flex-direction: column;
   margin: 24px 0;
   padding: 24px;
-  width: 507px;
-  height: 270px;
+  width: 500px;
+  height: 250px;
 }
 
 .title_transfer {
@@ -234,12 +234,12 @@
 .transfer_data {
   display: flex;
   justify-content: space-between;
-  margin: 20px 38px 20px 0;
 }
 
 .account {
   display: flex;
   flex-direction: column;
+  margin: 5px 0;
 }
 
 .account_title {
