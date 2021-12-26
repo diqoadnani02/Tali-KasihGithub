@@ -162,8 +162,7 @@ const Payment = () => {
           </div>
           <div className={style.category}>
             <button className={style.button_category}>
-              {/* <img src={data.icon} alt={data.name} />
-              <p>{data.name}</p> */}
+              <p>{donation?.detailCampaign?.category?.category}</p>
             </button>
             <div>
               <p className={style.title1}>{donation?.detailCampaign?.title}</p>

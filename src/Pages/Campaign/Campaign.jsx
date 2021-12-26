@@ -22,20 +22,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
-import { relatedCampaignAction } from "../../Store/Actions/Campaign/campaign";
+import { discoverRelatedStart } from "../../Store/Actions/discoverAction/discoverRelatedAction";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { useNavigate } from "react-router-dom";
 
 export default function Campaign() {
   const navigate = useNavigate();
   dayjs.extend(relativeTime);
-  const { id, categoryId } = useParams();
+  const { id, categoryId, category } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProfileAction());
   }, []);
   useEffect(() => {
-    dispatch(relatedCampaignAction());
+    dispatch(discoverRelatedStart());
   }, []);
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
@@ -43,9 +43,9 @@ export default function Campaign() {
 
   const campaignUser = useSelector((state) => state.profileReducer.profile);
   const { detailCampaign } = useSelector((state) => state.campaignReducer.detailCampaign);
-  console.log("detailCampaign", detailCampaign);
-  const { related } = useSelector((state) => state.relatedCampaignReducer);
-  console.log("related", related);
+  console.log(detailCampaign, "detaildata");
+  const relate = useSelector((state) => state.campaignReducer.detailCampaign.related);
+  console.log("relate", relate);
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
@@ -67,7 +67,6 @@ export default function Campaign() {
   });
 
   const [list, setList] = useState([]);
-  console.log(dayjs(detailCampaign?.dueDate).toNow(true) === "a month");
 
   useEffect(() => {
     const getData = () => {
@@ -175,7 +174,7 @@ export default function Campaign() {
               <img src={detailCampaign?.user?.image} alt="" />
               <div className={styles.cardTitleProfile}>
                 <h4>{detailCampaign?.user?.name}</h4>
-                  <p>Fundraiser</p>
+                <p>Fundraiser</p>
               </div>
             </div>
             <div className={styles.smallCard}>
@@ -215,7 +214,7 @@ export default function Campaign() {
       )}
 
       {/* Read More Campaign */}
-      <ReadMore story={detailCampaign?.story}/>
+      <ReadMore story={detailCampaign?.story} />
       {/* Details Update Campaign Components */}
       <CampaignUpdate />
       {/* Donations Components*/}
@@ -226,11 +225,14 @@ export default function Campaign() {
       {/* Card Components */}
       <div className={styles.linkCardBottom}>
         <Link to="/discover">Related campaign</Link>
-        <div className={styles.cardBottom}>
-          {related?.map((item) => (
-            <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.jumlahCollected} goal={item.jumlahGoal} />
-          ))}
-        </div>
+
+        <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none", color: "black" }}>
+          <div className={styles.cardBottom}>
+            {relate?.map((item) => (
+              <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.jumlahCollected} goal={item.jumlahGoal} />
+            ))}
+          </div>
+        </Link>
       </div>
     </>
   );
