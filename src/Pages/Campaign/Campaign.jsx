@@ -46,6 +46,7 @@ export default function Campaign() {
   console.log("detailCampaign", detailCampaign);
   const { related } = useSelector((state) => state.relatedCampaignReducer);
   console.log("related", related);
+
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -56,7 +57,7 @@ export default function Campaign() {
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
+      backgroundColor: theme.palette.mode === "dark" ? "#1a90ff" : "#308fe8",
     },
   }));
 
@@ -84,7 +85,6 @@ export default function Campaign() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    dispatch(deleteCampaignAction(id));
     setAnchorEl(null);
   };
 
@@ -175,9 +175,7 @@ export default function Campaign() {
               <img src={detailCampaign?.user?.image} alt="" />
               <div className={styles.cardTitleProfile}>
                 <h4>{detailCampaign?.user?.name}</h4>
-                <Link to={`/fundraiser/${categoryId}/${id}`}>
                   <p>Fundraiser</p>
-                </Link>
               </div>
             </div>
             <div className={styles.smallCard}>
@@ -217,7 +215,7 @@ export default function Campaign() {
       )}
 
       {/* Read More Campaign */}
-      <ReadMore />
+      <ReadMore story={detailCampaign?.story}/>
       {/* Details Update Campaign Components */}
       <CampaignUpdate />
       {/* Donations Components*/}

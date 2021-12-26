@@ -52,7 +52,7 @@ const MyCampaign = (id, category) => {
             padding: "0 100px",
           }}
         >
-          {myCampaign.map((item) => (
+          {myCampaign?.map((item) => (
             <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} data_funding={item.collected} raised={item.deviation} goal={item.goal} />
           ))}
         </Box>
