@@ -27,11 +27,12 @@ const DiscoverCategory = (id) => {
     dispatch(discoverByCategoryStart({ category: categoryId, sort: sort, page: page }));
   }, [sort, categoryId, dispatch, page]);
   const { discoverByCategory } = useSelector((state) => state.discoverReducer);
+  console.log("data", discoverByCategory && discoverByCategory?.campaigns[0].category?.category);
   return (
     <div className={styles.discover_category}>
       <div className={styles.main_category}>
         <div className={styles.detail_category}>
-          <button className={styles.button_category}>{categoryName?.name}</button>
+          <button className={styles.button_category}>{discoverByCategory && discoverByCategory?.campaigns[0].category?.category}</button>
           <h1 className={styles.title_category}>{discoverByCategory && discoverByCategory.campaigns[0].category.quotes}</h1>
           <Link to="/discover">
             <div className={styles.icons_category}>
