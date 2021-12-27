@@ -74,7 +74,6 @@ export default function EditCampaign() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log("Edit", editCampaign.dueDate);
   // eslint-disable-next-line no-unused-vars
   const submitEditCampaign = () => {
     dispatch(editCampaignAction(editCampaign));
@@ -82,8 +81,7 @@ export default function EditCampaign() {
 
   // eslint-disable-next-line no-unused-vars
   const [currency, setCurrency] = useState();
-  // eslint-disable-next-line no-unused-vars
-  const [value, setValue] = useState(null);
+
 
   const handleChange = (e) => {
     setEditCampaign({
@@ -190,7 +188,7 @@ export default function EditCampaign() {
               label="Title"
               placeholder="e.g. Help we get clean water"
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               name="title"
               defaultValue={edit?.detailCampaign?.title || ""}
               onChange={(e) => Edit(e)}
@@ -204,7 +202,7 @@ export default function EditCampaign() {
               defaultValue={edit?.detailCampaign?.categoryId || ""}
               onChange={handleChange}
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               name="categoryId"
             >
               {categories.map((editCampaign) => (
@@ -226,7 +224,7 @@ export default function EditCampaign() {
               label="Goal"
               placeholder="e.g. 20000000"
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               defaultValue={edit?.detailCampaign?.goal || ""}
               name="goal"
               onChange={(e) => Edit(e)}
@@ -238,7 +236,7 @@ export default function EditCampaign() {
               label="Due Date"
               placeholder="Select Due Date"
               variant="standard"
-              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              className={styles.inputCampaign}
               name="dueDate"
               defaultValue={edit?.detailCampaign?.dueDate || ""}
               onChange={(e) => Edit(e)}
