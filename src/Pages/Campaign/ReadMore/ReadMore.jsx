@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../ReadMore/ReadMore.module.scss";
-import storyImage from "../assets/story.png";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useEffect } from "react";
@@ -30,7 +29,7 @@ export default function ReadMore(props) {
     return (
       <div className={styles.readMore}>
         {isReadMore ? text.slice(0, 1000) : text}
-        {!isReadMore ? <img src={storyImage} alt="" /> : null}
+        {/* {!isReadMore ? <img src={storyImage} alt="" /> : null} */}
         <Link to="#" onClick={toggleReadMore} className="read-or-hide">
           {!isReadMore ? (
             <div className={styles.collapsible}>

@@ -112,7 +112,7 @@ export default function EditProfile() {
           <Grid container sx={{ display: "flex", justifyContent: "center" }}>
             <Avatar
               variant="square"
-              src={uploadImage ? uploadImage :updateProfile.image} 
+              src={uploadImage ? uploadImage :updateProfile.image}
               sx={{ width: 200, height: 200 }}
               name="image"
               onChange={(e) => handleImageChange(e)}

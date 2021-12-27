@@ -1,5 +1,5 @@
 import styles from "./CampaignUpdate.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailCampaignAction } from "../../../Store/Actions/Campaign/campaign";
@@ -16,6 +16,9 @@ export default function CampaignUpdate() {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
 
+  const [updateNumber, setUpdateNumber] = useState(1);
+  const dataUpdate = detailUpdateCampaign?.slice(0, updateNumber);
+
   return (
     <div>
       <div className={styles.updateDonor}>
@@ -26,7 +29,7 @@ export default function CampaignUpdate() {
           </h3>
         </div>
 
-        {detailUpdateCampaign?.map((item, index) => {
+        {dataUpdate?.map((item, index) => {
           return (
             <>
               <div key={index} className={styles.containerProgress}>
@@ -73,7 +76,9 @@ export default function CampaignUpdate() {
           );
         })}
         <div className={styles.showButton}>
-          <button>SHOW OLDER</button>
+          <button onClick={() => setUpdateNumber(detailUpdateCampaign?.length)}>
+            SHOW OLDER
+          </button>
         </div>
       </div>
     </div>
