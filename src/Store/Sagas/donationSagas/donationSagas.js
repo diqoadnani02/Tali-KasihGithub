@@ -6,17 +6,17 @@ const bankTransfer = async (campaignId, data) => {
   const response = await axios.post(
     `https://api-talikasih.herokuapp.com/charge/${campaignId}`,
     {
-      headers: { access_token: localStorage.getItem("token") },
-    },
-    {
       amount: data.amount,
       name: data.name,
       message: data.message,
       method: data.method,
+    },
+    {
+      headers: { access_token: localStorage.getItem("token") },
     }
   );
-  console.log(response.data.data);
-  return response.data.data;
+  console.log(response.data);
+  return response.data;
 };
 
 const paymentToken = async (data, campaignId) => {

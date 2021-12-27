@@ -21,14 +21,10 @@ import { category } from "./../Discover/Discover";
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
   const [values, setValues] = React.useState({
-    textmask: "(100) 000-0000",
-    numberformat: "",
+    amount: "",
     name: "",
-    cardnumber: "",
-    expirydate: "",
-    cvv: "",
-    accountnumber: "",
-    totalamount: "",
+    message: "",
+    method: "Bank Transfer",
   });
   const handleChange = (event) => {
     setValues({
@@ -36,6 +32,7 @@ const Payment = () => {
       [event.target.name]: event.target.value.replace(/[^0-9]/g, ""),
     });
   };
+  console.log(values);
   const format = (value) => {
     if (value.length === 2) {
       const setOne = value.slice(0, 2);
@@ -96,10 +93,13 @@ const Payment = () => {
     dispatch(getDetailCampaignAction(id));
   }, []);
 
-  const validation = values.numberformat !== "" && values.name !== "" && values.cardnumber !== "" && values.expirydate !== "" && values.cvv !== "";
+  const validation = values.amount !== "" && values.name !== "";
+  console.log(validation);
 
   const donation = useSelector((state) => state.campaignReducer.detailCampaign);
   console.log(donation);
+  const dataDonate = useSelector((state) => state?.donate?.bankTransfer?.paymentDetail);
+  console.log(dataDonate, "dataDonate");
   return (
     <div className={style.payment}>
       <div>
@@ -117,10 +117,10 @@ const Payment = () => {
           </div>
           <div>
             <TextField
-              value={values.numberformat}
+              value={values.amount}
               onChange={handleChange}
-              name="numberformat"
-              id="formatted-numberformat-input"
+              name="amount"
+              id="formatted-amount-input"
               InputProps={{
                 inputComponent: InputPayment,
                 style: { fontSize: "14px", fontFamily: "Nunito", padding: "10px 0" },
@@ -138,7 +138,7 @@ const Payment = () => {
               </p>
             </div>
             <div>
-              <Input inputProps={ariaLabel} className={style.input_field2} />
+              <Input inputProps={ariaLabel} className={style.input_field2} onChange={(e) => setValues({ ...values, name: e.target.value })} />
             </div>
             <div>
               <label className={style.checkbox}>
@@ -153,7 +153,7 @@ const Payment = () => {
                 Message <span className={style.span_text}>(optional)</span>
               </p>
             </div>
-            <textarea className={style.text_box} type="text" placeholder="Give them Support!"></textarea>
+            <textarea className={style.text_box} onChange={(e) => setValues({ ...values, message: e.target.value })} type="text" placeholder="Give them Support!"></textarea>
           </div>
         </div>
         <div className={style.choosed_card}>
@@ -162,8 +162,7 @@ const Payment = () => {
           </div>
           <div className={style.category}>
             <button className={style.button_category}>
-              {/* <img src={data.icon} alt={data.name} />
-              <p>{data.name}</p> */}
+              <p>{donation?.detailCampaign?.category?.category}</p>
             </button>
             <div>
               <p className={style.title1}>{donation?.detailCampaign?.title}</p>
@@ -266,7 +265,7 @@ const Payment = () => {
             />
           </div>
         )}
-        {transferBank && (
+        {dataDonate?.status_code === "201" && (
           <>
             <div className={style.form_transfer}>
               <p className={style.title_transfer}>Transfer to</p>
@@ -274,7 +273,7 @@ const Payment = () => {
                 <div className={style.account}>
                   <p className={style.account_title}>Account Number</p>
                   <p ref={copyAccountNumber} className={style.account_data}>
-                    1234 5678 90
+                    {dataDonate?.va_numbers?.[0].va_number}
                   </p>
                 </div>
                 <div className={style.button_copied}>
@@ -301,6 +300,12 @@ const Payment = () => {
                   </Popover>
                 </div>
               </div>
+              <div>
+                <div className={style.account}>
+                  <p className={style.account_title}>Bank Name</p>
+                  <p className={style.account_data}>{dataDonate?.va_numbers?.[0].bank}</p>
+                </div>
+              </div>
               <div className={style.account}>
                 <p className={style.account_title}>Account Name</p>
                 <p className={style.account_data}>Tali Kasih</p>
@@ -309,7 +314,7 @@ const Payment = () => {
                 <div className={style.account}>
                   <p className={style.account_title}>Total Amount</p>
                   <p ref={copyTotalAmount} className={style.account_data}>
-                    Rp. {values.numberformat}
+                    Rp. {values.amount}
                   </p>
                 </div>
                 <div className={style.button_copied}>
@@ -340,7 +345,7 @@ const Payment = () => {
           </>
         )}
         <div className={style.button_approve}>
-          <button className={style.approve} disabled={validation} onClick={() => dispatch(bankTransferStart(id, values))}>
+          <button className={style.approve} disabled={!validation} onClick={() => dispatch(bankTransferStart(id, values))}>
             DONATE
           </button>
         </div>

@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getDetailCampaignAction } from "../../../Store/Actions/Campaign/campaign";
 
-export default function ReadMore() {
+export default function ReadMore(props) {
+  const { story } = props;
   const { id, categoryId } = useParams();
   const dispatch = useDispatch();
   const detailStoryCampaign = useSelector(
@@ -54,25 +55,7 @@ export default function ReadMore() {
     <div className={styles.storyCampaign}>
       <div className={styles.text}>
         <h3>The Story</h3>
-
-        <ReadMore>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          viverra turpis quis pellentesque iaculis. Fusce ac mauris ac ex
-          pretium interdum non vel eros. Curabitur in suscipit ante. Maecenas
-          urna enim, ultrices non metus nec, laoreet maximus sem. Quisque
-          maximus ex vel ligula convallis, quis mollis lorem sagittis.
-          Pellentesque laoreet felis non odio rhoncus, at fermentum augue
-          semper. Donec odio mauris, rutrum a eros sit amet, posuere maximus ex.
-          Quisque tristique ullamcorper dolor, nec posuere ligula consequat et.
-          Nulla vitae justo viverra, malesuada mauris id, porta nunc. Vestibulum
-          risus velit, bibendum sed nisl eget, pellentesque maximus diam. Sed
-          varius efficitur magna, at pharetra est sagittis ac. Pellentesque ac
-          ante at tortor bibendum ullamcorper quis nec nulla. Aenean a laoreet
-          dui. Maecenas mollis libero condimentum, aliquam enim consectetur,
-          ullamcorper dui. Pellentesque habitant morbi tristique senectus et
-          netus et malesuada fames ac turpis egestas. Duis ac rutrum nisi, vitae
-          tincidunt mi.
-        </ReadMore>
+        <ReadMore>{story}</ReadMore>
       </div>
     </div>
   );

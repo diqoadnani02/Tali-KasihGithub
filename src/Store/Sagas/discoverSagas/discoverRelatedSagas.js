@@ -6,8 +6,8 @@ const API_URL = process.env.REACT_APP_BASE_API_URL;
 
 //discover
 
-export const discoverRelated = async () => {
-  const response = await axios.get(`API_URL + discover/related/${id}`);
+export const discoverRelated = async (data) => {
+  const response = await axios.get(`API_URL + discover/related/${data.id}`);
   console.log(response, "res");
   return response.data;
 };
@@ -28,7 +28,7 @@ export function* getDiscoverRelated() {
 }
 
 export function* onDiscoverRelatedStart() {
-  yield takeLatest(types.GET_DISCOVER_RELATED_START, getDiscover);
+  yield takeLatest(types.GET_DISCOVER_RELATED_START, getDiscoverRelated);
 }
 
 export function* discoverRelatedSagas() {

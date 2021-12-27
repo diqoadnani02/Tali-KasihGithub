@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
+// import { id } from "date-fns/locale";
 
 export default function CampaignCreation() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function CampaignCreation() {
     goal: "",
     dueDate: "",
     categoryId: "",
+    status:"open",
   });
 
   const changeInput = (e) => {
@@ -63,6 +65,7 @@ export default function CampaignCreation() {
     form.append("story", inputCampaign.story);
     form.append("dueDate", inputCampaign.dueDate);
     form.append("categoryId", inputCampaign.categoryId);
+    form.append("status", inputCampaign.status);
     dispatch(createCampaignAction(form));
     navigate("/profile");
   };

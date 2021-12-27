@@ -1,8 +1,8 @@
 import React from "react";
 import { Paper, Typography, Grid, Button, Box } from "@mui/material";
 import Card from "../Card/Card";
-import {getMycampaignStart} from '../../Store/Actions/mycampaignAction/mycampaignAction'
-import {useDispatch, useSelector} from 'react-redux' 
+import { getMycampaignStart } from "../../Store/Actions/mycampaignAction/mycampaignAction";
+import { useDispatch, useSelector } from "react-redux";
 // import data from '../Card/data'
 import { Link } from "react-router-dom";
 
@@ -41,7 +41,7 @@ const MyCampaign = (id, category) => {
       >
         My Campaign
       </Typography>
-      <Link to='none'>
+      <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none" }}>
         <Box
           container
           sx={{
@@ -52,26 +52,12 @@ const MyCampaign = (id, category) => {
             padding: "0 100px",
           }}
         >
-          {myCampaign.map((item) => (
-            <Card
-              id={item.id}
-              image={item.image}
-              category={item.category.category}
-              title={item.title}
-              author={item.user.name}
-              data_funding={item.collected}
-              raised={item.deviation}
-              goal={item.goal}
-            />
+          {myCampaign?.map((item) => (
+            <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} data_funding={item.collected} raised={item.deviation} goal={item.goal} />
           ))}
         </Box>
       </Link>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Grid container direction="column" alignItems="center" justifyContent="center">
         <Grid item xs={5}>
           <Button
             onClick={() => setEnd(end + 2)}
