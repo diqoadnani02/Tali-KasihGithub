@@ -16,6 +16,7 @@ const Trending = () => {
     const getData = () => {};
     dispatch(cardHomeStart());
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { cardHome } = useSelector((state) => state.cardHomeReducer);

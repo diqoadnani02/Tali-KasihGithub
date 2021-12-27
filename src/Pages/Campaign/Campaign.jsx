@@ -35,9 +35,11 @@ export default function Campaign() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProfileAction());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     dispatch(relatedCampaignAction());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
@@ -70,6 +72,7 @@ export default function Campaign() {
     setTimeout(() => setLoadingCampaign(false), 5000);
   });
 
+  // eslint-disable-next-line no-unused-vars
   const [list, setList] = useState([]);
   console.log(dayjs(detailCampaign?.dueDate).toNow(true) === "a month");
 
