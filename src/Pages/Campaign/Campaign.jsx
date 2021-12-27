@@ -5,8 +5,6 @@ import Donation from "./Donation/Donation";
 import Comment from "./Comment/Comment";
 import Share from "../Fundraiser/Modal/Share";
 import ModalUpdateCampaign from "../Fundraiser/Modal/UpdateCampaign";
-import Card from "../../Components/Card/Card";
-import data from "../../Components/Card/data";
 import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
@@ -24,7 +22,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
-import { relatedCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { useNavigate } from "react-router-dom";
 
@@ -37,9 +34,6 @@ export default function Campaign() {
     dispatch(ProfileAction());
   }, []);
   useEffect(() => {
-    dispatch(relatedCampaignAction());
-  }, []);
-  useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
 
@@ -47,10 +41,6 @@ export default function Campaign() {
   const { detailCampaign } = useSelector(
     (state) => state.campaignReducer.detailCampaign
   );
-  console.log("detailCampaign", detailCampaign);
-  const { related } = useSelector((state) => state.relatedCampaignReducer);
-  console.log("related", related);
-
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -70,17 +60,6 @@ export default function Campaign() {
   useEffect(() => {
     setTimeout(() => setLoadingCampaign(false), 5000);
   });
-
-  const [list, setList] = useState([]);
-  console.log(dayjs(detailCampaign?.dueDate).toNow(true) === "a month");
-
-  useEffect(() => {
-    const getData = () => {
-      setList(data.campaign);
-    };
-
-    getData();
-  }, []);
 
   const [share, setShare] = useState(false);
   const [show, setShow] = useState(false);
@@ -299,22 +278,6 @@ export default function Campaign() {
       <Comment />
 
       {/* Card Components */}
-      <div className={styles.linkCardBottom}>
-        <Link to="#">Related campaign</Link>
-        <div className={styles.cardBottom}>
-          {related?.map((item) => (
-            <Card
-              id={item.id}
-              image={item.image}
-              category={item.category.category}
-              title={item.title}
-              author={item.user.name}
-              raised={item.jumlahCollected}
-              goal={item.jumlahGoal}
-            />
-          ))}
-        </div>
-      </div>
     </>
   );
 }

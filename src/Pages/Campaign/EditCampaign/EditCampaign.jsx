@@ -11,10 +11,6 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
-import dayjs from "dayjs";
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -247,38 +243,6 @@ export default function EditCampaign() {
               defaultValue={edit?.detailCampaign?.dueDate || ""}
               onChange={(e) => Edit(e)}
             />
-            {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                sx={{ display:'none' }}
-                name="dueDate"
-                label="Due Date"
-                // value={value}
-                onChange={(e) =>
-                  setEditCampaign({
-                    ...editCampaign,
-                    dueDate: dayjs(e).format("YYYY/MM/DD"),
-                  })
-                }
-                renderInput={(params) => (
-                  <TextField
-                    id="standard"
-                    variant="standard"
-                    placeholder="Select due date"
-                    name="dueDate"
-                    value={edit?.detailCampaign?.dueDate || ""}
-                    onChange={(e) => Edit(e)}
-                    sx={{
-                      border: "none",
-                      outline: "none",
-                      width: "477px",
-                      height: "200px",
-                      paddingTop: "20px",
-                    }}
-                    {...params}
-                  />
-                )}
-              />
-            </LocalizationProvider> */}
           </div>
         </div>
         <div className={styles.textareaCreation}>
