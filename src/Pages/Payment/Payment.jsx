@@ -1,11 +1,11 @@
 import style from "./Payment.module.scss";
 import TextField from "@mui/material/TextField";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
+// import CreditCardIcon from "@mui/icons-material/CreditCard";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import Input from "@mui/material/Input";
 import InputPayment from "../../Components/InputPayment/InputPayment";
 import LinearProgress from "@mui/material/LinearProgress";
-import Card from "../../Components/Card/Card";
+// import Card from "../../Components/Card/Card";
 import React, { useState, useRef, useEffect } from "react";
 import useClipboard from "react-hook-clipboard";
 import Popover from "@mui/material/Popover";
@@ -14,9 +14,9 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { bankTransferStart } from "./../../Store/Actions/donationAction/donationAction";
 import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+// import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { getDetailCampaignAction } from "./../../Store/Actions/Campaign/campaign";
-import { category } from "./../Discover/Discover";
+// import { category } from "./../Discover/Discover";
 
 const Payment = () => {
   const ariaLabel = { "aria-label": "description" };
@@ -62,7 +62,9 @@ const Payment = () => {
       return `${setOne}-${setTwo}-${setThree}-${setFour}`;
     }
   };
+  // eslint-disable-next-line no-unused-vars
   const [togglePayment, setTogglePayment] = React.useState("");
+  // eslint-disable-next-line no-unused-vars
   const handleChangeButton = (event, newTogglePayment) => {
     if (setTogglePayment !== null) {
       setTogglePayment(newTogglePayment);
@@ -71,6 +73,7 @@ const Payment = () => {
 
   const copyAccountNumber = useRef();
   const copyTotalAmount = useRef();
+  // eslint-disable-next-line no-unused-vars
   const [clipboard, copyToClipboard] = useClipboard();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,15 +86,18 @@ const Payment = () => {
   };
 
   const open = Boolean(anchorEl);
+  // eslint-disable-next-line no-unused-vars
   const idPopover = open ? "simple-popover" : undefined;
+  // eslint-disable-next-line no-unused-vars
   const [detailCard, setDetailCard] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [transferBank, setTransferBank] = useState(false);
 
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
-  }, []);
+  }, [id, dispatch]);
 
   const validation = values.amount !== "" && values.name !== "";
   console.log(validation);

@@ -26,6 +26,7 @@ export default function Hero() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProfileAction());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const ProfileHero = useSelector((state) => state.profileReducer.profile);
   console.log(ProfileHero);

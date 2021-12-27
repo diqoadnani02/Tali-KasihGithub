@@ -14,6 +14,7 @@ import { category } from "./Discover";
 const DiscoverCategory = (id) => {
   const dispatch = useDispatch();
   const { categoryId, sort } = useParams();
+  // eslint-disable-next-line no-unused-vars
   const categoryName = category.find((item) => item.id === categoryId);
   const [page, setPage] = useState(1);
   const handleChange = (event, value) => {
