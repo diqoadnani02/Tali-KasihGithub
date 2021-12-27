@@ -34,13 +34,21 @@ export default function Donation() {
           className={styles.donate}
           style={
             dataDonate?.length === detailDonationCampaign?.length
-              ? { flexDirection: "column" }
-              : {flexDirection: "row"}
+              ? {
+                  flexDirection: "column",
+                  display: "flex",
+                  justifyContent: "space-evenly"
+                }
+              : {
+                  // flexDirection: "row",
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                }
           }
         >
           {dataDonate?.map((item, index) => {
             return (
-              <div key={index} className={styles.containerAllCards}>
+              <div key={index} className={styles.containerAllCards} >
                 <div className={styles.containerCards}>
                   <div className={styles.cardDonation}>
                     <div className={styles.cards}>

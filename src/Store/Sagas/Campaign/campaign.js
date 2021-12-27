@@ -139,7 +139,7 @@ function* editCampaign(actions) {
     console.log(res);
     yield put({
       type: GET_DETAIL_CAMPAIGN_SUCCESS,
-      payload: resEditCampaign.data.data,
+      payload: resEditCampaign.data,
     });
   } catch (err) {
     console.log(err);

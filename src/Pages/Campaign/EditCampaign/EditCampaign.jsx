@@ -11,10 +11,6 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
-import dayjs from "dayjs";
 
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +21,7 @@ export default function EditCampaign() {
   const { id, category } = useParams();
   const dispatch = useDispatch();
   const edit = useSelector((state) => state.campaignReducer.detailCampaign);
+  console.log("edit", edit);
   const [editCampaign, setEditCampaign] = useState({
     image: null,
     title: "",
@@ -77,7 +74,7 @@ export default function EditCampaign() {
       [e.target.name]: e.target.value,
     });
   };
-
+  console.log("Edit", editCampaign.dueDate);
   // eslint-disable-next-line no-unused-vars
   const submitEditCampaign = () => {
     dispatch(editCampaignAction(editCampaign));
@@ -85,7 +82,7 @@ export default function EditCampaign() {
 
   // eslint-disable-next-line no-unused-vars
   const [currency, setCurrency] = useState();
-    // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = useState(null);
 
   const handleChange = (e) => {
@@ -142,7 +139,7 @@ export default function EditCampaign() {
     <>
       <div className={styles.campaignCreation}>
         <div className={styles.containerCreation}>
-          <h1>New Campaign</h1>
+          <h1>Your Campaign</h1>
         </div>
         <form>
           <div className={styles.boxImage}>
@@ -162,6 +159,7 @@ export default function EditCampaign() {
                     accept="image/*"
                     type="file"
                     name="image"
+                    value={edit.image}
                     onChange={ChangeImageEdit}
                   />
                   <h2>Add Header Photo</h2>
@@ -171,7 +169,7 @@ export default function EditCampaign() {
               <div className={styles.imagePreview}>
                 <img
                   id={styles.uploadedImage}
-                  src={imageEdit}
+                  src={imageEdit ? imageEdit : editCampaign.image}
                   alt="uploaded-edit"
                   onClick={() => {
                     setIsEdit(false);
@@ -194,6 +192,7 @@ export default function EditCampaign() {
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
               name="title"
+              defaultValue={edit?.detailCampaign?.title || ""}
               onChange={(e) => Edit(e)}
             />
             <TextField
@@ -202,6 +201,7 @@ export default function EditCampaign() {
               select
               label="Category"
               value={currency}
+              defaultValue={edit?.detailCampaign?.categoryId || ""}
               onChange={handleChange}
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
@@ -227,39 +227,22 @@ export default function EditCampaign() {
               placeholder="e.g. 20000000"
               variant="standard"
               sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              defaultValue={edit?.detailCampaign?.goal || ""}
               name="goal"
               onChange={(e) => Edit(e)}
             />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DatePicker
-                name="dueDate"
-                label="Due Date"
-                value={value}
-                onChange={(e) =>
-                  setEditCampaign({
-                    ...editCampaign,
-                    dueDate: dayjs(e).format("YYYY/MM/DD"),
-                  })
-                }
-                renderInput={(params) => (
-                  <TextField
-                    id="standard"
-                    variant="standard"
-                    placeholder="Select due date"
-                    name="dueDate"
-                    onChange={(e) => Edit(e)}
-                    sx={{
-                      border: "none",
-                      outline: "none",
-                      width: "477px",
-                      height: "200px",
-                      paddingTop: "20px",
-                    }}
-                    {...params}
-                  />
-                )}
-              />
-            </LocalizationProvider>
+            <TextField
+              required
+              type="date"
+              id="standard-required"
+              label="Due Date"
+              placeholder="Select Due Date"
+              variant="standard"
+              sx={{ width: "477px", height: "200px", paddingTop: "20px" }}
+              name="dueDate"
+              defaultValue={edit?.detailCampaign?.dueDate || ""}
+              onChange={(e) => Edit(e)}
+            />
           </div>
         </div>
         <div className={styles.textareaCreation}>
@@ -315,6 +298,7 @@ export default function EditCampaign() {
               cols="30"
               rows="10"
               placeholder="Tell your story..."
+              defaultValue={edit?.detailCampaign?.story || ""}
               onChange={(e) => Edit(e)}
             ></textarea>
           </div>

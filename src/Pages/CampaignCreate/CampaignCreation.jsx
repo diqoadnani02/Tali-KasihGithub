@@ -11,16 +11,10 @@ import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import { BiLinkAlt } from "react-icons/bi";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DesktopDatePicker from "@mui/lab/DatePicker";
-import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCampaignAction } from "../../Store/Actions/Campaign/campaign";
-// import { id } from "date-fns/locale";
 
 export default function CampaignCreation() {
   const navigate = useNavigate();
@@ -32,7 +26,6 @@ export default function CampaignCreation() {
     goal: "",
     dueDate: "",
     categoryId: "",
-    status:"open",
   });
 
   const changeInput = (e) => {
@@ -65,15 +58,12 @@ export default function CampaignCreation() {
     form.append("story", inputCampaign.story);
     form.append("dueDate", inputCampaign.dueDate);
     form.append("categoryId", inputCampaign.categoryId);
-    form.append("status", inputCampaign.status);
     dispatch(createCampaignAction(form));
     navigate("/profile");
   };
 
   // eslint-disable-next-line no-unused-vars
   const [currency, setCurrency] = useState();
-  // eslint-disable-next-line no-unused-vars
-  const [value, setValue] = useState(null);
 
   const handleChange = (e) => {
     setInputCampaign({
@@ -203,30 +193,17 @@ export default function CampaignCreation() {
               name="goal"
               onChange={(e) => changeInput(e)}
             />
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <DesktopDatePicker
-                name="dueDate"
-                label="Due Date"
-                value={value}
-                onChange={(e) =>
-                  setInputCampaign({
-                    ...inputCampaign,
-                    dueDate: dayjs(e).format("YYYY/MM/DD"),
-                  })
-                }
-                renderInput={(params) => (
-                  <TextField
-                    id="standard"
-                    variant="standard"
-                    placeholder="Select due date"
-                    name="dueDate"
-                    className={styles.inputDateCampaign}
-                    onChange={(e) => changeInput(e)}
-                    {...params}
-                  />
-                )}
-              />
-            </LocalizationProvider>
+            <TextField
+              required
+              type="date"
+              id="standard-required"
+              label="Due Date"
+              placeholder="Select Due Date"
+              variant="standard"
+              className={styles.inputCampaign}
+              name="dueDate"
+              onChange={(e) => changeInput(e)}
+            />
           </div>
         </div>
         <div className={styles.textareaCreation}>

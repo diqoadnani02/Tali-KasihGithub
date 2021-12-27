@@ -50,8 +50,8 @@ export default function ProfileCard() {
             fontSize: "14px",
             lineHeight: "19px",
             color: "#A43F3C",
-            textDecoration: "underline",
             cursor: "pointer",
+            textDecoration: "none",
           }}
           to="#"
           onClick={logOut}

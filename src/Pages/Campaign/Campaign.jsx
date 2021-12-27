@@ -5,8 +5,6 @@ import Donation from "./Donation/Donation";
 import Comment from "./Comment/Comment";
 import Share from "../Fundraiser/Modal/Share";
 import ModalUpdateCampaign from "../Fundraiser/Modal/UpdateCampaign";
-import Card from "../../Components/Card/Card";
-import data from "../../Components/Card/data";
 import { styled } from "@mui/material/styles";
 import LinearProgress, { linearProgressClasses } from "@mui/material/LinearProgress";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -22,13 +20,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
-import { discoverRelatedStart } from "../../Store/Actions/discoverAction/discoverRelatedAction";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { useNavigate } from "react-router-dom";
 
 export default function Campaign() {
   const navigate = useNavigate();
   dayjs.extend(relativeTime);
+  // eslint-disable-next-line no-unused-vars
   const { id, categoryId, category } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -36,19 +34,13 @@ export default function Campaign() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    dispatch(discoverRelatedStart());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
 
   const campaignUser = useSelector((state) => state.profileReducer.profile);
-  const { detailCampaign } = useSelector((state) => state.campaignReducer.detailCampaign);
-  console.log(detailCampaign, "detaildata");
-  const relate = useSelector((state) => state.campaignReducer.detailCampaign.related);
-  console.log("relate", relate);
-
+  const { detailCampaign } = useSelector(
+    (state) => state.campaignReducer.detailCampaign
+  );
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -59,7 +51,7 @@ export default function Campaign() {
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: theme.palette.mode === "dark" ? "#1a90ff" : "#308fe8",
+      backgroundColor: theme.palette.mode === "light" ? "#1a90ff" : "#308fe8",
     },
   }));
 
@@ -67,17 +59,6 @@ export default function Campaign() {
   useEffect(() => {
     setTimeout(() => setLoadingCampaign(false), 5000);
   });
-
-  // eslint-disable-next-line no-unused-vars
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    const getData = () => {
-      setList(data.campaign);
-    };
-
-    getData();
-  }, []);
 
   const [share, setShare] = useState(false);
   const [show, setShow] = useState(false);
@@ -161,8 +142,13 @@ export default function Campaign() {
                   <Link to={`/edit-campaign/${id}`} style={{ textDecoration: "none", color: "black" }}>
                     <MenuItem>Edit</MenuItem>
                   </Link>
-                  <MenuItem>Close Campaign</MenuItem>
-                  <MenuItem onClick={() => dispatch(deleteCampaignAction(id), navigate("/profile"))}>Delete</MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      dispatch(deleteCampaignAction(id), navigate("/profile"))
+                    }
+                  >
+                    Delete
+                  </MenuItem>
                 </Menu>
               </div>
             )}
@@ -226,17 +212,6 @@ export default function Campaign() {
       <Comment />
 
       {/* Card Components */}
-      <div className={styles.linkCardBottom}>
-        <Link to="/discover">Related campaign</Link>
-
-        <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none", color: "black" }}>
-          <div className={styles.cardBottom}>
-            {relate?.map((item) => (
-              <Card id={item.id} image={item.image} category={item.category.category} title={item.title} author={item.user.name} raised={item.jumlahCollected} goal={item.jumlahGoal} />
-            ))}
-          </div>
-        </Link>
-      </div>
     </>
   );
 }

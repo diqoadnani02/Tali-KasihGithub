@@ -41,7 +41,7 @@ const MyCampaign = (id, category) => {
       >
         My Campaign
       </Typography>
-      <Link to={`/campaign/${category}/${id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/campaign/${category}/${id}`} style={{textDecoration:'none'}}>
         <Box
           container
           sx={{
@@ -50,6 +50,7 @@ const MyCampaign = (id, category) => {
             justifyContent: "space-between",
             flexWrap: "wrap",
             padding: "0 100px",
+            textDecoration:'none'
           }}
         >
           {myCampaign?.map((item) => (

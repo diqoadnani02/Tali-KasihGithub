@@ -100,7 +100,13 @@ export default function EditProfile() {
         <div className={styles.editProfile}>
           {/* {!isUpload ? ( */}
           <Grid container sx={{ display: "flex", justifyContent: "center" }}>
-            <Avatar variant="square" src={uploadImage ? uploadImage : updateProfile.image} sx={{ width: 200, height: 200 }} name="image" onChange={(e) => handleImageChange(e)}></Avatar>
+            <Avatar
+              variant="square"
+              src={uploadImage ? uploadImage :updateProfile.image}
+              sx={{ width: 200, height: 200 }}
+              name="image"
+              onChange={(e) => handleImageChange(e)}
+            ></Avatar>
           </Grid>
           {/* ) : ( */}
           <div className={styles.uploadInput}>
