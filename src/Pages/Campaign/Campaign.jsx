@@ -23,6 +23,7 @@ import { ProfileAction } from "../../Store/Actions/profile";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { useNavigate } from "react-router-dom";
 import Card from "../../Components/Card/Card";
+import { relatedCampaignAction } from "../../Store/Actions/Campaign/campaign";
 
 export default function Campaign() {
   const navigate = useNavigate();
@@ -37,6 +38,11 @@ export default function Campaign() {
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
+  useEffect(() => {
+    dispatch(relatedCampaignAction());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const { related } = useSelector((state) => state.relatedCampaignReducer);
   console.log("related", related);
   const campaignUser = useSelector((state) => state.profileReducer.profile);
