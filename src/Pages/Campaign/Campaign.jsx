@@ -22,6 +22,7 @@ import { getDetailCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { ProfileAction } from "../../Store/Actions/profile";
 import { deleteCampaignAction } from "../../Store/Actions/Campaign/campaign";
 import { useNavigate } from "react-router-dom";
+import Card from "../../Components/Card/Card";
 
 export default function Campaign() {
   const navigate = useNavigate();
@@ -36,7 +37,8 @@ export default function Campaign() {
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
-
+  const { related } = useSelector((state) => state.relatedCampaignReducer);
+  console.log("related", related);
   const campaignUser = useSelector((state) => state.profileReducer.profile);
   const { detailCampaign } = useSelector(
     (state) => state.campaignReducer.detailCampaign
@@ -212,6 +214,22 @@ export default function Campaign() {
       <Comment />
 
       {/* Card Components */}
+      <div className={styles.linkCardBottom}>
+        <Link to="#">Related campaign</Link>
+        <div className={styles.cardBottom}>
+          {related?.map((item) => (
+            <Card
+              id={item.id}
+              image={item.image}
+              category={item.category.category}
+              title={item.title}
+              author={item.user.name}
+              raised={item.jumlahCollected}
+              goal={item.jumlahGoal}
+            />
+          ))}
+        </div>
+        </div>
     </>
   );
 }
