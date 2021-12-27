@@ -41,7 +41,7 @@ const MyCampaign = (id, category) => {
       >
         My Campaign
       </Typography>
-      <Link to={`/campaign/${category}/${id}`}>
+      <Link to='none'>
         <Box
           container
           sx={{

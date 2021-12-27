@@ -29,8 +29,8 @@ export default function ProfileCard() {
 
   React.useEffect(() => {
     dispatch(ProfileAction())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    
+  }, [dispatch])
 
   const { profile } = useSelector(state => state.profileReducer)
   console.log(profile)
@@ -133,7 +133,7 @@ export default function ProfileCard() {
               sx={{ width: "384px" }}
               variant="standard"
             />
-            <Box sx={{flexGrow: 1,justifyContent: 'space-evenly'}}>
+            <Box sx={{flexGrow: 1,justifyContent: 'space-evenly', marginRight: '64px'}}>
             <TextField
           disabled
           margin="dense"
