@@ -15,7 +15,6 @@ export default function ReadMore(props) {
   const detailStoryCampaign = useSelector(
     (state) => state.campaignReducer.detailCampaign
   );
-  console.log("detailStoryCampaign", detailStoryCampaign);
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);

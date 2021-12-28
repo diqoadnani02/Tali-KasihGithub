@@ -11,7 +11,6 @@ export default function CampaignUpdate() {
   const detailUpdateCampaign = useSelector(
     (state) => state.campaignReducer.detailCampaign.updateCampaign
   );
-  console.log("detailUpdateCampaign", detailUpdateCampaign);
   useEffect(() => {
     dispatch(getDetailCampaignAction(id));
   }, [dispatch, id, categoryId]);
